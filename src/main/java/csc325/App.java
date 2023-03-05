@@ -20,6 +20,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("primary"), 640, 480);
         stage.setScene(scene);
         stage.show();
+        //Beas
     }
 
     static void setRoot(String fxml) throws IOException {
