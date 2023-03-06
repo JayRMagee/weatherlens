@@ -10,11 +10,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class PrimaryController {
-    
+    @FXML
+    private TextField firstNameText;
+     @FXML
+    private TextField userNameText;
+      @FXML
+    private TextField passwordText;
+       @FXML
+    private TextField homeZipCodeText;
     @FXML
     private Button enterButton;
     

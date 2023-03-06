@@ -14,17 +14,17 @@
          </VBox.margin>
       </Label>
       <Label text="First Name" />
-      <TextField />
+      <TextField fx:id="firstNameText" />
       <Label text="Username" VBox.vgrow="NEVER">
          <VBox.margin>
             <Insets />
          </VBox.margin>
       </Label>
-      <TextField />
+      <TextField fx:id="userNameText" />
       <Label text="Password" />
-      <TextField />
+      <TextField fx:id="passwordText" />
       <Label text="Home Zip Code" />
-      <TextField />
+      <TextField fx:id="homeZipCodeText" />
       <Button fx:id="enterButton1" mnemonicParsing="false" onAction="#handleLoginButton" text="Create Account" />
    </children>
    <padding>
