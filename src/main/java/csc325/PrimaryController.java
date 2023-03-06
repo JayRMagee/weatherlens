@@ -55,6 +55,4 @@ public class PrimaryController {
         createStage.show();
     }
 
-    public void handleCreateAccount() {
-    }
 }
