@@ -22,12 +22,8 @@ public class PrimaryController {
     private void handleLoginButton() throws IOException {
     // code to verify login credentials and switch to main page
     
-        KeyValue disableValue1 = new KeyValue(enterButton.disableProperty(), false);
-        KeyFrame disableFrame1 = new KeyFrame(Duration.INDEFINITE, disableValue1);
-        KeyValue disableValue2 = new KeyValue(enterButton.disableProperty(), true);
-        KeyFrame disableFrame2 = new KeyFrame(Duration.ZERO, disableValue2);
-        Timeline disableTimeLine = new Timeline(disableFrame2, disableFrame1);
-        disableTimeLine.play();
+        Stage stage = (Stage) enterButton.getScene().getWindow();
+        stage.close();
     
         Stage appStage = new Stage();
         Scene appScene = new Scene(FXMLLoader.load(getClass().getResource("primary.fxml")));
@@ -36,6 +32,7 @@ public class PrimaryController {
         appStage.setWidth(1280); // set the initial width of the main page's window
         appStage.setHeight(720); // set the initial height of the main page's window
         appStage.show();
+        
     }
     
     @FXML
