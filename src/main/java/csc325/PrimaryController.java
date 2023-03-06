@@ -25,13 +25,15 @@ public class PrimaryController {
     @FXML
     private TextField homeZipCodeText;
     @FXML
-    private Button enterButton;
+    private Button loginButton;
+    @FXML
+    private Button createAccountButton;
 
     @FXML
     private void handleLoginButton() throws IOException {
         // code to verify login credentials and switch to main page
 
-        Stage stage = (Stage) enterButton.getScene().getWindow();
+        Stage stage = (Stage) loginButton.getScene().getWindow();
         stage.close();
 
         Stage appStage = new Stage();
@@ -53,6 +55,12 @@ public class PrimaryController {
         createStage.setWidth(350); // set the initial width of the main page's window
         createStage.setHeight(450); // set the initial height of the main page's window
         createStage.show();
+    }
+    
+    @FXML
+    private void handleCreateAccountButton(){
+        Stage stage = (Stage) createAccountButton.getScene().getWindow();
+        stage.close();
     }
 
 }
