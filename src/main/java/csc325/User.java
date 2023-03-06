@@ -13,8 +13,7 @@ public class User {
     private String userName;
     private String userPassword;
     private String homeZipCode;
-    private String [] recentLocations;
-
+    
     public String getHomeZipCode() {
         return homeZipCode;
     }
@@ -46,8 +45,11 @@ public class User {
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
-    
-    public void createUser(){
-        
-    }
+
+    public User(String firstName, String userName, String userPassword, String homeZipCode) {
+        this.firstName = firstName;
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.homeZipCode = homeZipCode;
+    } 
 }
