@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import java.sql.*;
 
 public class PrimaryController {
 
@@ -56,11 +57,19 @@ public class PrimaryController {
         createStage.setHeight(450); // set the initial height of the main page's window
         createStage.show();
     }
-    
+
     @FXML
-    private void handleCreateAccountButton(){
+    private void handleCreateAccountButton() {
         Stage stage = (Stage) createAccountButton.getScene().getWindow();
+        String databaseURL = "";
+        Connection conn = null;
+        try {
+            databaseURL = "jdbc:ucanaccess://.//Persons.accdb";
+            conn = DriverManager.getConnection(databaseURL);
+        } catch (SQLException ex) {
+        }
         stage.close();
+
     }
 
 }
