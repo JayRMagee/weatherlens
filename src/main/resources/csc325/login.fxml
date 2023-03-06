@@ -6,16 +6,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.PrimaryController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" spacing="21.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.PrimaryController">
    <children>
       <Label text="Welcome To WeatherLens!">
          <VBox.margin>
-            <Insets bottom="20.0" />
+            <Insets />
          </VBox.margin>
       </Label>
       <Label text="Please Login To Continue:">
          <VBox.margin>
-            <Insets bottom="20.0" />
+            <Insets />
          </VBox.margin>
       </Label>
       <Label text="Username" VBox.vgrow="NEVER">
@@ -28,9 +28,10 @@
       <TextField />
       <Button fx:id="enterButton" mnemonicParsing="false" onAction="#handleLoginButton" text="Enter">
          <VBox.margin>
-            <Insets top="20.0" />
+            <Insets />
          </VBox.margin>
       </Button>
+      <Label onMouseClicked="#handleCreateAccountPageOpenLabel" text="No Account? Create One Here!" textFill="#1800ff" underline="true" />
    </children>
    <padding>
       <Insets left="10.0" right="10.0" />
