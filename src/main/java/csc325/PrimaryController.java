@@ -79,7 +79,7 @@ public class PrimaryController {
             databaseURL = "jdbc:ucanaccess://.//UserAccounts.accdb";
             conn = DriverManager.getConnection(databaseURL);
             userExist = conn.prepareStatement("SELECT * FROM UserInfo WHERE Username = ?");
-            userExist.setString(1, userLoginText.getText());
+            userExist.setString(1, userNameText.getText());
             result = userExist.executeQuery();
             if (result.isBeforeFirst()) {
                 System.out.println("User already exists");
