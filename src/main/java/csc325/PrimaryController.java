@@ -14,9 +14,14 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.sql.*;
+import javafx.scene.control.Alert;
 
 public class PrimaryController {
 
+    @FXML
+    private TextField passwordLoginText;
+    @FXML
+    private TextField userLoginText;
     @FXML
     private TextField firstNameText;
     @FXML
@@ -61,30 +66,73 @@ public class PrimaryController {
     @FXML
     private void handleCreateAccountButton() {
         Stage stage = (Stage) createAccountButton.getScene().getWindow();
-        String databaseURL = "";
-        Connection conn = null;
-        try {
-            databaseURL = "jdbc:ucanaccess://.//UserAccounts.accdb";
-            conn = DriverManager.getConnection(databaseURL);
-        } catch (SQLException ex) {
-            System.out.println("Connection failed");
-        }
-        try {
-            User u1 = new User();
-            String sql = "INSERT INTO Persons ([User name],[First name],[User Password],[Home Zip Code]) VALUES (?, ?, ?, ?)";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, u1.getUserName());
-            preparedStatement.setString(2, u1.getFirstName());
-            preparedStatement.setString(3, u1.getUserPassword());
-            preparedStatement.setString(4, u1.getHomeZipCode());
-            int row = preparedStatement.executeUpdate();
-            if (row > 0) {
-                System.out.println("Row inserted");
-            }
-        } catch (SQLException e) {
-        }
         stage.close();
 
     }
 
+    public void sendAccountDB() {
+        String databaseURL = "";
+        Connection conn = null;
+        PreparedStatement userExist = null;
+        ResultSet result = null;
+        try {
+            databaseURL = "jdbc:ucanaccess://.//UserAccounts.accdb";
+            conn = DriverManager.getConnection(databaseURL);
+            userExist = conn.prepareStatement("SELECT * FROM UserInfo WHERE Username = ?");
+            userExist.setString(1, userLoginText.getText());
+            result = userExist.executeQuery();
+            if (result.isBeforeFirst()) {
+                System.out.println("User already exists");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("You cannot use this username.");
+                alert.show();
+            } else {
+                try {
+                    User u1 = new User();
+                    u1.setFirstName(firstNameText.getText());
+                    u1.setUserName(userNameText.getText());
+                    u1.setUserPassword(passwordText.getText());
+                    u1.setHomeZipCode(homeZipCodeText.getText());
+                    String sql = "INSERT INTO UserInfo ([First name],[Username],[Password],[ Zipcode]) VALUES (?, ?, ?, ?)";
+                    PreparedStatement preparedStatement = conn.prepareStatement(sql);
+                    preparedStatement.setString(1, u1.getFirstName());
+                    preparedStatement.setString(2, u1.getUserName());
+                    preparedStatement.setString(3, u1.getUserPassword());
+                    preparedStatement.setString(4, u1.getHomeZipCode());
+                    int row = preparedStatement.executeUpdate();
+                    if (row > 0) {
+                        System.out.println("Row inserted");
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (result != null) {
+                try {
+                    result.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            if (userExist != null) {
+                try {
+                    userExist.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+
+        }
+
+    }
 }

@@ -23,9 +23,9 @@
             <Insets />
          </VBox.margin>
       </Label>
-      <TextField />
+      <TextField fx:id="userLoginText" />
       <Label text="Password" />
-      <TextField />
+      <TextField fx:id="passwordLoginText" />
       <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButton" text="Login">
          <VBox.margin>
             <Insets />
