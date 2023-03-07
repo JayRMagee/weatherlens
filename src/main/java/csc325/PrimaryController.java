@@ -66,6 +66,7 @@ public class PrimaryController {
     @FXML
     private void handleCreateAccountButton() {
         Stage stage = (Stage) createAccountButton.getScene().getWindow();
+        sendAccountDB();
         stage.close();
 
     }
