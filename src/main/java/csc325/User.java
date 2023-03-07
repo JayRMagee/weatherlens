@@ -9,11 +9,12 @@ package csc325;
  * @author nicholasshah
  */
 public class User {
+
     private String firstName;
     private String userName;
     private String userPassword;
     private String homeZipCode;
-    
+
     public String getHomeZipCode() {
         return homeZipCode;
     }
@@ -46,10 +47,18 @@ public class User {
         this.userPassword = userPassword;
     }
 
-    public User(String firstName, String userName, String userPassword, String homeZipCode) {
+    public User(String userName, String firstName, String userPassword, String homeZipCode) {
         this.firstName = firstName;
         this.userName = userName;
         this.userPassword = userPassword;
         this.homeZipCode = homeZipCode;
-    } 
+    }
+
+    public User() {
+        firstName = "";
+        userName = "";
+        userPassword = "";
+        homeZipCode = "";
+    }
+
 }

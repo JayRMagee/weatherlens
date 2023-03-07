@@ -64,9 +64,24 @@ public class PrimaryController {
         String databaseURL = "";
         Connection conn = null;
         try {
-            databaseURL = "jdbc:ucanaccess://.//Persons.accdb";
+            databaseURL = "jdbc:ucanaccess://.//UserAccounts.accdb";
             conn = DriverManager.getConnection(databaseURL);
         } catch (SQLException ex) {
+            System.out.println("Connection failed");
+        }
+        try {
+            User u1 = new User();
+            String sql = "INSERT INTO Persons ([User name],[First name],[User Password],[Home Zip Code]) VALUES (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, u1.getUserName());
+            preparedStatement.setString(2, u1.getFirstName());
+            preparedStatement.setString(3, u1.getUserPassword());
+            preparedStatement.setString(4, u1.getHomeZipCode());
+            int row = preparedStatement.executeUpdate();
+            if (row > 0) {
+                System.out.println("Row inserted");
+            }
+        } catch (SQLException e) {
         }
         stage.close();
 
