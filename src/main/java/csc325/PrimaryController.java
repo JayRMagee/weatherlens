@@ -94,7 +94,7 @@ public class PrimaryController {
                     u1.setUserName(userNameText.getText());
                     u1.setUserPassword(passwordText.getText());
                     u1.setHomeZipCode(homeZipCodeText.getText());
-                    String sql = "INSERT INTO UserInfo ([First name],[Username],[Password],[ Zipcode]) VALUES (?, ?, ?, ?)";
+                    String sql = "INSERT INTO UserInfo ([First Name],[Username],[Password],[Zipcode]) VALUES (?, ?, ?, ?)";
                     PreparedStatement preparedStatement = conn.prepareStatement(sql);
                     preparedStatement.setString(1, u1.getFirstName());
                     preparedStatement.setString(2, u1.getUserName());
