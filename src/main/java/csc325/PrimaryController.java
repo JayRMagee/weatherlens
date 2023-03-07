@@ -91,13 +91,13 @@ public class PrimaryController {
                 try {
                     User u1 = new User();
                     u1.setFirstName(firstNameText.getText());
-                    u1.setUserName(userNameText.getText());
+                    u1.setUsername(userNameText.getText());
                     u1.setUserPassword(passwordText.getText());
                     u1.setHomeZipCode(homeZipCodeText.getText());
                     String sql = "INSERT INTO UserInfo ([First Name],[Username],[Password],[Zipcode]) VALUES (?, ?, ?, ?)";
                     PreparedStatement preparedStatement = conn.prepareStatement(sql);
                     preparedStatement.setString(1, u1.getFirstName());
-                    preparedStatement.setString(2, u1.getUserName());
+                    preparedStatement.setString(2, u1.getUsername());
                     preparedStatement.setString(3, u1.getUserPassword());
                     preparedStatement.setString(4, u1.getHomeZipCode());
                     int row = preparedStatement.executeUpdate();
