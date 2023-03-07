@@ -11,7 +11,7 @@ package csc325;
 public class User {
 
     private String firstName;
-    private String userName;
+    private String username;
     private String userPassword;
     private String homeZipCode;
 
@@ -32,11 +32,11 @@ public class User {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 
     public String getUserPassword() {
@@ -49,14 +49,14 @@ public class User {
 
     public User(String userName, String firstName, String userPassword, String homeZipCode) {
         this.firstName = firstName;
-        this.userName = userName;
+        this.username = userName;
         this.userPassword = userPassword;
         this.homeZipCode = homeZipCode;
     }
 
     public User() {
         firstName = "";
-        userName = "";
+        username = "";
         userPassword = "";
         homeZipCode = "";
     }
