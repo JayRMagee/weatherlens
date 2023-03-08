@@ -20,6 +20,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("login"), 300, 400);
         stage.setScene(scene);
+        stage.setTitle("WeatherLens");
         stage.setResizable(false);
         stage.show();
     }
