@@ -9,6 +9,32 @@
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.PrimaryController">
    <children>
+<<<<<<< HEAD
+      <Label text="Welcome To WeatherLens!">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Label>
+      <Label text="Please Login To Continue:">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Label>
+      <Label text="Username" VBox.vgrow="NEVER">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Label>
+      <TextField fx:id="userLoginText" />
+      <Label text="Password" />
+      <TextField fx:id="passwordLoginText" />
+      <Button fx:id="loginButton" mnemonicParsing="false" onAction="#checkLogin" text="Login">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </Button>
+      <Label onMouseClicked="#handleCreateAccountPageOpenLabel" text="No Account? Create One Here!" textFill="#1800ff" underline="true" />
+=======
       <VBox spacing="10.0">
          <children>
             <Label text="Welcome to WeatherLens!">
@@ -44,6 +70,7 @@
             <Label layoutX="10.0" layoutY="228.0" onMouseClicked="#handleLoginButton" text="Continue as guest" textAlignment="CENTER" textFill="#1800ff" underline="true" />
          </children>
       </VBox>
+>>>>>>> 50e0898ebe590f15a8d30d85ae62eb8fbbd17fd0
    </children>
    <padding>
       <Insets left="10.0" right="10.0" />
