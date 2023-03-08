@@ -5,33 +5,45 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" spacing="21.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.PrimaryController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.PrimaryController">
    <children>
-      <Label text="Welcome To WeatherLens!">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </Label>
-      <Label text="Please Login To Continue:">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </Label>
-      <Label text="Username" VBox.vgrow="NEVER">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </Label>
-      <TextField fx:id="userLoginText" />
-      <Label text="Password" />
-      <TextField fx:id="passwordLoginText" />
-      <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLoginButton" text="Login">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </Button>
-      <Label onMouseClicked="#handleCreateAccountPageOpenLabel" text="No Account? Create One Here!" textFill="#1800ff" underline="true" />
+      <VBox spacing="10.0">
+         <children>
+            <Label text="Welcome to WeatherLens!">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label text="Login" textAlignment="JUSTIFY" wrapText="true">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="Username" VBox.vgrow="NEVER">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="userLoginText" />
+            <Label text="Password" />
+            <TextField fx:id="passwordLoginText" />
+            <Button fx:id="loginButton" defaultButton="true" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="26.0" prefWidth="300.0" text="Login">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+            <Label onMouseClicked="#handleCreateAccountPageOpenLabel" text="Create an account" textFill="#1800ff" underline="true" />
+            <Label layoutX="10.0" layoutY="228.0" onMouseClicked="#handleLoginButton" text="Continue as guest" textAlignment="CENTER" textFill="#1800ff" underline="true" />
+         </children>
+      </VBox>
    </children>
    <padding>
       <Insets left="10.0" right="10.0" />
