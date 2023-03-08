@@ -19,4 +19,4 @@ When you first open WeatherLens, you will be prompted to log in or create an acc
 We appreciate your interest in contributing to our project. At this time, we are not accepting contributions from outside our development team. However, if you are part of our development team, please feel free to submit pull requests or bring up issues during our team meetings. We encourage open communication and collaboration within our team to improve the quality of our project. Thank you for your understanding.
 
 ## License
-WeatherLens is licensed under the MIT license. See the LICENSE file for more information.
+WeatherLens is licensed under the [MIT](https://github.com/sdmila/weatherlens/blob/main/LICENSE) license.
