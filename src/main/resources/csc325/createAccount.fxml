@@ -5,29 +5,46 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="350.0" spacing="15.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.PrimaryController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.PrimaryController">
    <children>
-      <Label text="Create Account Here:">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </Label>
-      <Label text="First Name" />
-      <TextField fx:id="firstNameText" />
-      <Label text="Username" VBox.vgrow="NEVER">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </Label>
-      <TextField fx:id="userNameText" />
-      <Label text="Password" />
-      <TextField fx:id="passwordText" />
-      <Label text="Home Zip Code" />
-      <TextField fx:id="homeZipCodeText" />
-      <Button fx:id="createAccountButton" mnemonicParsing="false" onAction="#handleCreateAccountButton" text="Create Account" />
+      <VBox spacing="10.0">
+         <children>
+            <Label text="Create Account">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label text="Create an account for a personalized weather forecast and other exclusive features." textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="First Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="firstNameText" />
+            <Label text="Username" VBox.vgrow="NEVER">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="userNameText" />
+            <Label text="Password" />
+            <TextField fx:id="passwordText" />
+            <Label text="Home Zip Code" />
+            <TextField fx:id="homeZipCodeText" />
+            <Button fx:id="createAccountButton" defaultButton="true" mnemonicParsing="false" onAction="#handleCreateAccountButton" prefHeight="26.0" prefWidth="371.0" text="Create Account" />
+         </children>
+      </VBox>
    </children>
    <padding>
-      <Insets left="10.0" right="10.0" />
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
 </VBox>
