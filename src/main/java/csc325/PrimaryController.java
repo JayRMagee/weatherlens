@@ -136,4 +136,42 @@ public class PrimaryController {
         }
 
     }
+
+    public void checkLogin() throws IOException {
+        String databaseURL = "";
+
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet result = null;
+        try {
+            databaseURL = "jdbc:ucanaccess://.//UserAccounts.accdb";
+            conn = DriverManager.getConnection(databaseURL);
+            ps = conn.prepareStatement("SELECT Password FROM UserInfo WHERE Username = ?");
+            ps.setString(1, userLoginText.getText());
+            result = ps.executeQuery();
+
+            if (!result.isBeforeFirst()) {
+                System.out.println("User not found");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Credentials are wrong");
+                alert.show();
+            } else {
+                while (result.next()) {
+                    String retreivedPass = result.getString("Password");
+
+                    if (retreivedPass.equals(passwordLoginText.getText())) {
+                        handleLoginButton();
+                    } else {
+                        System.out.println("Password wrong");
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("Wrong");
+                        alert.show();
+
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
