@@ -1,6 +1,10 @@
 package csc325;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -15,6 +19,13 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.sql.*;
 import javafx.scene.control.Alert;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 public class PrimaryController {
 
@@ -136,6 +147,38 @@ public class PrimaryController {
         }
 
     }
+    
+    public void getWeather() throws IOException {
+        
+        // Construct the API endpoint URL with latitude and longitude
+        String url = "https://api.weather.gov/";
+
+        // Create a URL object and HttpURLConnection
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+        // Set the necessary headers for the request
+        con.setRequestProperty("Accept", "application/geo+json");
+
+        // Send the request to the API endpoint
+        int responseCode = con.getResponseCode();
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder response = new StringBuilder();
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+
+        // Parse the JSON response using Gson
+        Gson gson = new Gson();
+        JsonObject forecastJson = gson.fromJson(response.toString(), JsonObject.class);
+
+        // Print the forecast for the next hour
+        JsonObject nextHourForecast = forecastJson.getAsJsonObject("period");
+        System.out.println("Next hour forecast: " + nextHourForecast.get("shortForecast"));
+    }
+    
 
     public void checkLogin() throws IOException {
         String databaseURL = "";
