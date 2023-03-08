@@ -95,7 +95,10 @@ public class PrimaryController {
                 alert.show();
             } else {
                 try {
-                    if (!firstNameText.getText().isEmpty() || !userNameText.getText().isEmpty() || !passwordText.getText().isEmpty() || !homeZipCodeText.getText().isEmpty()) {
+                    if (!firstNameText.getText().isEmpty() ||
+                            !userNameText.getText().isEmpty() ||
+                            !passwordText.getText().isEmpty() ||
+                            !homeZipCodeText.getText().isEmpty()) {
                         User u1 = new User();
                         u1.setFirstName(firstNameText.getText());
                         u1.setUsername(userNameText.getText());
