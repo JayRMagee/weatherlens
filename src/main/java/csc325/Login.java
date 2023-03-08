@@ -22,7 +22,7 @@ import javafx.scene.control.Alert;
 import java.net.*;
 import java.io.*;
 
-public class PrimaryController {
+public class Login {
 
     @FXML
     private TextField passwordLoginText;
