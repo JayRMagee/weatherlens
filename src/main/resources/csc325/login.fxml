@@ -36,7 +36,7 @@
             <TextField fx:id="userLoginText" />
             <Label text="Password" />
             <TextField fx:id="passwordLoginText" />
-            <Button fx:id="loginButton" defaultButton="true" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="26.0" prefWidth="300.0" text="Login">
+            <Button fx:id="loginButton" defaultButton="true" mnemonicParsing="false" onAction="#checkLogin" prefHeight="26.0" prefWidth="300.0" text="Login">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
