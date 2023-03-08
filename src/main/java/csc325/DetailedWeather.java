@@ -4,10 +4,17 @@
  */
 package csc325;
 
+import java.io.IOException;
+import javafx.fxml.FXML;
+
 /**
  *
  * @author jayso
  */
 public class DetailedWeather {
-    
+    @FXML
+    private void home() throws IOException {
+        App.setRoot("home");
+    }
 }
+
