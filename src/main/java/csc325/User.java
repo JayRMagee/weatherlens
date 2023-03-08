@@ -18,6 +18,10 @@ public class User {
     private String userPassword;
     private String homeZipCode;
 
+    /**
+     * Returns the home zip code of the User.
+     * @return 
+     */
     public String getHomeZipCode() {
         return homeZipCode;
     }
