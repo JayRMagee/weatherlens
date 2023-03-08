@@ -5,7 +5,10 @@
 package csc325;
 
 /**
- *
+ * The User class represents a user of the WeatherLens application. It stores
+ * information such as the user's first name, username, password, and home
+ * zip code. This class provides getter and setter methods for accessing and
+ * updating this information.
  * @author nicholasshah
  */
 public class User {
@@ -15,6 +18,10 @@ public class User {
     private String userPassword;
     private String homeZipCode;
 
+    /**
+     * Returns the home zip code of the User.
+     * @return 
+     */
     public String getHomeZipCode() {
         return homeZipCode;
     }
