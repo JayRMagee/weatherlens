@@ -95,24 +95,32 @@ public class PrimaryController {
                 alert.show();
             } else {
                 try {
-                    User u1 = new User();
-                    u1.setFirstName(firstNameText.getText());
-                    u1.setUsername(userNameText.getText());
-                    u1.setUserPassword(passwordText.getText());
-                    u1.setHomeZipCode(homeZipCodeText.getText());
-                    String sql = "INSERT INTO UserInfo ([First Name],[Username],[Password],[Zipcode]) VALUES (?, ?, ?, ?)";
-                    PreparedStatement preparedStatement = conn.prepareStatement(sql);
-                    preparedStatement.setString(1, u1.getFirstName());
-                    preparedStatement.setString(2, u1.getUsername());
-                    preparedStatement.setString(3, u1.getUserPassword());
-                    preparedStatement.setString(4, u1.getHomeZipCode());
-                    int row = preparedStatement.executeUpdate();
-                    if (row > 0) {
-                        System.out.println("Row inserted");
+                    if (!firstNameText.getText().isEmpty() || !userNameText.getText().isEmpty() || !passwordText.getText().isEmpty() || !homeZipCodeText.getText().isEmpty()) {
+                        User u1 = new User();
+                        u1.setFirstName(firstNameText.getText());
+                        u1.setUsername(userNameText.getText());
+                        u1.setUserPassword(passwordText.getText());
+                        u1.setHomeZipCode(homeZipCodeText.getText());
+                        String sql = "INSERT INTO UserInfo ([First Name],[Username],[Password],[Zipcode]) VALUES (?, ?, ?, ?)";
+                        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+                        preparedStatement.setString(1, u1.getFirstName());
+                        preparedStatement.setString(2, u1.getUsername());
+                        preparedStatement.setString(3, u1.getUserPassword());
+                        preparedStatement.setString(4, u1.getHomeZipCode());
+                        int row = preparedStatement.executeUpdate();
+                        if (row > 0) {
+                            System.out.println("Row inserted");
+                        }
+                    } else {
+                        System.out.println("Blank Fields");
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("All fields must be filled.");
+                        alert.show();
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -142,7 +150,7 @@ public class PrimaryController {
         }
 
     }
-    
+
     public void getWeather() throws IOException {
         // Construct the API URL using the latitude and longitude
         URL url = new URL("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
@@ -154,7 +162,7 @@ public class PrimaryController {
         // Check if the request was successful
         if (con.getResponseCode() == 200) {
             StringBuilder response = new StringBuilder();
-            try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+            try ( BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
                 String inputLine;
                 while ((inputLine = in.readLine()) != null) {
                     response.append(inputLine);
@@ -170,7 +178,6 @@ public class PrimaryController {
             System.out.println("Error: " + con.getResponseCode());
         }
     }
-    
 
     public void checkLogin() throws IOException {
         String databaseURL = "";
