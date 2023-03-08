@@ -27,7 +27,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" text="get weather" />
+            <Button mnemonicParsing="false" onAction="#getWeather" text="get weather" />
             <Label text="Username" VBox.vgrow="NEVER">
                <VBox.margin>
                   <Insets />
