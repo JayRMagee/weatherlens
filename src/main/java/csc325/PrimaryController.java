@@ -19,13 +19,8 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.sql.*;
 import javafx.scene.control.Alert;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+import java.net.*;
+import java.io.*;
 
 public class PrimaryController {
 
@@ -149,34 +144,31 @@ public class PrimaryController {
     }
     
     public void getWeather() throws IOException {
-        
-        // Construct the API endpoint URL with latitude and longitude
-        String url = "https://api.weather.gov/";
+        // Construct the API URL using the latitude and longitude
+        URL url = new URL("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
 
-        // Create a URL object and HttpURLConnection
-        URL obj = new URL(url);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        // Make a request to the NWS API
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
 
-        // Set the necessary headers for the request
-        con.setRequestProperty("Accept", "application/geo+json");
+        // Check if the request was successful
+        if (con.getResponseCode() == 200) {
+            StringBuilder response = new StringBuilder();
+            try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+                String inputLine;
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+            }
 
-        // Send the request to the API endpoint
-        int responseCode = con.getResponseCode();
-        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuilder response = new StringBuilder();
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
+            String[] temperatures = response.toString().split("\"temperature\":");
+            for (int i = 1; i < temperatures.length; i++) {
+                int temperature = Integer.parseInt(temperatures[i].split(",")[0].trim());
+                System.out.println("Temperature " + i + ": " + temperature);
+            }
+        } else {
+            System.out.println("Error: " + con.getResponseCode());
         }
-        in.close();
-
-        // Parse the JSON response using Gson
-        Gson gson = new Gson();
-        JsonObject forecastJson = gson.fromJson(response.toString(), JsonObject.class);
-
-        // Print the forecast for the next hour
-        JsonObject nextHourForecast = forecastJson.getAsJsonObject("period");
-        System.out.println("Next hour forecast: " + nextHourForecast.get("shortForecast"));
     }
     
 
