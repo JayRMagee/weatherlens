@@ -16,7 +16,7 @@ Future releases will be made available on this GitHub repository. When released,
 When you first open WeatherLens, you will be prompted to log in or create an account. Once you have logged in, you can use the app to view the weather conditions for any location.
 
 ## Contributing
-We appreciate your interest in contributing to our project. At this time, we are not accepting contributions from outside our development team. However, if you are part of our development team, please feel free to submit pull requests or bring up issues during our team meetings. We encourage open communication and collaboration within our team to improve the quality of our project. Thank you for your understanding.
+We appreciate your interest in contributing to our project. At this time, we are not accepting contributions from outside our development team. However, if you are part of our development team, please feel free to submit pull requests or bring up issues during our team meetings.
 
 ## License
 WeatherLens is licensed under the [MIT](https://github.com/sdmila/weatherlens/blob/main/LICENSE) license.
