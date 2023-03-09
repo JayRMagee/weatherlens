@@ -40,8 +40,8 @@
                   <Insets />
                </VBox.margin>
             </Button>
-            <Label onMouseClicked="#handleCreateAccountPageOpenLabel" text="Create an account" textFill="#1800ff" underline="true" />
-            <Label layoutX="10.0" layoutY="228.0" onMouseClicked="#handleLoginButton" text="Continue as guest" textAlignment="CENTER" textFill="#1800ff" underline="true" />
+            <Label onMouseClicked="#handleCreateAccountPageOpenLabel" text="Create an account" textFill="#ff005c" underline="true" />
+            <Label layoutX="10.0" layoutY="228.0" onMouseClicked="#handleLoginButton" text="Continue as guest" textAlignment="CENTER" textFill="#ff005e" underline="true" />
          </children>
       </VBox>
    </children>
