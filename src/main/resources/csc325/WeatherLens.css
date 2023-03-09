@@ -10,3 +10,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .loginVbox {
     -fx-background-image:url('file:/Users/jrayv20/Documents/NetBeansProjects/WeatherLens/blue-gradient-background-with-sparkling-light-shine-illustration-and-bokeh-lights-illustration-free-vector.png');
 }
+
+.createAccountVbox {
+    -fx-background-image:url('file:/Users/jrayv20/Documents/NetBeansProjects/WeatherLens/blue-gradient-background-with-sparkling-light-shine-illustration-and-bokeh-lights-illustration-free-vector-2.png');
+    
+}
