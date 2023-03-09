@@ -1,5 +1,7 @@
 package csc325;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -27,9 +29,9 @@ import javafx.scene.image.ImageView;
 public class Login {
     
     @FXML
-    private TextField passwordLoginText;
+    private JFXTextField passwordLoginText;
     @FXML
-    private TextField userLoginText;
+    private JFXTextField userLoginText;
     @FXML
     private TextField firstNameText;
     @FXML
@@ -39,7 +41,7 @@ public class Login {
     @FXML
     private TextField homeZipCodeText;
     @FXML
-    private Button loginButton;
+    private JFXButton loginButton;
     @FXML
     private Button createAccountButton;
 
