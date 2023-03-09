@@ -21,6 +21,7 @@ import java.sql.*;
 import javafx.scene.control.Alert;
 import java.net.*;
 import java.io.*;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
 public class Login {
