@@ -8,7 +8,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 */
 
 .loginVbox {
-    -fx-background-image:url('file:Images/blue-gradient-background-with-sparkling-light-shine-illustration-and-bokeh-lights-illustration-free-vector.png');
+    -fx-background-color:white;
+}
+.sidebar{
+    -fx-background-color:teal;
 }
 
 .createAccountVbox {
