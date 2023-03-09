@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="loginVbox" stylesheets="@WeatherLens.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.Login">
    <children>
-      <VBox layoutX="500.0" layoutY="7.0" spacing="10.0">
+      <VBox layoutX="400.0" layoutY="7.0" prefHeight="594.0" prefWidth="400.0" spacing="10.0">
          <children>
             <Label text="Welcome to WeatherLens!">
                <VBox.margin>
