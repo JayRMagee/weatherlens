@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.Login">
+<VBox id="createAccountVbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="350.0" styleClass="createAccountVbox" stylesheets="@WeatherLens.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.Login">
    <children>
-      <VBox spacing="10.0">
+      <VBox spacing="10.0" stylesheets="@WeatherLens.css">
          <children>
-            <Label text="Create Account">
+            <Label text="Create Account" textFill="WHITE">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
@@ -19,7 +19,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label text="Create an account for a personalized weather forecast and other exclusive features." textAlignment="JUSTIFY" wrapText="true">
+            <Label text="Create an account for a personalized weather forecast and other exclusive features." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>
