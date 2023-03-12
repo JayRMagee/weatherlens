@@ -23,31 +23,44 @@ import java.sql.*;
 import javafx.scene.control.Alert;
 import java.net.*;
 import java.io.*;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-
+import javafx.scene.layout.Pane;
+/**
+ * This class is designed to hold the methods needed to login in to the weather app 
+ * as well as controls the page for creating an account for first time users.
+ * @author nicholasshah
+ */
 public class Login {
-    
+
+    @FXML
+    private Pane accountPane;
+    @FXML
+    private Pane contentPane;
     @FXML
     private JFXTextField passwordLoginText;
     @FXML
     private JFXTextField userLoginText;
     @FXML
-    private TextField firstNameText;
+    private JFXTextField firstNameText;
     @FXML
-    private TextField userNameText;
+    private JFXTextField userNameText;
     @FXML
-    private TextField passwordText;
+    private JFXTextField passwordText;
     @FXML
-    private TextField homeZipCodeText;
+    private JFXTextField homeZipCodeText;
     @FXML
     private JFXButton loginButton;
     @FXML
-    private Button createAccountButton;
+    private JFXButton createAccountButton;
 
-    @FXML
-    private void handleLoginButton() throws IOException {
-        // code to verify login credentials and switch to main page
+    /**
+     * code to verify login credentials and switch to main page
+     *
+     * @throws IOException
+     */
+    public void handleLoginButton() throws IOException {
 
         Stage stage = (Stage) loginButton.getScene().getWindow();
         stage.close();
@@ -62,26 +75,35 @@ public class Login {
 
     }
 
-    @FXML
-    private void handleCreateAccountPageOpenLabel() throws IOException {
-        Stage createStage = new Stage();
-        Scene createScene = new Scene(FXMLLoader.load(getClass().getResource("createAccount.fxml")));
-
-        createStage.setScene(createScene);
-        createStage.setWidth(350); // set the initial width of the main page's window
-        createStage.setHeight(450); // set the initial height of the main page's window
-        createStage.show();
+    /**
+     * Method to replace login pane with create account pane.
+     *
+     * @throws IOException
+     */
+    public void handleCreateAccountPageOpenLabel() throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("createAccount.fxml"));
+        contentPane.getChildren().removeAll();
+        contentPane.getChildren().setAll(fxml);
     }
 
-    @FXML
-    private void handleCreateAccountButton() {
+    /**
+     * Method to send data to DB and return to login page.
+     *
+     * @throws IOException
+     */
+    public void handleCreateAccountButton() throws IOException {
         Stage stage = (Stage) createAccountButton.getScene().getWindow();
         sendAccountDB();
-        stage.close();
 
+        // stage.close();
     }
 
-    public void sendAccountDB() {
+    /**
+     * Method to insert user information into database, thus crating an account.
+     *
+     * @throws IOException
+     */
+    public void sendAccountDB() throws IOException {
         String databaseURL = "";
         Connection conn = null;
         PreparedStatement userExist = null;
@@ -99,10 +121,10 @@ public class Login {
                 alert.show();
             } else {
                 try {
-                    if (!firstNameText.getText().isEmpty() ||
-                            !userNameText.getText().isEmpty() ||
-                            !passwordText.getText().isEmpty() ||
-                            !homeZipCodeText.getText().isEmpty()) {
+                    if (!firstNameText.getText().isEmpty()
+                            || !userNameText.getText().isEmpty()
+                            || !passwordText.getText().isEmpty()
+                            || !homeZipCodeText.getText().isEmpty()) {
                         User u1 = new User();
                         u1.setFirstName(firstNameText.getText());
                         u1.setUsername(userNameText.getText());
@@ -155,9 +177,16 @@ public class Login {
             }
 
         }
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        App.stage.getScene().setRoot(root);
 
     }
 
+    /**
+     * method to display hourly weather
+     *
+     * @throws IOException
+     */
     public void getWeather() throws IOException {
         // Construct the API URL using the latitude and longitude
         URL url = new URL("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
@@ -186,6 +215,11 @@ public class Login {
         }
     }
 
+    /**
+     * method that confirms login credentials
+     *
+     * @throws IOException
+     */
     public void checkLogin() throws IOException {
         String databaseURL = "";
 

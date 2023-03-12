@@ -2,38 +2,15 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="loginVbox" stylesheets="@WeatherLens.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.Login">
    <children>
-      <VBox alignment="TOP_CENTER" layoutX="400.0" layoutY="7.0" prefHeight="79.0" prefWidth="400.0" spacing="10.0">
-         <children>
-            <Label text="Welcome Back!">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <font>
-                  <Font name="Impact" size="34.0" />
-               </font>
-            </Label>
-            <Label alignment="TOP_LEFT" text="Please Login To Continue" textAlignment="JUSTIFY" wrapText="true">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Pane prefHeight="308.0" prefWidth="400.0" />
-         </children>
-      </VBox>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="sidebar">
          <children>
             <ImageView fitHeight="600.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
@@ -53,22 +30,36 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label layoutX="538.0" layoutY="569.0" onMouseClicked="#handleLoginButton" text="Continue as guest" textAlignment="CENTER" textFill="#1700ff" underline="true" />
-      <Label layoutX="538.0" layoutY="552.0" onMouseClicked="#handleCreateAccountPageOpenLabel" text="Create an account" textFill="#1700ff" underline="true" />
-      <JFXTextField fx:id="passwordLoginText" labelFloat="true" layoutX="451.0" layoutY="363.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Password" unFocusColor="GREY">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField fx:id="userLoginText" labelFloat="true" layoutX="451.0" layoutY="290.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Username" unFocusColor="GREY">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </JFXTextField>
-      <JFXButton fx:id="loginButton" buttonType="RAISED" layoutX="438.0" layoutY="465.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#checkLogin" prefHeight="50.0" prefWidth="300.0" ripplerFill="#0777ff" styleClass="loginBtn" text="Login">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </JFXButton>
+      <Pane fx:id="contentPane" layoutX="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0">
+         <children>
+            <Label layoutX="92.0" text="Welcome Back!">
+               <font>
+                  <Font name="Impact" size="34.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="125.0" layoutY="53.0" text="Please Login To Continue" textAlignment="JUSTIFY" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="loginButton" buttonType="RAISED" layoutX="50.0" layoutY="483.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#checkLogin" prefHeight="50.0" prefWidth="300.0" ripplerFill="#0777ff" styleClass="loginBtn" text="Login">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="150.0" layoutY="569.0" onMouseClicked="#handleLoginButton" text="Continue as guest" textAlignment="CENTER" textFill="#1700ff" underline="true" />
+            <Label layoutX="119.0" layoutY="552.0" onMouseClicked="#handleCreateAccountPageOpenLabel" text="New User? Create an account" textFill="#1700ff" underline="true" />
+            <JFXTextField fx:id="passwordLoginText" labelFloat="true" layoutX="50.0" layoutY="401.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Password" unFocusColor="GREY">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="userLoginText" labelFloat="true" layoutX="50.0" layoutY="345.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Username" unFocusColor="GREY">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
