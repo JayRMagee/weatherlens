@@ -1,51 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="300.0" styleClass="loginVbox" stylesheets="@WeatherLens.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.Login">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="loginVbox" stylesheets="@WeatherLens.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.Login">
    <children>
-      <VBox spacing="10.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" styleClass="sidebar">
          <children>
-            <Label text="Welcome to WeatherLens!">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
+            <ImageView fitHeight="600.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@night-sky.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="34.0" layoutY="14.0" text="WeatherLens" textFill="WHITE">
                <font>
-                  <Font size="16.0" />
+                  <Font name="Euphemia UCAS" size="56.0" />
                </font>
             </Label>
-            <Label text="Login" textAlignment="JUSTIFY" wrapText="true">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
+            <Label fx:id="sloganTxt" layoutX="63.0" layoutY="103.0" prefHeight="26.0" prefWidth="275.0" text="Your One Stop Weather App" textFill="WHITE">
+               <font>
+                  <Font name="Euphemia UCAS" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Pane fx:id="contentPane" layoutX="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0">
+         <children>
+            <Label layoutX="92.0" text="Welcome Back!">
+               <font>
+                  <Font name="Impact" size="34.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="125.0" layoutY="53.0" text="Please Login To Continue" textAlignment="JUSTIFY" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label text="Username" VBox.vgrow="NEVER">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </Label>
-            <TextField fx:id="userLoginText" />
-            <Label text="Password" />
-            <TextField fx:id="passwordLoginText" />
-            <Button fx:id="loginButton" defaultButton="true" mnemonicParsing="false" onAction="#checkLogin" prefHeight="26.0" prefWidth="300.0" text="Login">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </Button>
-            <Label onMouseClicked="#handleCreateAccountPageOpenLabel" text="Create an account" textFill="#ff005c" underline="true" />
-            <Label layoutX="10.0" layoutY="228.0" onMouseClicked="#handleLoginButton" text="Continue as guest" textAlignment="CENTER" textFill="#ff005e" underline="true" />
+            <JFXButton fx:id="loginButton" buttonType="RAISED" layoutX="50.0" layoutY="483.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#checkLogin" prefHeight="50.0" prefWidth="300.0" ripplerFill="#0777ff" styleClass="loginBtn" text="Login">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="150.0" layoutY="569.0" onMouseClicked="#handleLoginButton" text="Continue as guest" textAlignment="CENTER" textFill="#1700ff" underline="true" />
+            <Label layoutX="119.0" layoutY="552.0" onMouseClicked="#handleCreateAccountPageOpenLabel" text="New User? Create an account" textFill="#1700ff" underline="true" />
+            <JFXTextField fx:id="passwordLoginText" labelFloat="true" layoutX="50.0" layoutY="401.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Password" unFocusColor="GREY">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="userLoginText" labelFloat="true" layoutX="50.0" layoutY="345.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Username" unFocusColor="GREY">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
          </children>
-      </VBox>
+      </Pane>
    </children>
-   <padding>
-      <Insets left="10.0" right="10.0" />
-   </padding>
-</VBox>
+</AnchorPane>
