@@ -3,7 +3,7 @@ package csc325;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Holds relative humidity data for ForecastPeriod objects.
+ * Holds multivalued (unit + value) data from relativeHumidity field of ForecastPeriod.
  * @author Jonathan Crain
  */
 public class RelativeHumidity {
