@@ -17,9 +17,12 @@ public class ForecastPeriod {
                     "unitCode": "wmoUnit:degC",
                     "value": -7.7777777777777777
                 }
-    I am not sure how best to handle this...maybe just read this in as a single
-    string, then make use of GSON to parse a string by key when we need to get
-    the data?
+    I am not sure how best to handle this...
+    For the time being, based on some internet skimming, I've made separate 
+    objects for each of these. 
+    But maybe this is too complicated? Maybe easier to just read these as 
+    strings, and then parse the string for the value as necessary, e.g., by 
+    using GSON or just basic String methods?
     */
     
     @SerializedName("number")
@@ -48,15 +51,15 @@ public class ForecastPeriod {
     
     //Contains nested values (unitCode, value). See note above.
     @SerializedName("probabilityOfPrecipitation")
-    private String probabilityOfPrecipitation;
+    private ProbabilityOfPrecipitation probabilityOfPrecipitation;
     
     //Contains nested values (unitCode, value). See note above.
     @SerializedName("dewpoint")
-    private String dewpoint;
+    private Dewpoint dewpoint;
     
     //Contains nested values (unitCode, value). See note above.
     @SerializedName("relativeHumidity")
-    private String relativeHumidity;
+    private RelativeHumidity relativeHumidity;
     
     @SerializedName("windSpeed")
     private String windSpeed;
@@ -92,7 +95,7 @@ public class ForecastPeriod {
      * @param shortForecast
      * @param detailedForecast 
      */
-    public ForecastPeriod(int number, String name, String startTime, String endTime, Boolean isDaytime, int temperature, String temperatureUnit, String temperatureTrend, String probabilityOfPrecipitation, String dewpoint, String relativeHumidity, String windSpeed, String windDirection, String icon, String shortForecast, String detailedForecast) {
+    public ForecastPeriod(int number, String name, String startTime, String endTime, Boolean isDaytime, int temperature, String temperatureUnit, String temperatureTrend, ProbabilityOfPrecipitation probabilityOfPrecipitation, Dewpoint dewpoint, RelativeHumidity relativeHumidity, String windSpeed, String windDirection, String icon, String shortForecast, String detailedForecast) {
         this.number = number;
         this.name = name;
         this.startTime = startTime;
@@ -149,15 +152,15 @@ public class ForecastPeriod {
         return temperatureTrend;
     }
 
-    public String getProbabilityOfPrecipitation() {
+    public ProbabilityOfPrecipitation getProbabilityOfPrecipitation() {
         return probabilityOfPrecipitation;
     }
 
-    public String getDewpoint() {
+    public Dewpoint getDewpoint() {
         return dewpoint;
     }
 
-    public String getRelativeHumidity() {
+    public RelativeHumidity getRelativeHumidity() {
         return relativeHumidity;
     }
 
@@ -181,6 +184,4 @@ public class ForecastPeriod {
         return detailedForecast;
     }
 
-    
-    
 }
