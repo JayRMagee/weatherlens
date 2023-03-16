@@ -74,26 +74,6 @@ public class ForecastPeriod {
     private String detailedForecast;
 
     /**
-     * Constructor.
-     * @param number
-     * @param name
-     * @param startTime
-     * @param endTime
-     * @param isDaytime
-     * @param temperature
-     * @param temperatureUnit
-     * @param temperatureTrend
-     * @param probabilityOfPrecipitation
-     * @param dewpoint
-     * @param relativeHumidity
-     * @param windSpeed
-     * @param windDirection
-     * @param icon
-     * @param shortForecast
-     * @param detailedForecast 
-     */
-    
-    /**
      * Parameterized constructor.
      * @param number
      * @param name
