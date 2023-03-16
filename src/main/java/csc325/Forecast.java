@@ -3,10 +3,10 @@ package csc325;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Abstract Forecast class.
+ * Forecast class.
  * @author niarc
  */
-public abstract class Forecast {
+public class Forecast {
     @SerializedName("updated")
     private String updated;
     
@@ -27,6 +27,21 @@ public abstract class Forecast {
     
     @SerializedName("elevation")
     private Elevation elevation;
+    
+    /*
+    Will GSON be smart enough to create an array of the correct size based on 
+    the number of periods in a forecast? Daily forecasts contain 14 periods, 
+    hourly forecasts I'm not sure about (but the sample contains 156, which is 
+    6.5 days).
+    
+    Hourly forcasts contain some number of periods, corresponding to one hour 
+    intervales which run from startTime to endTime.
+    
+    Daily forecasts contain 14x 12-hour periods, running from 06:00:00 to 18:00:00
+    (isDaytime == true) and from 18:00:00 to 06:00:00 (isDaytime == false).
+    */
+    @SerializedName("periods")
+    private ForecastPeriod[] periods;
 
     /**
      * Parameterized constructor.
@@ -80,6 +95,17 @@ public abstract class Forecast {
 
     public Elevation getElevation() {
         return elevation;
+    }
+
+    /*
+    Possibly a little dangerous - array size will vary depending on forecast
+    type. Caller will have to know better than to try to access something which 
+    is out of bounds. Might be safer to make this class abstract and generate 
+    hourly/daily forecasts after all, even if they differ only in the size of 
+    the array.
+    */
+    public ForecastPeriod[] getPeriods() {
+        return periods;
     }
     
 }
