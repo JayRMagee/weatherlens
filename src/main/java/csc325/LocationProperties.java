@@ -74,7 +74,7 @@ public class LocationProperties {
      * @param gridID
      * @param gridX
      * @param gridY
-     * @param forecastURL
+     * @param forecastDailyURL
      * @param forecastHourlyURL
      * @param forecastGridDataURL
      * @param observationStationsURL
