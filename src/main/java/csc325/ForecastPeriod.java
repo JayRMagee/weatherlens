@@ -72,5 +72,135 @@ public class ForecastPeriod {
     
     @SerializedName("detailedForecast")
     private String detailedForecast;
+
+    /**
+     * Constructor.
+     * @param number
+     * @param name
+     * @param startTime
+     * @param endTime
+     * @param isDaytime
+     * @param temperature
+     * @param temperatureUnit
+     * @param temperatureTrend
+     * @param probabilityOfPrecipitation
+     * @param dewpoint
+     * @param relativeHumidity
+     * @param windSpeed
+     * @param windDirection
+     * @param icon
+     * @param shortForecast
+     * @param detailedForecast 
+     */
+    
+    /**
+     * Parameterized constructor.
+     * @param number
+     * @param name
+     * @param startTime
+     * @param endTime
+     * @param isDaytime
+     * @param temperature
+     * @param temperatureUnit
+     * @param temperatureTrend
+     * @param probabilityOfPrecipitation
+     * @param dewpoint
+     * @param relativeHumidity
+     * @param windSpeed
+     * @param windDirection
+     * @param icon
+     * @param shortForecast
+     * @param detailedForecast 
+     */
+    public ForecastPeriod(int number, String name, String startTime, String endTime, Boolean isDaytime, int temperature, String temperatureUnit, String temperatureTrend, String probabilityOfPrecipitation, String dewpoint, String relativeHumidity, String windSpeed, String windDirection, String icon, String shortForecast, String detailedForecast) {
+        this.number = number;
+        this.name = name;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.isDaytime = isDaytime;
+        this.temperature = temperature;
+        this.temperatureUnit = temperatureUnit;
+        this.temperatureTrend = temperatureTrend;
+        this.probabilityOfPrecipitation = probabilityOfPrecipitation;
+        this.dewpoint = dewpoint;
+        this.relativeHumidity = relativeHumidity;
+        this.windSpeed = windSpeed;
+        this.windDirection = windDirection;
+        this.icon = icon;
+        this.shortForecast = shortForecast;
+        this.detailedForecast = detailedForecast;
+    }
+
+    /**
+     * No arg constructor.
+     */
+    public ForecastPeriod() {
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public Boolean getIsDaytime() {
+        return isDaytime;
+    }
+
+    public int getTemperature() {
+        return temperature;
+    }
+
+    public String getTemperatureUnit() {
+        return temperatureUnit;
+    }
+
+    public String getTemperatureTrend() {
+        return temperatureTrend;
+    }
+
+    public String getProbabilityOfPrecipitation() {
+        return probabilityOfPrecipitation;
+    }
+
+    public String getDewpoint() {
+        return dewpoint;
+    }
+
+    public String getRelativeHumidity() {
+        return relativeHumidity;
+    }
+
+    public String getWindSpeed() {
+        return windSpeed;
+    }
+
+    public String getWindDirection() {
+        return windDirection;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public String getShortForecast() {
+        return shortForecast;
+    }
+
+    public String getDetailedForecast() {
+        return detailedForecast;
+    }
+
+    
     
 }
