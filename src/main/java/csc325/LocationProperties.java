@@ -30,7 +30,7 @@ public class LocationProperties {
     private int gridY;
     
     @SerializedName("forecast")
-    private String forecastURL;
+    private String forecastDailyURL;
     
     @SerializedName("forecastHourly")
     private String forecastHourlyURL;
@@ -85,7 +85,7 @@ public class LocationProperties {
      * @param timeZone
      * @param radarStation 
      */
-    public LocationProperties(String id, String type, String cwa, String forecastOfficeURL, String gridID, int gridX, int gridY, String forecastURL, String forecastHourlyURL, String forecastGridDataURL, String observationStationsURL, RelativeLocation relativeLocation, String forecastZoneURL, String countyURL, String fireWeatherZoneURL, String timeZone, String radarStation) {
+    public LocationProperties(String id, String type, String cwa, String forecastOfficeURL, String gridID, int gridX, int gridY, String forecastDailyURL, String forecastHourlyURL, String forecastGridDataURL, String observationStationsURL, RelativeLocation relativeLocation, String forecastZoneURL, String countyURL, String fireWeatherZoneURL, String timeZone, String radarStation) {
         this.id = id;
         this.type = type;
         this.cwa = cwa;
@@ -93,7 +93,7 @@ public class LocationProperties {
         this.gridID = gridID;
         this.gridX = gridX;
         this.gridY = gridY;
-        this.forecastURL = forecastURL;
+        this.forecastDailyURL = forecastDailyURL;
         this.forecastHourlyURL = forecastHourlyURL;
         this.forecastGridDataURL = forecastGridDataURL;
         this.observationStationsURL = observationStationsURL;
@@ -133,8 +133,8 @@ public class LocationProperties {
         return gridY;
     }
 
-    public String getForecastURL() {
-        return forecastURL;
+    public String getDailyForecastURL() {
+        return forecastDailyURL;
     }
 
     public String getForecastHourlyURL() {
