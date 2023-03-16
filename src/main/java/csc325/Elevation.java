@@ -3,7 +3,7 @@ package csc325;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Class to hold elevation field from Forecast properties.
+ * Holds multivalued (unit + value) data from elevation field of Forecast.
  * @author Jonathan Crain
  */
 public class Elevation {
