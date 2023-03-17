@@ -18,14 +18,14 @@ import javafx.fxml.FXML;
  *
  * @author jayso
  */
-public class DetailedWeather extends Weather {
+public class DetailedWeather  {
     @FXML
     private void home() throws IOException {
         App.setRoot("home");
     }
 
-    @Override
-    public String getDetailedWeather(String city) {
+   
+    public String getDetailedWeather() {
         try {
             //public void getWeather() throws IOException {
             // Construct the API URL using the latitude and longitude
