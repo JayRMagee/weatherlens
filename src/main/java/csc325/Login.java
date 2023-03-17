@@ -187,33 +187,33 @@ public class Login {
      *
      * @throws IOException
      */
-    public void getWeather() throws IOException {
-        // Construct the API URL using the latitude and longitude
-        URL url = new URL("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
-
-        // Make a request to the NWS API
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-
-        // Check if the request was successful
-        if (con.getResponseCode() == 200) {
-            StringBuilder response = new StringBuilder();
-            try ( BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
-                String inputLine;
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-            }
-
-            String[] temperatures = response.toString().split("\"temperature\":");
-            for (int i = 1; i < temperatures.length; i++) {
-                int temperature = Integer.parseInt(temperatures[i].split(",")[0].trim());
-                System.out.println("Temperature " + i + ": " + temperature);
-            }
-        } else {
-            System.out.println("Error: " + con.getResponseCode());
-        }
-    }
+//    public void getWeather() throws IOException {
+//        // Construct the API URL using the latitude and longitude
+//        URL url = new URL("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
+//
+//        // Make a request to the NWS API
+//        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+//        con.setRequestMethod("GET");
+//
+//        // Check if the request was successful
+//        if (con.getResponseCode() == 200) {
+//            StringBuilder response = new StringBuilder();
+//            try ( BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+//                String inputLine;
+//                while ((inputLine = in.readLine()) != null) {
+//                    response.append(inputLine);
+//                }
+//            }
+//
+//            String[] temperatures = response.toString().split("\"temperature\":");
+//            for (int i = 1; i < temperatures.length; i++) {
+//                int temperature = Integer.parseInt(temperatures[i].split(",")[0].trim());
+//                System.out.println("Temperature " + i + ": " + temperature);
+//            }
+//        } else {
+//            System.out.println("Error: " + con.getResponseCode());
+//        }
+//    }
 
     /**
      * method that confirms login credentials
