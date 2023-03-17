@@ -44,6 +44,10 @@ public class DetailedWeather  {
                         response.append(inputLine);
                     }
                 }
+                String[] name = response.toString().split("\"name\":");
+                for (int i = 1; i < name.length; i++) {
+                    System.out.println("Name: " + name);
+                }
                 
                 String[] temperatures = response.toString().split("\"temperature\":");
                 for (int i = 1; i < temperatures.length; i++) {
