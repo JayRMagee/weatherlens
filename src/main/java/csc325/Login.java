@@ -118,6 +118,7 @@ public class Login {
                 System.out.println("User already exists");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("You cannot use this username.");
+                alert.getDialogPane().getStylesheets().add("csc325/WeatherLens.css");
                 alert.show();
             } else {
                 try {
