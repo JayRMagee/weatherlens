@@ -145,6 +145,7 @@ public class Login {
                         System.out.println("Blank Fields");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setContentText("All fields must be filled.");
+                        alert.getDialogPane().getStylesheets().add("csc325/WeatherLens.css");
                         alert.show();
                     }
                 } catch (SQLException e) {
@@ -238,6 +239,7 @@ public class Login {
                 System.out.println("User not found");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Credentials are wrong");
+                alert.getDialogPane().getStylesheets().add("csc325/WeatherLens.css");
                 alert.show();
             } else {
                 while (result.next()) {
@@ -249,6 +251,7 @@ public class Login {
                         System.out.println("Password wrong");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setContentText("Wrong");
+                        alert.getDialogPane().getStylesheets().add("csc325/WeatherLens.css");
                         alert.show();
 
                     }
