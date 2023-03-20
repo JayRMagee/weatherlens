@@ -66,7 +66,7 @@ public class Login {
         stage.close();
 
         Stage appStage = new Stage();
-        Scene appScene = new Scene(FXMLLoader.load(getClass().getResource("primary.fxml")));
+        Scene appScene = new Scene(FXMLLoader.load(getClass().getResource("home.fxml")));
 
         appStage.setScene(appScene);
         appStage.setWidth(1280); // set the initial width of the main page's window

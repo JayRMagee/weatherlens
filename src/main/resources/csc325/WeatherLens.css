@@ -42,3 +42,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
    -fx-background-image:url('file:Images/Cloudy-Night-Sky.png');
    -fx-text-fill: white;
 }
+
+.homePageCurrentWeather{
+    -fx-background-image:url('https://api.weather.gov/icons/land/day/skc?size=medium');
+}
