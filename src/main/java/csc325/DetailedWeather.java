@@ -55,6 +55,7 @@ public class DetailedWeather {
                     String shortForecast = (shortForecasts[i].split(",")[0].trim());
 
                     System.out.println(name + ":" + temperature + "°F" +  " - " + shortForecast);
+                    
                 }
             } else {
                 System.out.println("Error: " + con.getResponseCode());
