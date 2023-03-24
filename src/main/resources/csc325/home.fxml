@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -31,6 +32,9 @@
           <Button mnemonicParsing="false" text="Detailed Weather" />
             <Button mnemonicParsing="false" text="Historical Data" />
         </buttons>
+         <VBox.margin>
+            <Insets right="10.0" />
+         </VBox.margin>
       </ButtonBar>
       <LineChart fx:id="homeForecastLineChart" title="6 Day Forecast">
         <xAxis>
