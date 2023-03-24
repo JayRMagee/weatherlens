@@ -38,13 +38,13 @@ public class Home {
         XYChart.Series<String, Number> weather = new XYChart.Series<>();
 
         // add some data points to the series
-        weather.getData().add(new XYChart.Data<>("Monday", 23));
-        weather.getData().add(new XYChart.Data<>("Tuesday", 22));
-        weather.getData().add(new XYChart.Data<>("Wednesday", 24));
-        weather.getData().add(new XYChart.Data<>("Thursday", 23));
-        weather.getData().add(new XYChart.Data<>("Friday", 21));
-        weather.getData().add(new XYChart.Data<>("Saturday", 19));
-        weather.getData().add(new XYChart.Data<>("Sunday", 18));
+        weather.getData().add(new XYChart.Data<>(d1.getDay(1), d1.getTemperature(1)));
+        weather.getData().add(new XYChart.Data<>(d1.getDay(3), d1.getTemperature(3)));
+        weather.getData().add(new XYChart.Data<>(d1.getDay(5), d1.getTemperature(5)));
+        weather.getData().add(new XYChart.Data<>(d1.getDay(7), d1.getTemperature(7)));
+        weather.getData().add(new XYChart.Data<>(d1.getDay(9), d1.getTemperature(9)));
+        weather.getData().add(new XYChart.Data<>(d1.getDay(11), d1.getTemperature(11)));
+        weather.getData().add(new XYChart.Data<>(d1.getDay(13), d1.getTemperature(13)));
 
         // add the data series to the chart
         homeForecastLineChart.getData().add(weather);
