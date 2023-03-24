@@ -16,35 +16,39 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Home {
 
     @FXML
     private LineChart<String, Number> homeForecastLineChart;
-    
+
     @FXML
     private NumberAxis homeNumberAxis;
-    
+
     @FXML
     private CategoryAxis homeCategoryAxis;
-    
-    public void initialize() throws IOException{
+
+    public void initialize() throws IOException {
         displayChartData();
     }
-    
+
     public void displayChartData() throws IOException {
         // create a number axis for the y-axis
         DetailedWeather d1 = new DetailedWeather();
         XYChart.Series<String, Number> weather = new XYChart.Series<>();
 
         // add some data points to the series
-        weather.getData().add(new XYChart.Data<>(d1.getDay(1), d1.getTemperature(1)));
-        weather.getData().add(new XYChart.Data<>(d1.getDay(3), d1.getTemperature(3)));
-        weather.getData().add(new XYChart.Data<>(d1.getDay(5), d1.getTemperature(5)));
-        weather.getData().add(new XYChart.Data<>(d1.getDay(7), d1.getTemperature(7)));
-        weather.getData().add(new XYChart.Data<>(d1.getDay(9), d1.getTemperature(9)));
-        weather.getData().add(new XYChart.Data<>(d1.getDay(11), d1.getTemperature(11)));
-        weather.getData().add(new XYChart.Data<>(d1.getDay(13), d1.getTemperature(13)));
+        for (int i = 1; i <= 13; i += 2) {
+            String day = d1.getDay(i);
+            int temperature = d1.getTemperature(i);
+            
+            XYChart.Data<String, Number> data = new XYChart.Data<>(day, temperature);
+            weather.getData().add(new XYChart.Data<>(day, temperature));
+            
+            weather.getData().add(data);
+        }
 
         // add the data series to the chart
         homeForecastLineChart.getData().add(weather);
