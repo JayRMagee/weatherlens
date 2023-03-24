@@ -25,7 +25,7 @@ public class DetailedWeather {
         App.setRoot("home");
     }
 
-    public String getDetailedWeather() {
+    public String getDay(int i) {
         try {
             //public void getWeather() throws IOException {
             // Construct the API URL using the latitude and longitude
@@ -49,13 +49,13 @@ public class DetailedWeather {
                 String[] temperatures = response.toString().split("\"temperature\":");
                 String[] shortForecasts = response.toString().split("\"shortForecast\":");
 
-                for (int i = 1; i < temperatures.length; i= i+2) {
+                
                     int temperature = Integer.parseInt(temperatures[i].split(",")[0].trim());
                     String name = (names[i].split(",")[0].trim());
                     String shortForecast = (shortForecasts[i].split(",")[0].trim());
 
                     System.out.println(name + ":" + temperature + "°F" +  " - " + shortForecast);
-                }
+                return name;
             } else {
                 System.out.println("Error: " + con.getResponseCode());
             }
@@ -65,5 +65,47 @@ public class DetailedWeather {
             Logger.getLogger(DetailedWeather.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "";
+    }
+    
+    public Integer getTemperature(int i) {
+        try {
+            //public void getWeather() throws IOException {
+            // Construct the API URL using the latitude and longitude
+            URL url = new URL("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
+
+            // Make a request to the NWS API
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+
+            // Check if the request was successful
+            if (con.getResponseCode() == 200) {
+                StringBuilder response = new StringBuilder();
+                try ( BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+                    String inputLine;
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                }
+
+                String[] names = response.toString().split("\"name\":");
+                String[] temperatures = response.toString().split("\"temperature\":");
+                String[] shortForecasts = response.toString().split("\"shortForecast\":");
+
+                
+                    int temperature = Integer.parseInt(temperatures[i].split(",")[0].trim());
+                    String name = (names[i].split(",")[0].trim());
+                    String shortForecast = (shortForecasts[i].split(",")[0].trim());
+
+                    System.out.println(name + ":" + temperature + "°F" +  " - " + shortForecast);
+                return temperature;
+            } else {
+                System.out.println("Error: " + con.getResponseCode());
+            }
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(DetailedWeather.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(DetailedWeather.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 }
