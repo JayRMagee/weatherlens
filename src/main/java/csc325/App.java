@@ -39,8 +39,6 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
-        DetailedWeather d1 = new DetailedWeather();
-        d1.getDetailedWeather();
     }
 
 }
