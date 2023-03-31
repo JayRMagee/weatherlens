@@ -139,38 +139,38 @@ public class DetailedWeather {
     }
     
     public String getIcon(int i){
-        try {
-            //public void getWeather() throws IOException {
-            // Construct the API URL using the latitude and longitude
-            URL url = new URL("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
+    try {
+        //public void getWeather() throws IOException {
+        // Construct the API URL using the latitude and longitude
+        URL url = new URL("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
 
-            // Make a request to the NWS API
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("GET");
+        // Make a request to the NWS API
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
 
-            // Check if the request was successful
-            if (con.getResponseCode() == 200) {
-                StringBuilder response = new StringBuilder();
-                try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
-                    String inputLine;
-                    while ((inputLine = in.readLine()) != null) {
-                        response.append(inputLine);
-                    }
+        // Check if the request was successful
+        if (con.getResponseCode() == 200) {
+            StringBuilder response = new StringBuilder();
+            try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+                String inputLine;
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
                 }
-                
-                String[] icons = response.toString().split("\"icon\":");
-
-                String icon = (icons[i].split(",")[0].trim());
-
-                return icon;
-            } else {
-                System.out.println("Error: " + con.getResponseCode());
             }
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(DetailedWeather.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(DetailedWeather.class.getName()).log(Level.SEVERE, null, ex);
+
+            String[] icons = response.toString().split("\"icon\":");
+
+            String icon = icons[i].split(",")[0].replaceAll("\"", "").trim();
+
+            return icon;
+        } else {
+            System.out.println("Error: " + con.getResponseCode());
         }
-        return "";
+    } catch (MalformedURLException ex) {
+        Logger.getLogger(DetailedWeather.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (IOException ex) {
+        Logger.getLogger(DetailedWeather.class.getName()).log(Level.SEVERE, null, ex);
     }
+    return "";
+}
 }
