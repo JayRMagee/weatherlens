@@ -38,6 +38,8 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        DetailedWeather detailedWeather = new DetailedWeather();
+        System.out.println(detailedWeather.getIcon(1));
         launch();
     }
 
