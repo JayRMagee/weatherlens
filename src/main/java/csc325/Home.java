@@ -56,8 +56,8 @@ public class Home {
             ImageView imageView = new ImageView(icon);
             imageView.setFitWidth(40);
             imageView.setFitHeight(40);
-            imageView.setClip(new Circle(20,20,20));
-            Circle circle = new Circle(20, 20, 22);
+            imageView.setClip(new Circle(15,15,15));
+            Circle circle = new Circle(15, 15, 16);
             circle.setStroke(Color.BLACK);
             circle.setStrokeWidth(2);
         

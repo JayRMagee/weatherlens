@@ -53,3 +53,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-size: 24px;
     -fx-background-position: center;
 }
+
+.bar-chart .chart-content .chart-plot-background {
+    -fx-background-color: transparent;
+}
