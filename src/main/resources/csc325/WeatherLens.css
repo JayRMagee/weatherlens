@@ -46,3 +46,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .homePageCurrentWeather{
     -fx-background-image:url('https://api.weather.gov/icons/land/day/skc?size=medium');
 }
+<<<<<<< Updated upstream
+=======
+
+.weather-chart-symbol {
+    -fx-background-image: url("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 24px;
+    -fx-background-position: center;
+}
+
+.bar-chart .chart-content .chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-legend {
+   -fx-background-color:  transparent;
+}
+
+.homeBackGround{
+    -fx-background-color: skyblue;
+}
+>>>>>>> Stashed changes
