@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 package csc325;
 
 import javafx.application.Application;
