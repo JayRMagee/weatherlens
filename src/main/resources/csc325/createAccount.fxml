@@ -8,39 +8,44 @@
 
 <AnchorPane fx:id="accountPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" stylesheets="@WeatherLens.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.Login">
    <children>
-      <Label alignment="CENTER" layoutX="125.0" layoutY="32.0" text="Create An Account">
+      <Label alignment="CENTER" layoutX="92.0" layoutY="25.0" text="Create Account">
          <font>
-            <Font name="Impact" size="20.0" />
+            <Font name="Yrsa Regular" size="36.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="99.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="400.0" text="Create an account for a personalized weather forecast and other exclusive features." textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="75.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="350.0" text="Create an account for a personalized weather forecast and other exclusive features." textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true">
          <font>
-            <Font size="14.0" />
+            <Font name="Yrsa Regular" size="18.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="firstNameText" labelFloat="true" layoutX="75.0" layoutY="182.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Enter your first name" unFocusColor="GREY">
+      <JFXTextField fx:id="firstNameText" labelFloat="true" layoutX="75.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Enter your first name" unFocusColor="GREY">
          <font>
-            <Font size="18.0" />
+            <Font name="Yrsa Regular" size="18.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="userNameText" labelFloat="true" layoutX="75.0" layoutY="243.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Enter a Username" unFocusColor="GREY">
+      <JFXTextField fx:id="userNameText" labelFloat="true" layoutX="75.0" layoutY="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Enter a username" unFocusColor="GREY">
          <font>
-            <Font size="18.0" />
+            <Font name="Yrsa Regular" size="18.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="passwordText" labelFloat="true" layoutX="75.0" layoutY="307.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Enter a password" unFocusColor="GREY">
+      <JFXTextField fx:id="passwordText" labelFloat="true" layoutX="75.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Enter a password" unFocusColor="GREY">
          <font>
-            <Font size="18.0" />
+            <Font name="Yrsa Regular" size="18.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="homeZipCodeText" labelFloat="true" layoutX="75.0" layoutY="368.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Enter your Zip Code" unFocusColor="GREY">
+      <JFXTextField fx:id="homeZipCodeText" labelFloat="true" layoutX="75.0" layoutY="375.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Enter your zip code" unFocusColor="GREY">
          <font>
-            <Font size="18.0" />
+            <Font name="Yrsa Regular" size="18.0" />
          </font>
       </JFXTextField>
-      <JFXButton fx:id="createAccountButton" buttonType="RAISED" layoutX="50.0" layoutY="446.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#sendAccountDB" prefHeight="50.0" prefWidth="300.0" ripplerFill="#0777ff" styleClass="loginBtn" text="Create Account">
+      <JFXButton fx:id="createAccountButton" buttonType="RAISED" layoutX="50.0" layoutY="450.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#sendAccountDB" prefHeight="50.0" prefWidth="300.0" ripplerFill="#0777ff" styleClass="loginBtn" text="Create Account">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Yrsa Regular" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="50.0" layoutY="525.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#showLoginPane" prefHeight="50.0" prefWidth="300.0" ripplerFill="#0777ff" styleClass="loginBtn" text="Back">
+         <font>
+            <Font name="Yrsa Regular" size="18.0" />
          </font>
       </JFXButton>
    </children>
