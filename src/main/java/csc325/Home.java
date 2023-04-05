@@ -18,6 +18,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -33,6 +34,9 @@ public class Home {
 
     @FXML
     private CategoryAxis homeCategoryAxis;
+    
+    @FXML
+    private Label tempLabel;
 
     public void initialize() throws IOException {
         displayChartData();
@@ -42,6 +46,7 @@ public class Home {
         // create a number axis for the y-axis
         DetailedWeather d1 = new DetailedWeather();
         XYChart.Series<String, Number> weather = new XYChart.Series<>();
+        tempLabel.setText(Integer.toString(d1.getTemperature(1)) + "°");
 
         homeForecastLineChart.setAnimated(false);
         homeForecastLineChart.getXAxis().setTickLabelRotation(90);
