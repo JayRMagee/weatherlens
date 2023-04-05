@@ -20,17 +20,22 @@ import javafx.fxml.FXML;
  */
 public class DetailedWeather {
 
+    int a = 40;
+    int b = 45;
+
     @FXML
     private void home() throws IOException {
         App.setRoot("home");
     }
-    
-    
+
     public String getDay(int i) {
+//        int a = 40;
+//        int b = 45;
+
         try {
             //public void getWeather() throws IOException {
             // Construct the API URL using the latitude and longitude
-            URL url = new URL("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
+            URL url = new URL("https://api.weather.gov/gridpoints/OKX/" + a + "," + b + "/forecast");
 
             // Make a request to the NWS API
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -101,8 +106,8 @@ public class DetailedWeather {
         }
         return 0;
     }
-    
-    public String getShortForecast(int i){
+
+    public String getShortForecast(int i) {
         try {
             //public void getWeather() throws IOException {
             // Construct the API URL using the latitude and longitude
@@ -121,7 +126,7 @@ public class DetailedWeather {
                         response.append(inputLine);
                     }
                 }
-                
+
                 String[] shortForecasts = response.toString().split("\"shortForecast\":");
 
                 String shortForecast = (shortForecasts[i].split(",")[0].trim());
@@ -137,40 +142,40 @@ public class DetailedWeather {
         }
         return "";
     }
-    
-    public String getIcon(int i){
-    try {
-        //public void getWeather() throws IOException {
-        // Construct the API URL using the latitude and longitude
-        URL url = new URL("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
 
-        // Make a request to the NWS API
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
+    public String getIcon(int i) {
+        try {
+            //public void getWeather() throws IOException {
+            // Construct the API URL using the latitude and longitude
+            URL url = new URL("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
 
-        // Check if the request was successful
-        if (con.getResponseCode() == 200) {
-            StringBuilder response = new StringBuilder();
-            try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
-                String inputLine;
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
+            // Make a request to the NWS API
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+
+            // Check if the request was successful
+            if (con.getResponseCode() == 200) {
+                StringBuilder response = new StringBuilder();
+                try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+                    String inputLine;
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
                 }
+
+                String[] icons = response.toString().split("\"icon\":");
+
+                String icon = icons[i].split(",")[0].replaceAll("\"", "").trim();
+
+                return icon;
+            } else {
+                System.out.println("Error: " + con.getResponseCode());
             }
-
-            String[] icons = response.toString().split("\"icon\":");
-
-            String icon = icons[i].split(",")[0].replaceAll("\"", "").trim();
-
-            return icon;
-        } else {
-            System.out.println("Error: " + con.getResponseCode());
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(DetailedWeather.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(DetailedWeather.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } catch (MalformedURLException ex) {
-        Logger.getLogger(DetailedWeather.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (IOException ex) {
-        Logger.getLogger(DetailedWeather.class.getName()).log(Level.SEVERE, null, ex);
+        return "";
     }
-    return "";
-}
 }
