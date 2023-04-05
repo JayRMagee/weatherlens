@@ -16,6 +16,7 @@ import javafx.scene.Group;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,7 +26,7 @@ import javafx.scene.shape.Circle;
 public class Home {
 
     @FXML
-    private LineChart<String, Number> homeForecastLineChart;
+    private ScatterChart<String, Number> homeForecastLineChart;
 
     @FXML
     private NumberAxis homeNumberAxis;
@@ -42,6 +43,8 @@ public class Home {
         DetailedWeather d1 = new DetailedWeather();
         XYChart.Series<String, Number> weather = new XYChart.Series<>();
 
+        homeForecastLineChart.setAnimated(false);
+        homeForecastLineChart.getXAxis().setTickLabelRotation(90);
         // add some data points to the series
         for (int i = 1; i <= 13; i += 2) {
             String day = d1.getDay(i);
