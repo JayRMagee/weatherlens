@@ -1,31 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.ScatterChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="1600.0" styleClass="homePageCurrentWeather" stylesheets="@WeatherLens.css">
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="homeBackGround" stylesheets="@WeatherLens.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.Home">
-   <bottom>
-      <LineChart fx:id="homeForecastLineChart" horizontalZeroLineVisible="false" styleClass="chart-legend" stylesheets="@WeatherLens.css" title="6 Day Forecast" verticalZeroLineVisible="false" BorderPane.alignment="CENTER">
-         <xAxis>
-            <CategoryAxis fx:id="homeCategoryAxis" label="Day" side="BOTTOM" />
-         </xAxis>
-         <yAxis>
-            <NumberAxis fx:id="homeNumberAxis" label="Temperature" side="LEFT" upperBound="120.0" />
-         </yAxis>
-         <BorderPane.margin>
-            <Insets right="100.0" />
-         </BorderPane.margin>
-      </LineChart>
-   </bottom>
    <top>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="1592.0" styleClass="chart-legend" stylesheets="@WeatherLens.css" BorderPane.alignment="CENTER">
          <children>
@@ -42,4 +25,14 @@
          </children>
       </Pane>
    </top>
+   <bottom>
+      <ScatterChart fx:id="homeForecastLineChart" BorderPane.alignment="CENTER">
+        <xAxis>
+          <CategoryAxis fx:id="homeCategoryAxis" label="Day" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="homeNumberAxis" label="Temperature" side="LEFT" />
+        </yAxis>
+      </ScatterChart>
+   </bottom>
 </BorderPane>
