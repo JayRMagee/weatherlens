@@ -57,3 +57,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .bar-chart .chart-content .chart-plot-background {
     -fx-background-color: transparent;
 }
+
+.chart-legend {
+   -fx-background-color:  transparent;
+   -fx-padding: 20px;
+}
+
+.homeBackGround{
+    -fx-background-color: skyblue;
+}
