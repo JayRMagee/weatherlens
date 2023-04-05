@@ -25,7 +25,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class Home {
-
+    @FXML
+    private ImageView todayImage;
     @FXML
     private ScatterChart<String, Number> homeForecastLineChart;
 
@@ -40,6 +41,7 @@ public class Home {
 
     public void initialize() throws IOException {
         displayChartData();
+        todayImage();
     }
 
     public void displayChartData() throws IOException {
@@ -75,5 +77,21 @@ public class Home {
 
         // add the data series to the chart
         homeForecastLineChart.getData().add(weather);
+    }
+    public void todayImage() {
+                DetailedWeather d1 = new DetailedWeather();
+                                  String iconLink = d1.getIcon(1);
+      
+            Image icon = new Image(iconLink);
+
+            todayImage = new ImageView(d1.getIcon(1));
+            todayImage.setImage(icon);
+            /*todayImage.setFitWidth(40);
+            todayImage.setFitHeight(40);
+            todayImage.setClip(new Circle(15,15,15));
+            Circle circle = new Circle(15, 15, 16);
+            circle.setStroke(Color.BLACK);
+            circle.setStrokeWidth(2);
+            todayImage.setImage(icon);*/
     }
 }

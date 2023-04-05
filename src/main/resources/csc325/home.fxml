@@ -27,7 +27,7 @@
                   <Font size="60.0" />
                </font>
             </Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="124.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="todayImage" fitHeight="150.0" fitWidth="200.0" layoutX="124.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </top>
