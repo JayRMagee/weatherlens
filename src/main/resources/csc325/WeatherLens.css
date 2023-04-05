@@ -16,22 +16,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 .createAccountVbox {
     -fx-background-image:url('file:Images/blue-gradient-background-with-sparkling-light-shine-illustration-and-bokeh-lights-illustration-free-vector-2.png');
-    
+
 }
 .loginBtn{
-        -fx-background-color:cornflowerblue;
-        -fx-text-fill:white;
-        -fx-background-radius:10px;
+    -fx-background-color:cornflowerblue;
+    -fx-text-fill:white;
+    -fx-background-radius:10px;
 }
 .loginBtn:hover{
-        -fx-background-color:transparent;
-        -fx-background-radius:10px;
+    -fx-background-color:transparent;
+    -fx-background-radius:10px;
 
-        -fx-text-fill:cornflowerblue;
-        -fx-border-color:cornflowerblue;
-        -fx-border-width:1px;
-        -fx-border-style:solid;
-        -fx-border-radius:10px;
+    -fx-text-fill:cornflowerblue;
+    -fx-border-color:cornflowerblue;
+    -fx-border-width:1px;
+    -fx-border-style:solid;
+    -fx-border-radius:10px;
 }
 
 .alert {
@@ -39,8 +39,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 .alert .dialog-pane {
-   -fx-background-image:url('file:Images/Cloudy-Night-Sky.png');
-   -fx-text-fill: white;
+    -fx-background-image:url('file:Images/Cloudy-Night-Sky.png');
+    -fx-text-fill: white;
 }
 
 .homePageCurrentWeather{
@@ -59,10 +59,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 .chart-legend {
-   -fx-background-color:  transparent;
-   -fx-padding: 20px;
+    -fx-background-color:  transparent;
+    -fx-padding: 20px;
 }
 
 .homeBackGround{
-    -fx-background-color: skyblue;
+    -fx-background-image:url('file:Images/Astro.jpg');
+}
+
+.backBoxes{
+    -fx-border-radius:10px;
+        -fx-background-radius:10px;
+
+
 }
