@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -28,6 +29,7 @@
                </font>
             </Label>
             <ImageView fx:id="todayImage" fitHeight="150.0" fitWidth="200.0" layoutX="124.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" />
+            <JFXTextField fx:id="Search" labelFloat="true" layoutX="979.0" layoutY="27.0" text="Search" />
          </children>
       </Pane>
    </top>
