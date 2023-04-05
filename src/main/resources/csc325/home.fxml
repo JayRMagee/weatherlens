@@ -17,7 +17,7 @@
                   <Font size="50.0" />
                </font>
             </Label>
-            <Label layoutX="225.0" layoutY="24.0" text="75">
+            <Label fx:id="tempLabel" layoutX="225.0" layoutY="24.0" text="75">
                <font>
                   <Font size="60.0" />
                </font>
@@ -31,7 +31,7 @@
           <CategoryAxis fx:id="homeCategoryAxis" label="Day" side="BOTTOM" />
         </xAxis>
         <yAxis>
-          <NumberAxis fx:id="homeNumberAxis" label="Temperature" side="LEFT" />
+          <NumberAxis fx:id="homeNumberAxis" label="Temperature" side="LEFT" upperBound="110.0" />
         </yAxis>
       </ScatterChart>
    </bottom>
