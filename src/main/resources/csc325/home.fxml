@@ -11,7 +11,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="homeBackGround" stylesheets="@WeatherLens.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.Home">
    <bottom>
-      <LineChart fx:id="homeForecastLineChart" horizontalZeroLineVisible="false" prefWidth="1594.0" styleClass="chart-legend" stylesheets="@WeatherLens.css" title="6 Day Forecast" verticalZeroLineVisible="false" BorderPane.alignment="CENTER">
+      <LineChart fx:id="homeForecastLineChart" horizontalZeroLineVisible="false" styleClass="chart-legend" stylesheets="@WeatherLens.css" title="6 Day Forecast" verticalZeroLineVisible="false" BorderPane.alignment="CENTER">
          <xAxis>
             <CategoryAxis fx:id="homeCategoryAxis" label="Day" side="BOTTOM" />
          </xAxis>
@@ -19,7 +19,7 @@
             <NumberAxis fx:id="homeNumberAxis" label="Temperature" side="LEFT" upperBound="120.0" />
          </yAxis>
          <BorderPane.margin>
-            <Insets right="60.0" />
+            <Insets right="100.0" />
          </BorderPane.margin>
       </LineChart>
    </bottom>
