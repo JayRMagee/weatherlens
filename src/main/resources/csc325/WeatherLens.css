@@ -64,7 +64,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 .homeBackGround{
-    -fx-background-image:url('file:Images/Astro.jpg');
+    -fx-background-image:url('file:Images/astro.jpg');
 }
 
 .backBoxes{
