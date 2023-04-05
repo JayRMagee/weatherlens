@@ -20,8 +20,10 @@ import javafx.fxml.FXML;
  */
 public class DetailedWeather {
 
-    int a = 40;
-    int b = 45;
+    int a = 33;
+    int b = 37;
+    String url = "https://api.weather.gov/points/40.7704,-74.0162";
+    
 
     @FXML
     private void home() throws IOException {
@@ -29,13 +31,11 @@ public class DetailedWeather {
     }
 
     public String getDay(int i) {
-//        int a = 40;
-//        int b = 45;
 
         try {
             //public void getWeather() throws IOException {
             // Construct the API URL using the latitude and longitude
-            URL url = new URL("https://api.weather.gov/gridpoints/OKX/" + a + "," + b + "/forecast");
+            URL url = new URL(this.url);
 
             // Make a request to the NWS API
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -71,7 +71,7 @@ public class DetailedWeather {
         try {
             //public void getWeather() throws IOException {
             // Construct the API URL using the latitude and longitude
-            URL url = new URL("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
+            URL url = new URL(this.url);
 
             // Make a request to the NWS API
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -111,7 +111,7 @@ public class DetailedWeather {
         try {
             //public void getWeather() throws IOException {
             // Construct the API URL using the latitude and longitude
-            URL url = new URL("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
+            URL url = new URL(this.url);
 
             // Make a request to the NWS API
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -147,7 +147,7 @@ public class DetailedWeather {
         try {
             //public void getWeather() throws IOException {
             // Construct the API URL using the latitude and longitude
-            URL url = new URL("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
+            URL url = new URL(this.url);
 
             // Make a request to the NWS API
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
