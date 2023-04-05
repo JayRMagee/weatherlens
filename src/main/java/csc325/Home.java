@@ -12,39 +12,58 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 
 public class Home {
 
     @FXML
     private LineChart<String, Number> homeForecastLineChart;
-    
+
     @FXML
     private NumberAxis homeNumberAxis;
-    
+
     @FXML
     private CategoryAxis homeCategoryAxis;
-    
-    public void initialize() throws IOException{
+
+    public void initialize() throws IOException {
         displayChartData();
     }
-    
+
     public void displayChartData() throws IOException {
         // create a number axis for the y-axis
         DetailedWeather d1 = new DetailedWeather();
         XYChart.Series<String, Number> weather = new XYChart.Series<>();
 
         // add some data points to the series
-        weather.getData().add(new XYChart.Data<>("Monday", 23));
-        weather.getData().add(new XYChart.Data<>("Tuesday", 22));
-        weather.getData().add(new XYChart.Data<>("Wednesday", 24));
-        weather.getData().add(new XYChart.Data<>("Thursday", 23));
-        weather.getData().add(new XYChart.Data<>("Friday", 21));
-        weather.getData().add(new XYChart.Data<>("Saturday", 19));
-        weather.getData().add(new XYChart.Data<>("Sunday", 18));
+        for (int i = 1; i <= 13; i += 2) {
+            String day = d1.getDay(i);
+            int temperature = d1.getTemperature(i);
+            String iconLink = d1.getIcon(i);
+            
+            XYChart.Data<String, Number> data = new XYChart.Data<>(day, temperature);
+            weather.getData().add(data);
+            
+            // create an image view for the icon and add it to the data point
+            Image icon = new Image(iconLink);
+            ImageView imageView = new ImageView(icon);
+            imageView.setFitWidth(40);
+            imageView.setFitHeight(40);
+            imageView.setClip(new Circle(15,15,15));
+            Circle circle = new Circle(15, 15, 16);
+            circle.setStroke(Color.BLACK);
+            circle.setStrokeWidth(2);
+        
+            Group group = new Group(circle, imageView);
+            data.setNode(group);
+        }
 
         // add the data series to the chart
         homeForecastLineChart.getData().add(weather);
