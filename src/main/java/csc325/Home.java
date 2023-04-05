@@ -44,6 +44,7 @@ public class Home {
     private JFXTextField Search;
     
     
+    
 
     public void initialize() throws IOException {
         displayChartData();
