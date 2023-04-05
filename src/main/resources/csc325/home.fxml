@@ -9,6 +9,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="1600.0" styleClass="homePageCurrentWeather" stylesheets="@WeatherLens.css">
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" styleClass="homeBackGround" stylesheets="@WeatherLens.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.Home">
    <bottom>
       <LineChart fx:id="homeForecastLineChart" horizontalZeroLineVisible="false" styleClass="chart-legend" stylesheets="@WeatherLens.css" title="6 Day Forecast" verticalZeroLineVisible="false" BorderPane.alignment="CENTER">
