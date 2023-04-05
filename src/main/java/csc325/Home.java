@@ -1,5 +1,6 @@
 package csc325;
 
+import com.jfoenix.controls.JFXTextField;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -38,6 +39,11 @@ public class Home {
     
     @FXML
     private Label tempLabel;
+    
+    @FXML
+    private JFXTextField Search;
+    
+    
 
     public void initialize() throws IOException {
         displayChartData();
