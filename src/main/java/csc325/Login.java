@@ -33,6 +33,7 @@ import javafx.scene.layout.Pane;
  * @author nicholasshah
  */
 public class Login {
+    
 
     @FXML
     private Pane accountPane;
@@ -55,6 +56,12 @@ public class Login {
     @FXML
     private JFXButton createAccountButton;
 
+    @FXML
+    private void showLoginPane() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        App.stage.getScene().setRoot(root);
+    }
+    
     /**
      * code to verify login credentials and switch to main page
      *
