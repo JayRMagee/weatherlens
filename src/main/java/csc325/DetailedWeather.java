@@ -19,10 +19,11 @@ import javafx.fxml.FXML;
  * @author jayso
  */
 public class DetailedWeather {
-
-    int a = 33;
-    int b = 37;
-    String url = "https://api.weather.gov/gridpoints/OKX/32,37/forecast";
+    Geocode g = new Geocode();
+    
+//    int a = 33;
+//    int b = 37;
+    String url = g.geocoding();
     
 
     @FXML

@@ -38,10 +38,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        DetailedWeather d = new DetailedWeather();
-        
-//        Geocode g = new Geocode();
-//        g.geocoding();
+        //DetailedWeather d = new DetailedWeather();
         launch();
     }
 

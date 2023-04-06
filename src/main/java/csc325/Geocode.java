@@ -19,7 +19,7 @@ import kong.unirest.json.JSONObject;
 
 /**
  *
- * @author jayso
+ * @author jayson
  */
 public class Geocode {
 
@@ -28,11 +28,12 @@ public class Geocode {
      * @author jayson
      */
     public String getWeatherPeriods(String id, int x, int y) {
+        String finalUrl = "https://api.weather.gov/gridpoints/" + id + "/" + x + "," + y + "/forecast";
         try {
             //public void getWeather() throws IOException {
             // Construct the API URL using the latitude and longitude
             URL url = new URL("https://api.weather.gov/gridpoints/" + id + "/" + x + "," + y + "/forecast");
-
+//            String finalUrl = "https://api.weather.gov/gridpoints/" + id + "/" + x + "," + y + "/forecast";
             // Make a request to the NWS API
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
@@ -47,11 +48,11 @@ public class Geocode {
                     }
                 }
 
-                String[] temperatures = response.toString().split("\"temperature\":");
-                for (int i = 1; i < temperatures.length; i++) {
-                    int temperature = Integer.parseInt(temperatures[i].split(",")[0].trim());
-                    System.out.println("Temperature " + i + ": " + temperature);
-                }
+//                String[] temperatures = response.toString().split("\"temperature\":");
+//                for (int i = 1; i < temperatures.length; i++) {
+//                    int temperature = Integer.parseInt(temperatures[i].split(",")[0].trim());
+//                    System.out.println("Temperature " + i + ": " + temperature);
+//                }
 
             } else {
                 System.out.println("Error: " + con.getResponseCode());
@@ -61,10 +62,11 @@ public class Geocode {
         } catch (IOException ex) {
             System.out.println("wrong");
         }
-        return "";
+        return finalUrl;
     }
 
-    public void getWeather(double lat, double longe) throws Exception {
+    public String getWeather(double lat, double longe) throws Exception {
+        String s = "";
         //String latitude = "38.9072";
         //String longitude = "-77.0369";
 
@@ -113,26 +115,29 @@ public class Geocode {
                 int gridY = Integer.parseInt(gridy[i].split(",")[0].trim());
                 //System.out.println(gridY);
 
-                getWeatherPeriods(temperature, gridX, gridY);
+                s = getWeatherPeriods(temperature, gridX, gridY);
+                
             }
 
             //getShortForecast(temperature, gridX, gridY);
         } else {
             System.out.println("Error: " + con.getResponseCode());
         }
+        return s;
     }
 
     /**
      *
      * @param args
      */
-    public void geocoding() {
+    public String geocoding() {
+        String finalUrl = "";
         URLConnection connection = null;
         try {
             //6f8e9ba51ab74f6bb2614b10d88b2671
 
             String apiKey = "6f8e9ba51ab74f6bb2614b10d88b2671";
-            String address = "new york";
+            String address = "death valley";
             String url = "https://api.opencagedata.com/geocode/v1/json?q="
                     + URLEncoder.encode(address, "UTF-8") + "&key=" + apiKey;
             connection = new URL(url).openConnection();
@@ -153,7 +158,7 @@ public class Geocode {
                 System.out.println(lat + " " + lng);
                 try {
                     //System.out.println(result.getString("formatted") + " (" + lat + ", " + lng + ")");
-                    getWeather(lat, lng);
+                    finalUrl = getWeather(lat, lng);
                 } catch (Exception ex) {
                     System.out.println("error getting lat long");
                 }
@@ -166,5 +171,6 @@ public class Geocode {
         } catch (JSONException ex) {
             System.out.println("error");
         }
+       return finalUrl;
     }
 }
