@@ -22,7 +22,7 @@ public class DetailedWeather {
 
     int a = 33;
     int b = 37;
-    String url = "https://api.weather.gov/points/40.7704,-74.0162";
+    String url = "https://api.weather.gov/gridpoints/OKX/32,37/forecast";
     
 
     @FXML
