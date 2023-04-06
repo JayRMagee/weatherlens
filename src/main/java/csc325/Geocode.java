@@ -137,7 +137,7 @@ public class Geocode {
             //6f8e9ba51ab74f6bb2614b10d88b2671
 
             String apiKey = "6f8e9ba51ab74f6bb2614b10d88b2671";
-            String address = "death valley";
+            String address = "fort hood texas 76544";
             String url = "https://api.opencagedata.com/geocode/v1/json?q="
                     + URLEncoder.encode(address, "UTF-8") + "&key=" + apiKey;
             connection = new URL(url).openConnection();
@@ -155,7 +155,7 @@ public class Geocode {
                 JSONObject geometry = result.getJSONObject("geometry");
                 double lat = geometry.getDouble("lat");
                 double lng = geometry.getDouble("lng");
-                System.out.println(lat + " " + lng);
+                //System.out.println(lat + " " + lng);
                 try {
                     //System.out.println(result.getString("formatted") + " (" + lat + ", " + lng + ")");
                     finalUrl = getWeather(lat, lng);
