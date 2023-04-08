@@ -48,14 +48,15 @@ public class Home {
 
     public void initialize() throws IOException {
         displayChartData();
-        todayImage();
+        
     }
 
     public void displayChartData() throws IOException {
         // create a number axis for the y-axis
         DetailedWeather d1 = new DetailedWeather();
         XYChart.Series<String, Number> weather = new XYChart.Series<>();
-        tempLabel.setText(Integer.toString(d1.getTemperature(1)) + "°");
+        tempLabel.setText(Integer.toString(d1.getTemperature(1)) + "°F");
+        
 
         homeForecastLineChart.setAnimated(false);
         homeForecastLineChart.getXAxis().setTickLabelRotation(90);
@@ -71,6 +72,8 @@ public class Home {
             // create an image view for the icon and add it to the data point
             Image icon = new Image(iconLink);
             ImageView imageView = new ImageView(icon);
+            todayImage.setImage(icon);
+           
             imageView.setFitWidth(40);
             imageView.setFitHeight(40);
             imageView.setClip(new Circle(15,15,15));
@@ -85,20 +88,5 @@ public class Home {
         // add the data series to the chart
         homeForecastLineChart.getData().add(weather);
     }
-    public void todayImage() {
-                DetailedWeather d1 = new DetailedWeather();
-                                  String iconLink = d1.getIcon(1);
-      
-            Image icon = new Image(iconLink);
-
-            todayImage = new ImageView(d1.getIcon(1));
-            todayImage.setImage(icon);
-            /*todayImage.setFitWidth(40);
-            todayImage.setFitHeight(40);
-            todayImage.setClip(new Circle(15,15,15));
-            Circle circle = new Circle(15, 15, 16);
-            circle.setStroke(Color.BLACK);
-            circle.setStrokeWidth(2);
-            todayImage.setImage(icon);*/
-    }
+  
 }
