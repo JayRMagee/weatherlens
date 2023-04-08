@@ -22,12 +22,15 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 
 public class Home {
     @FXML
     private ImageView todayImage;
+    
     @FXML
     private ScatterChart<String, Number> homeForecastLineChart;
 
@@ -41,19 +44,27 @@ public class Home {
     private Label tempLabel;
     
     @FXML
+    private Label stateLabel;
+    
+    @FXML
     private JFXTextField Search;
     
+    @FXML
+    private Rectangle myRect;
+    
+    @FXML
+    private Pane pane1;
     
     
+    DetailedWeather d1 = new DetailedWeather();
 
     public void initialize() throws IOException {
         displayChartData();
-        
+        todayImage();
     }
 
     public void displayChartData() throws IOException {
         // create a number axis for the y-axis
-        DetailedWeather d1 = new DetailedWeather();
         XYChart.Series<String, Number> weather = new XYChart.Series<>();
         tempLabel.setText(Integer.toString(d1.getTemperature(1)) + "°F");
         
@@ -61,7 +72,7 @@ public class Home {
         homeForecastLineChart.setAnimated(false);
         homeForecastLineChart.getXAxis().setTickLabelRotation(90);
         // add some data points to the series
-        for (int i = 1; i <= 13; i += 2) {
+        for (int i = 1; i <= 13; i++) {
             String day = d1.getDay(i);
             int temperature = d1.getTemperature(i);
             String iconLink = d1.getIcon(i);
@@ -72,7 +83,6 @@ public class Home {
             // create an image view for the icon and add it to the data point
             Image icon = new Image(iconLink);
             ImageView imageView = new ImageView(icon);
-            todayImage.setImage(icon);
            
             imageView.setFitWidth(40);
             imageView.setFitHeight(40);
@@ -87,6 +97,26 @@ public class Home {
 
         // add the data series to the chart
         homeForecastLineChart.getData().add(weather);
+    }
+
+    public void todayImage() {
+        String iconLink = d1.getIcon(1);
+        
+        Image icon = new Image(iconLink);
+        todayImage.setImage(icon);
+        
+        todayImage.setFitWidth(170);
+        todayImage.setFitHeight(170);
+        todayImage.setClip(new Circle(85,85,85));
+        Circle circle = new Circle(237, 201.5, 90);
+        circle.setStroke(Color.BLACK);
+        circle.setStrokeWidth(2);
+        tempLabel.setLayoutX(170);
+        stateLabel.setLayoutX(160);
+        
+        Group group = new Group(circle, todayImage);
+        pane1.getChildren().add(group);
+        
     }
   
 }
