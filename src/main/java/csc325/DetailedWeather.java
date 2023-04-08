@@ -88,13 +88,10 @@ public class DetailedWeather {
                     }
                 }
 
-                String[] names = response.toString().split("\"name\":");
                 String[] temperatures = response.toString().split("\"temperature\":");
-                String[] shortForecasts = response.toString().split("\"shortForecast\":");
+
 
                 int temperature = Integer.parseInt(temperatures[i].split(",")[0].trim());
-                String name = (names[i].split(",")[0].trim());
-                String shortForecast = (shortForecasts[i].split(",")[0].trim());
 
                 return temperature;
             } else {
