@@ -15,20 +15,20 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="homeBackGround" stylesheets="@WeatherLens.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.Home">
    <top>
-      <Pane prefHeight="480.0" prefWidth="536.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="pane1" prefHeight="480.0" prefWidth="536.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d6dce12b" height="396.0" layoutX="25.0" layoutY="19.0" stroke="WHITE" strokeType="INSIDE" styleClass="backBoxes" width="429.0" />
-            <Label layoutX="124.0" layoutY="27.0" prefHeight="80.0" prefWidth="226.0" text="New York">
+            <Rectangle fx:id="myRect" arcHeight="5.0" arcWidth="5.0" fill="#d6dce12b" height="396.0" layoutX="25.0" layoutY="19.0" stroke="WHITE" strokeType="INSIDE" styleClass="backBoxes" width="429.0" />
+            <Label fx:id="stateLabel" layoutX="86.0" layoutY="27.0" prefHeight="80.0" prefWidth="226.0" text="New York" textAlignment="CENTER">
                <font>
                   <Font size="50.0" />
                </font>
             </Label>
-            <Label fx:id="tempLabel" layoutX="189.0" layoutY="287.0" text="75">
+            <Label fx:id="tempLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="167.0" layoutY="287.0" text="75" textAlignment="CENTER">
                <font>
                   <Font size="60.0" />
                </font>
             </Label>
-            <ImageView fx:id="todayImage" fitHeight="150.0" fitWidth="200.0" layoutX="124.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="todayImage" fitHeight="170.0" fitWidth="170.0" layoutX="152.0" layoutY="117.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
             <JFXTextField fx:id="Search" labelFloat="true" layoutX="979.0" layoutY="27.0" text="Search" />
          </children>
       </Pane>
