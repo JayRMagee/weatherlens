@@ -24,7 +24,10 @@ public class Location {
     int gridX;
     int gridY;
     String locationSearchString;
+    String dailyForecastURL;
+    String hourlyForecastURL;
     DetailedWeather dailyForecast;
+    DetailedWeather hourlyForecast;
 
     public Location(String locationSearchString) {
         this.locationSearchString = locationSearchString;
