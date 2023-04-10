@@ -38,11 +38,11 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        //DetailedWeather d = new DetailedWeather();
-        //launch();
-        Location l = new Location("farmingdale");
-        DailyForecast d = new DailyForecast();
-        d.getWeeklyWeatherURL(l,3);
+        DetailedWeather d = new DetailedWeather();
+        launch();
+        //Location l = new Location("farmingdale");
+        //DailyForecast d = new DailyForecast();
+        //d.getWeeklyWeatherURL(l,3);
         
         
         
