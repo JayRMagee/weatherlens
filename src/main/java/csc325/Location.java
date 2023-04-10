@@ -14,7 +14,8 @@ import kong.unirest.json.JSONObject;
 
 /**
  *
- * @author Jonathan Crain & Jayson Magee
+ * @author Jonathan Crain
+ * @author Jayson Magee
  */
 public class Location {
 
