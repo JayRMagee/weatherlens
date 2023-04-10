@@ -16,18 +16,17 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
+/**
+ * The Home class holds all the pertinent objects which present weather data to
+ * the user.
+ * @author jonathan
+ */
 public class Home {
     @FXML
     private ImageView todayImage;
     
     @FXML
     private ScatterChart<String, Number> homeForecastScatterChart;
-
-    @FXML
-    private NumberAxis homeNumberAxis;
-
-    @FXML
-    private CategoryAxis homeCategoryAxis;
     
     @FXML
     private Label tempLabel;
@@ -36,20 +35,7 @@ public class Home {
     private Label stateLabel;
     
     @FXML
-    private JFXTextField Search;
-    
-    @FXML
-    private Rectangle myRect;
-    
-    @FXML
-    private Pane pane1;
-    
-    @FXML
-    private Group todayImageGroup;
-    
-    @FXML
-    private Circle imageViewCirc;
-    
+    private JFXTextField search;
     
     DetailedWeather d1 = new DetailedWeather();
 
@@ -60,10 +46,9 @@ public class Home {
 
     public void displayChartData() throws IOException {
         // create a number axis for the y-axis
-        XYChart.Series<String, Number> weather = new XYChart.Series<>();
+        XYChart.Series<String, Number> weatherSeries = new XYChart.Series<>();
         tempLabel.setText(Integer.toString(d1.getTemperature(1)) + "°F");
         
-        homeForecastScatterChart.setAnimated(false);
         homeForecastScatterChart.getXAxis().setTickLabelRotation(360);
         // add some data points to the series
         for (int i = 1; i <= 13; i++) {
@@ -73,7 +58,7 @@ public class Home {
             
             
             XYChart.Data<String, Number> data = new XYChart.Data<>(day, temperature);
-            weather.getData().add(data);
+            weatherSeries.getData().add(data);
             
             // create an image view for the icon and add it to the data point
             Image icon = new Image(iconLink);
@@ -91,7 +76,7 @@ public class Home {
         }
 
         // add the data series to the chart
-        homeForecastScatterChart.getData().add(weather);
+        homeForecastScatterChart.getData().add(weatherSeries);
     }
 
     public void todayImage() {
