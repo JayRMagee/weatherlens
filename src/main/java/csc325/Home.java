@@ -55,6 +55,12 @@ public class Home {
     @FXML
     private Pane pane1;
     
+    @FXML
+    private Group todayImageGroup;
+    
+    @FXML
+    private Circle imageViewCirc;
+    
     
     DetailedWeather d1 = new DetailedWeather();
 
@@ -104,18 +110,8 @@ public class Home {
         
         Image icon = new Image(iconLink);
         todayImage.setImage(icon);
-        
-        todayImage.setFitWidth(170);
-        todayImage.setFitHeight(170);
+
         todayImage.setClip(new Circle(85,85,85));
-        Circle circle = new Circle(237, 201.5, 90);
-        circle.setStroke(Color.BLACK);
-        circle.setStrokeWidth(2);
-        tempLabel.setLayoutX(170);
-        stateLabel.setLayoutX(160);
-        
-        Group group = new Group(circle, todayImage);
-        pane1.getChildren().add(group);
         
     }
   
