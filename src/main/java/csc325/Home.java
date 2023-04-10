@@ -1,21 +1,10 @@
 package csc325;
 
 import com.jfoenix.controls.JFXTextField;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
@@ -75,7 +64,7 @@ public class Home {
         tempLabel.setText(Integer.toString(d1.getTemperature(1)) + "°F");
         
         homeForecastScatterChart.setAnimated(false);
-        homeForecastScatterChart.getXAxis().setTickLabelRotation(90);
+        homeForecastScatterChart.getXAxis().setTickLabelRotation(360);
         // add some data points to the series
         for (int i = 1; i <= 13; i++) {
             String day = d1.getDay(i);
