@@ -61,9 +61,9 @@ public class Login {
         Scene appScene = new Scene(FXMLLoader.load(getClass().getResource("home.fxml")));
 
         appStage.setScene(appScene);
-        appStage.setWidth(1200); // set the initial width of the main page's window
-        appStage.setHeight(800); // set the initial height of the main page's window
-        appStage.setResizable(false);
+        appStage.setMaxWidth(1200);
+        appStage.setMaxHeight(800);
+        appStage.sizeToScene();
         appStage.show();
 
     }
