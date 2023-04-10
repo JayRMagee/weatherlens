@@ -24,6 +24,7 @@ public class Location {
     int gridX;
     int gridY;
     String locationSearchString;
+   
     String dailyForecastURL;
     String hourlyForecastURL;
     DetailedWeather dailyForecast;
