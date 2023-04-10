@@ -41,5 +41,4 @@ public class App extends Application {
         //DetailedWeather d = new DetailedWeather();
         launch();
     }
-
 }
