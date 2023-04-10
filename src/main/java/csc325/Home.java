@@ -4,22 +4,18 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 
 /**
  * The Home class holds all the pertinent objects which present weather data to
  * the user.
- * @author jonathan
+ * @author Jonathan Vasquez
  */
 public class Home {
     @FXML
@@ -44,14 +40,21 @@ public class Home {
         todayImage();
     }
 
+    /**
+     * 
+     * @author Jonathan Vasquez
+     * @throws IOException 
+     */
     public void displayChartData() throws IOException {
         // create a number axis for the y-axis
         XYChart.Series<String, Number> weatherSeries = new XYChart.Series<>();
         tempLabel.setText(Integer.toString(d1.getTemperature(1)) + "°F");
         
         homeForecastScatterChart.getXAxis().setTickLabelRotation(360);
+        Color color = Color.BLACK;
+        homeForecastScatterChart.getXAxis().setTickLabelFill(color);
         // add some data points to the series
-        for (int i = 1; i <= 13; i++) {
+        for (int i = 1; i <= 13; i = i + 2) {
             String day = d1.getDay(i);
             int temperature = d1.getTemperature(i);
             String iconLink = d1.getIcon(i);
@@ -79,6 +82,9 @@ public class Home {
         homeForecastScatterChart.getData().add(weatherSeries);
     }
 
+    /**
+     * @author Jonathan Vasquez
+     */
     public void todayImage() {
         String iconLink = d1.getIcon(1);
         
