@@ -102,7 +102,7 @@ public class Location {
                 System.out.println("Error: " + con.getResponseCode());
             }
         } catch (IOException | NumberFormatException ex) {
-            System.out.println(ex);;
+            System.out.println(ex);
         }
     }
     

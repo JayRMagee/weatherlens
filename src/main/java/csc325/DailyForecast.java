@@ -34,18 +34,21 @@ public class DailyForecast {
     String shortForecast;
     String detailedForecast;
 
-    Location searchLocation;
+    //Location searchLocation;
 
-    String id = searchLocation.gridID;
-    int x = searchLocation.gridX;
-    int y = searchLocation.gridY;
+//    String id = searchLocation.gridID;
+//    int x = searchLocation.gridX;
+//    int y = searchLocation.gridY;
 
-    public DailyForecast() {
-        getWeeklyWeatherURL();
-        fetchDailyForecastData();
-    }
+//    public DailyForecast() {
+//        getWeeklyWeatherURL(Location l);
+//    }
 
-    private void getWeeklyWeatherURL() {
+    public void getWeeklyWeatherURL(Location l) {
+        String id = l.gridID;
+        int x = l.gridX;
+        int y = l.gridY;
+        
         URLConnection connection;
         String finalUrl = "https://api.weather.gov/gridpoints/" + id + "/" + x + "," + y + "/forecast";
         try {
@@ -72,7 +75,5 @@ public class DailyForecast {
 
     }
 
-    private void fetchDailyForecastData() {
-
-    }
+    
 }
