@@ -32,7 +32,7 @@ public class Home {
     private ImageView todayImage;
     
     @FXML
-    private ScatterChart<String, Number> homeForecastLineChart;
+    private ScatterChart<String, Number> homeForecastScatterChart;
 
     @FXML
     private NumberAxis homeNumberAxis;
@@ -74,13 +74,14 @@ public class Home {
         XYChart.Series<String, Number> weather = new XYChart.Series<>();
         tempLabel.setText(Integer.toString(d1.getTemperature(1)) + "°F");
         
-        homeForecastLineChart.setAnimated(false);
-        homeForecastLineChart.getXAxis().setTickLabelRotation(90);
+        homeForecastScatterChart.setAnimated(false);
+        homeForecastScatterChart.getXAxis().setTickLabelRotation(90);
         // add some data points to the series
         for (int i = 1; i <= 13; i++) {
             String day = d1.getDay(i);
             int temperature = d1.getTemperature(i);
             String iconLink = d1.getIcon(i);
+            
             
             XYChart.Data<String, Number> data = new XYChart.Data<>(day, temperature);
             weather.getData().add(data);
@@ -101,7 +102,7 @@ public class Home {
         }
 
         // add the data series to the chart
-        homeForecastLineChart.getData().add(weather);
+        homeForecastScatterChart.getData().add(weather);
     }
 
     public void todayImage() {
