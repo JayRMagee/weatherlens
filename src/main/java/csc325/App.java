@@ -42,8 +42,8 @@ public class App extends Application {
         //launch();
         Location l = new Location("farmingdale");
         DailyForecast d = new DailyForecast();
-        d.getWeeklyWeatherURL(l);
-        System.out.println(d.name);
+        d.getWeeklyWeatherURL(l,3);
+        
         
         
     }

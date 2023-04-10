@@ -44,36 +44,51 @@ public class DailyForecast {
 //        getWeeklyWeatherURL(Location l);
 //    }
 
-    public void getWeeklyWeatherURL(Location l) {
+    public void getWeeklyWeatherURL(Location l, int i) {
         String id = l.gridID;
         int x = l.gridX;
         int y = l.gridY;
         
         URLConnection connection;
         String finalUrl = "https://api.weather.gov/gridpoints/" + id + "/" + x + "," + y + "/forecast";
+        //System.out.println("hbhde");
+        URL url;
         try {
-            connection = new URL(finalUrl).openConnection();
-            InputStream response = connection.getInputStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(response));
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);
+            // Construct the API URL using the latitude and longitude
+            url = new URL(finalUrl);
+
+            // Make a request to the NWS API
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+
+            // Check if the request was successful
+            if (con.getResponseCode() == 200) {
+                StringBuilder response = new StringBuilder();
+                try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+                    String inputLine;
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                }
+                //System.out.println("bjdb");
+                String[] names = response.toString().split("\"name\":");
+                name = (names[i].split(",")[0].trim());
+                System.out.println(name);
+
+                
+            } else {
+                System.out.println("Error: " + con.getResponseCode());
             }
-            JSONObject jsonObject = new JSONObject(sb.toString());
-            JSONArray results = jsonObject.getJSONArray("results");
-            //Could loop through but right now we don't know what result to pick - so just take the first one (index 0).
-            JSONObject result = results.getJSONObject(0);
-            JSONObject geometry = result.getJSONObject("geometry");
-            number = geometry.getInt("number");
-            System.out.println(number);
-            name = geometry.getString("name");
-            System.out.println(name);
-        } catch (IOException | JSONException ex) {
-            System.out.println("error");
+        } catch (MalformedURLException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
+        
 
     }
+    
+    
 
     
 }
