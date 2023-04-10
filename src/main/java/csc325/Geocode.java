@@ -13,6 +13,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONException;
 import kong.unirest.json.JSONObject;
@@ -22,7 +24,8 @@ import kong.unirest.json.JSONObject;
  * @author jayson
  */
 public class Geocode {
-
+    @FXML
+    private TextField searchText;
     /**
      *
      * @author jayson
@@ -137,7 +140,7 @@ public class Geocode {
             //6f8e9ba51ab74f6bb2614b10d88b2671
 
             String apiKey = "6f8e9ba51ab74f6bb2614b10d88b2671";
-            String address = "New York";
+            String address = searchText.getText();
             String url = "https://api.opencagedata.com/geocode/v1/json?q="
                     + URLEncoder.encode(address, "UTF-8") + "&key=" + apiKey;
             connection = new URL(url).openConnection();
