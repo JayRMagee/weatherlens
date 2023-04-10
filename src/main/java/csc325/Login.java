@@ -2,31 +2,16 @@ package csc325;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import java.sql.*;
 import javafx.scene.control.Alert;
-import java.net.*;
-import java.io.*;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+
 /**
  * This class is designed to hold the methods needed to login in to the weather app 
  * as well as controls the page for creating an account for first time users.
