@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package csc325;
 
 import java.io.BufferedReader;
@@ -20,10 +16,8 @@ import javafx.fxml.FXML;
  */
 public class DetailedWeather {
     Geocode g = new Geocode();
-    
-//    int a = 33;
-//    int b = 37;
-    String url = g.geocoding();
+  
+    String urlString = g.geocoding();
     
 
     @FXML
@@ -32,11 +26,10 @@ public class DetailedWeather {
     }
 
     public String getDay(int i) {
-
+        URL url;
         try {
-            //public void getWeather() throws IOException {
             // Construct the API URL using the latitude and longitude
-            URL url = new URL(this.url);
+            url = new URL(this.urlString);
 
             // Make a request to the NWS API
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -53,7 +46,6 @@ public class DetailedWeather {
                 }
 
                 String[] names = response.toString().split("\"name\":");
-
                 String name = (names[i].split(",")[0].trim());
 
                 return name;
@@ -61,9 +53,9 @@ public class DetailedWeather {
                 System.out.println("Error: " + con.getResponseCode());
             }
         } catch (MalformedURLException ex) {
-            Logger.getLogger(DetailedWeather.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         } catch (IOException ex) {
-            Logger.getLogger(DetailedWeather.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
         return "";
     }
@@ -72,7 +64,7 @@ public class DetailedWeather {
         try {
             //public void getWeather() throws IOException {
             // Construct the API URL using the latitude and longitude
-            URL url = new URL(this.url);
+            URL url = new URL(this.urlString);
 
             // Make a request to the NWS API
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -109,7 +101,7 @@ public class DetailedWeather {
         try {
             //public void getWeather() throws IOException {
             // Construct the API URL using the latitude and longitude
-            URL url = new URL(this.url);
+            URL url = new URL(this.urlString);
 
             // Make a request to the NWS API
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -145,7 +137,7 @@ public class DetailedWeather {
         try {
             //public void getWeather() throws IOException {
             // Construct the API URL using the latitude and longitude
-            URL url = new URL(this.url);
+            URL url = new URL(this.urlString);
 
             // Make a request to the NWS API
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
