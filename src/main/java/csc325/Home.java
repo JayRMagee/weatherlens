@@ -74,7 +74,6 @@ public class Home {
         XYChart.Series<String, Number> weather = new XYChart.Series<>();
         tempLabel.setText(Integer.toString(d1.getTemperature(1)) + "°F");
         
-
         homeForecastLineChart.setAnimated(false);
         homeForecastLineChart.getXAxis().setTickLabelRotation(90);
         // add some data points to the series
