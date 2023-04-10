@@ -63,6 +63,7 @@ public class Home {
 
         homeForecastScatterChart.getXAxis().setTickLabelRotation(360);
         homeForecastScatterChart.getXAxis().setTickLabelFill(Color.BLACK);
+        homeForecastScatterChart.getYAxis().setTickLabelFill(Color.BLACK);
 
         // add some data points to the series
         for (int i = 1; i <= 13; i = i + 2) {
