@@ -27,7 +27,7 @@
             <Pane fx:id="pane1">
                <children>
                   <Rectangle fx:id="myRect" arcHeight="5.0" arcWidth="5.0" fill="#ffffff80" height="400.0" stroke="WHITE" strokeType="INSIDE" styleClass="backBoxes" width="430.0" />
-                  <VBox layoutX="118.0" layoutY="-62.0">
+                  <VBox alignment="CENTER" prefHeight="400.0" prefWidth="430.0" spacing="15.0">
                      <children>
                         <Label fx:id="stateLabel" text="New York" textAlignment="CENTER">
                            <font>
@@ -59,12 +59,12 @@
             <Pane>
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff80" height="400.0" stroke="WHITE" strokeType="INSIDE" styleClass="backBoxes" width="1200.0" />
-                  <ScatterChart fx:id="homeForecastLineChart" prefWidth="1200.0" title="6 Day Forecast">
+                  <ScatterChart fx:id="homeForecastScatterChart" prefWidth="1200.0" title="6 Day Forecast">
                     <xAxis>
                       <CategoryAxis fx:id="homeCategoryAxis" label="Day" side="BOTTOM" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis fx:id="homeNumberAxis" label="Temperature" minorTickVisible="false" side="LEFT" tickLength="10.0" upperBound="110.0">
+                      <NumberAxis fx:id="homeNumberAxis" autoRanging="false" label="Temperature" minorTickVisible="false" side="LEFT" tickLength="10.0" upperBound="110.0">
                            <tickLabelFont>
                               <Font name="Diwan Kufi Regular" size="17.0" />
                            </tickLabelFont>
