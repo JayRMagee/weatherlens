@@ -140,7 +140,7 @@ public class Geocode {
             //6f8e9ba51ab74f6bb2614b10d88b2671
 
             String apiKey = "6f8e9ba51ab74f6bb2614b10d88b2671";
-            String address = searchText.getText();
+            String address = "New York";
             String url = "https://api.opencagedata.com/geocode/v1/json?q="
                     + URLEncoder.encode(address, "UTF-8") + "&key=" + apiKey;
             connection = new URL(url).openConnection();
