@@ -44,6 +44,7 @@ public class App extends Application {
         DailyForecast d = new DailyForecast();
         
         WeeklyForecast w = new WeeklyForecast(l);
-        w.generateWeeklyForecast();
+        w.getWeeklyForecast();
+        w.readArray();
     }
 }
