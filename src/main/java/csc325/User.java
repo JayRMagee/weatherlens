@@ -17,7 +17,18 @@ public class User {
     private String username;
     private String userPassword;
     private String homeZipCode;
-
+    /*
+    Suggestion: User should have a list or map of Location, representing their 
+    previously accessed locations. e.g.,:
+    ArrayList<Location> locations;
+    or
+    HashMap<String,Location> locations
+    If we use a map, we can look up a location by its name. We can add String 
+    name to Location, and then use the same as the key for the map. This would 
+    let us look up specific locations, while if we wanted to iterate over all a 
+    user's locations, we can use Map interface's .values().toArray() function
+    */
+    
     /**
      * Returns the home zip code of the User.
      * @return 
