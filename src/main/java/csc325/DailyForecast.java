@@ -43,7 +43,6 @@ public class DailyForecast {
         this.shortForecast = getShortForecast();
         this.detailedForecast = getDetailedForecast();
     }
-
     
     public void generateDailyForecast(Location l, int i) {
         DailyForecast[] dailyForecast = new DailyForecast[14];
