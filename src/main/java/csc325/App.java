@@ -40,9 +40,10 @@ public class App extends Application {
     public static void main(String[] args) {
         DetailedWeather d = new DetailedWeather();
         launch();
-        //Location l = new Location("farmingdale");
+        Location l = new Location("new york");
         //DailyForecast d = new DailyForecast();
-        //d.getWeeklyWeatherURL(l,3);
+        //d.generateDailyForecast(l,3);
+        //System.out.println(d.toString());
         
         
         
