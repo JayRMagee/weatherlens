@@ -32,25 +32,19 @@ public class DailyForecast {
     String detailedForecast;
 
     public DailyForecast() {
-        this.number = 1;
-        this.name = "";
-        this.temperature = 99;
-        this.temperatureUnit = "";
-        this.trend = "";
-        this.windSpeed = "";
-        this.windDirection = "";
-        this.iconUrl = "";
-        this.shortForecast = "";
-        this.detailedForecast = "";
+        this.number = getNumber();
+        this.name = getName();
+        this.temperature = getTemperature();
+        this.temperatureUnit = getTempUnit();
+        this.trend = getTrend();
+        this.windSpeed = getWindSpeed();
+        this.windDirection = getWindDirection();
+        this.iconUrl = getIconUrl();
+        this.shortForecast = getShortForecast();
+        this.detailedForecast = getDetailedForecast();
     }
 
-    //Location searchLocation;
-//    String id = searchLocation.gridID;
-//    int x = searchLocation.gridX;
-//    int y = searchLocation.gridY;
-//    public DailyForecast() {
-//        getWeeklyWeatherURL(Location l);
-//    }
+    
     public void generateDailyForecast(Location l, int i) {
         DailyForecast[] dailyForecast = new DailyForecast[14];
         String id = l.gridID;
@@ -81,33 +75,43 @@ public class DailyForecast {
 
                 String[] names = response.toString().split("\"name\":");
                 name = (names[i].split(",")[0].trim());
+                this.setName(name);
 
                 String[] temperatures = response.toString().split("\"temperature\":");
                 temperature = Integer.parseInt(temperatures[i].split(",")[0].trim());
+                this.setTemperature(temperature);
 
                 String[] temperatureUnits = response.toString().split("\"temperatureUnit\":");
                 temperatureUnit = (temperatureUnits[i].split(",")[0].trim());
+                this.setTemperatureUnit(temperatureUnit);
 
                 String[] trends = response.toString().split("\"temperatureTrend\":");
                 trend = (trends[i].split(",")[0].trim());
+                this.setTrend(trend);
 
                 String[] numbers = response.toString().split("\"number\":");
                 number = Integer.parseInt(numbers[i].split(",")[0].trim());
+                this.setNumber(number);
 
                 String[] windSpeeds = response.toString().split("\"windSpeed\":");
                 windSpeed = (windSpeeds[i].split(",")[0].trim());
+                this.setWindSpeed(windSpeed);
 
                 String[] windDirections = response.toString().split("\"windDirection\":");
                 windDirection = (windDirections[i].split(",")[0].trim());
+                this.setWindDirection(windDirection);
 
                 String[] iconUrls = response.toString().split("\"icon\":");
                 iconUrl = (iconUrls[i].split(",")[0].trim());
+                this.setIconUrl(iconUrl);
 
                 String[] shortForecasts = response.toString().split("\"shortForecast\":");
                 shortForecast = (shortForecasts[i].split(",")[0].trim());
+                this.setShortForecast(shortForecast);
 
                 String[] detailedForecasts = response.toString().split("\"detailedForecast\":");
                 detailedForecast = (detailedForecasts[i].split(",")[0].trim());
+                this.setDetailedForecast(detailedForecast);
             }
         }else {
                 System.out.println("Error: " + con.getResponseCode());
@@ -127,6 +131,47 @@ public class DailyForecast {
     }
 
 }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTemperature(int temperature) {
+        this.temperature = temperature;
+    }
+
+    public void setTemperatureUnit(String temperatureUnit) {
+        this.temperatureUnit = temperatureUnit;
+    }
+
+    public void setTrend(String trend) {
+        this.trend = trend;
+    }
+
+    public void setWindSpeed(String windSpeed) {
+        this.windSpeed = windSpeed;
+    }
+
+    public void setWindDirection(String windDirection) {
+        this.windDirection = windDirection;
+    }
+
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
+    }
+
+    public void setShortForecast(String shortForecast) {
+        this.shortForecast = shortForecast;
+    }
+
+    public void setDetailedForecast(String detailedForecast) {
+        this.detailedForecast = detailedForecast;
+    }
+    
 
 public int getNumber() {
         return number;

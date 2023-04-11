@@ -20,13 +20,12 @@ public class WeeklyForecast extends DailyForecast {
     }
 
     public void generateWeeklyForecast() {
-        generateDailyForecast(location, 7);
-            System.out.println(toString());
-        
+        DailyForecast[] weeklyForecast = new DailyForecast[7];
+        int j = 0;
         for (int i = 1; i <= 13; i = i + 2) {
-//            generateDailyForecast(location, i);
-//            System.out.println(toString());
+            weeklyForecast[j] = new DailyForecast();
+            weeklyForecast[j].generateDailyForecast(location, i);
+            j++;
         }
     }
 }
-
