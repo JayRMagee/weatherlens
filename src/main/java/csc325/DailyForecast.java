@@ -18,6 +18,8 @@ import java.net.URLConnection;
  */
 public class DailyForecast {
 
+    DailyForecast[] dailyForecasts;
+
     int number;
     String name;
     int temperature;
@@ -29,6 +31,19 @@ public class DailyForecast {
     String shortForecast;
     String detailedForecast;
 
+    public DailyForecast() {
+        this.number = 1;
+        this.name = "";
+        this.temperature = 99;
+        this.temperatureUnit = "";
+        this.trend = "";
+        this.windSpeed = "";
+        this.windDirection = "";
+        this.iconUrl = "";
+        this.shortForecast = "";
+        this.detailedForecast = "";
+    }
+
     //Location searchLocation;
 //    String id = searchLocation.gridID;
 //    int x = searchLocation.gridX;
@@ -37,6 +52,7 @@ public class DailyForecast {
 //        getWeeklyWeatherURL(Location l);
 //    }
     public void generateDailyForecast(Location l, int i) {
+        DailyForecast[] dailyForecast = new DailyForecast[14];
         String id = l.gridID;
         int x = l.gridX;
         int y = l.gridY;
@@ -61,7 +77,7 @@ public class DailyForecast {
                     while ((inputLine = in.readLine()) != null) {
                         response.append(inputLine);
                     }
-                }
+                
 
                 String[] names = response.toString().split("\"name\":");
                 name = (names[i].split(",")[0].trim());
@@ -71,7 +87,7 @@ public class DailyForecast {
 
                 String[] temperatureUnits = response.toString().split("\"temperatureUnit\":");
                 temperatureUnit = (temperatureUnits[i].split(",")[0].trim());
-                
+
                 String[] trends = response.toString().split("\"temperatureTrend\":");
                 trend = (trends[i].split(",")[0].trim());
 
@@ -92,19 +108,27 @@ public class DailyForecast {
 
                 String[] detailedForecasts = response.toString().split("\"detailedForecast\":");
                 detailedForecast = (detailedForecasts[i].split(",")[0].trim());
-
-            } else {
+            }
+        }else {
                 System.out.println("Error: " + con.getResponseCode());
             }
-        } catch (MalformedURLException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+    }
+    catch (MalformedURLException ex
 
+    
+        ) {
+            ex.printStackTrace();
+    }
+    catch (IOException ex
+
+    
+        ) {
+            ex.printStackTrace();
     }
 
-    public int getNumber() {
+}
+
+public int getNumber() {
         return number;
     }
 
@@ -145,7 +169,7 @@ public class DailyForecast {
     }
 
     @Override
-    public String toString() {
+public String toString() {
         return "DailyForecast{" + "number=" + number + ", name=" + name + ", temperature=" + temperature + ", tempUnit=" + temperatureUnit + ", trend=" + trend + ", windSpeed=" + windSpeed + ", windDirection=" + windDirection + ", iconURL=" + iconUrl + ", shortForecast=" + shortForecast + ", detailedForecast=" + detailedForecast + '}';
     }
 
