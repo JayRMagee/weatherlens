@@ -11,16 +11,16 @@ import java.util.TreeMap;
  */
 public class WeeklyForecast extends DailyForecast {
 
-    //private Map<Integer, DailyForecast> weeklyForecastMap;
     Location location;
+    DailyForecast[] weeklyForecast;
     int weeklyHighTemperature, weeklyLowTemperature;
 
     public WeeklyForecast(Location location) {
         this.location = location;
     }
 
-    public void generateWeeklyForecast() {
-        DailyForecast[] weeklyForecast = new DailyForecast[7];
+    private void generateWeeklyForecast() {
+        weeklyForecast = new DailyForecast[7];
         int j = 0;
         for (int i = 1; i <= 13; i = i + 2) {
             weeklyForecast[j] = new DailyForecast();
@@ -28,4 +28,18 @@ public class WeeklyForecast extends DailyForecast {
             j++;
         }
     }
+
+    public DailyForecast[] getWeeklyForecast() {
+        generateWeeklyForecast();
+        return weeklyForecast;
+    }
+
+    public void readArray() {
+        for (int i = 0; i < weeklyForecast.length; i++) {
+            System.out.println(weeklyForecast[i].toString());
+        }
+    }
+    
+    
+
 }
