@@ -38,14 +38,12 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        DetailedWeather d = new DetailedWeather();
-        launch();
+        //DetailedWeather d = new DetailedWeather();
+        //launch();
         Location l = new Location("new york");
-        //DailyForecast d = new DailyForecast();
-        //d.generateDailyForecast(l,3);
-        //System.out.println(d.toString());
+        DailyForecast d = new DailyForecast();
         
-        
-        
+        WeeklyForecast w = new WeeklyForecast(l);
+        w.generateWeeklyForecast();
     }
 }
