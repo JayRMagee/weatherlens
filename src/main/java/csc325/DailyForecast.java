@@ -100,8 +100,14 @@ public class DailyForecast {
                 windDirection = (windDirections[i].split(",")[0].trim());
                 this.setWindDirection(windDirection);
 
+                /*String[] icons = response.toString().split("\"icon\":");
+
+                String icon = icons[i].split(",")[0].replaceAll("\"", "").trim();
+
+                return icon;*/
+                
                 String[] iconUrls = response.toString().split("\"icon\":");
-                iconUrl = (iconUrls[i].split(",")[0].trim());
+                iconUrl = iconUrls[i].split(",")[0].replaceAll("\"", "").trim();
                 this.setIconUrl(iconUrl);
 
                 String[] shortForecasts = response.toString().split("\"shortForecast\":");
