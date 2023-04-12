@@ -39,13 +39,15 @@ public class Home {
     @FXML
     private NumberAxis homeNumberAxis;
 
-    DetailedWeather d1 = new DetailedWeather();
-    int highestTemperature = 0;
-    int lowestTemperature = d1.getTemperature(1);
+   
 
-    public void initialize() throws IOException {
-        displayChartData();
-        todayImage();
+    public void initialize() throws IOException{
+        Location location = new Location("Farmingdale, NY");
+        WeeklyForecast weeklyForecast = new WeeklyForecast(location);
+        weeklyForecast.getWeeklyForecast();
+        
+        displayChartData(weeklyForecast);
+        //todayImage(weeklyForecast);
     }
 
     /**
@@ -56,29 +58,32 @@ public class Home {
      * @author Jonathan Vasquez
      * @throws IOException
      */
-    public void displayChartData() throws IOException {
+    public void displayChartData(WeeklyForecast wf) throws IOException {
         // create a number axis for the y-axis
         XYChart.Series<String, Number> weatherSeries = new XYChart.Series<>();
-        tempLabel.setText(Integer.toString(d1.getTemperature(1)) + "°F");
+        tempLabel.setText(Integer.toString(wf.getTemperatures(1)) + "°F");
 
         homeForecastScatterChart.getXAxis().setTickLabelRotation(360);
         homeForecastScatterChart.getXAxis().setTickLabelFill(Color.BLACK);
         homeForecastScatterChart.getYAxis().setTickLabelFill(Color.BLACK);
+        
+        int highestTemperature = 0;
+        int lowestTemperature = wf.getTemperatures(1);
 
         // add some data points to the series
         for (int i = 1; i <= 13; i = i + 2) {
-            String day = d1.getDay(i);
-            int temperature = d1.getTemperature(i);
-            String iconLink = d1.getIcon(i);
+            String day = wf.getDays(i);
+            int temperature = wf.getTemperatures(i);
+            String iconLink = wf.getIcons(i);
 
             XYChart.Data<String, Number> data = new XYChart.Data<>(day, temperature);
             weatherSeries.getData().add(data);
 
             // create an image view for the icon and add it to the data point
-            Image icon = new Image(iconLink);
-            ImageView imageView = new ImageView(icon);
+            //Image icon = new Image(iconLink);
+            //ImageView imageView = new ImageView(icon);
 
-            imageView.setFitWidth(40);
+            /*imageView.setFitWidth(40);
             imageView.setFitHeight(40);
             imageView.setClip(new Circle(15, 15, 15));
             Circle circle = new Circle(15, 15, 16);
@@ -86,7 +91,7 @@ public class Home {
             circle.setStrokeWidth(2);
 
             Group group = new Group(circle, imageView);
-            data.setNode(group);
+            data.setNode(group);*/
 
             if (temperature > highestTemperature) {
                 highestTemperature = temperature;
@@ -106,8 +111,8 @@ public class Home {
     /**
      * @author Jonathan Vasquez
      */
-    public void todayImage() {
-        String iconLink = d1.getIcon(1);
+    public void todayImage(WeeklyForecast wf) {
+        String iconLink = wf.getIcons(1);
 
         Image icon = new Image(iconLink);
         todayImage.setImage(icon);
