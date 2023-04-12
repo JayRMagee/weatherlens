@@ -39,45 +39,29 @@ public class WeeklyForecast extends DailyForecast {
             System.out.println(weeklyForecast[i].toString());
         }
     }
-    public void getDays() {
-        for (int i = 0; i < weeklyForecast.length; i++) {
-            System.out.println(weeklyForecast[i].getName());
-        }
+    public String getDays(int i) {
+            return weeklyForecast[i].getName();
     }
-     public void getPeriods() {
-        for (int i = 0; i < weeklyForecast.length; i++) {
-            System.out.println(weeklyForecast[i].getNumber());
-        }
+     public int getPeriods(int i) {
+            return weeklyForecast[i].getNumber();
     }
-     public void getTempertures() {
-        for (int i = 0; i < weeklyForecast.length; i++) {
-            System.out.println(weeklyForecast[i].getTemperature());
-        }
+     public int getTemperatures(int i) {
+            return weeklyForecast[i].getTemperature();
     }
-     public void getWindSpeeds() {
-        for (int i = 0; i < weeklyForecast.length; i++) {
-            System.out.println(weeklyForecast[i].getWindSpeed());
-        }
+     public String getWindSpeeds(int i) {
+            return weeklyForecast[i].getWindSpeed();
     }
-      public void getWindDirections() {
-        for (int i = 0; i < weeklyForecast.length; i++) {
-            System.out.println(weeklyForecast[i].getWindDirection());
-        }
+      public String getWindDirections(int i) {
+            return weeklyForecast[i].getWindDirection();
     }
-       public void getIcons() {
-        for (int i = 0; i < weeklyForecast.length; i++) {
-            System.out.println(weeklyForecast[i].getIconUrl());
-        }
+       public String getIcons(int i) {
+            return weeklyForecast[i].getIconUrl();
     }
-        public void getShortForecasts() {
-        for (int i = 0; i < weeklyForecast.length; i++) {
-            System.out.println(weeklyForecast[i].getShortForecast());
-        }
+        public String getShortForecasts(int i) {
+            return weeklyForecast[i].getShortForecast();
     }
-     public void getDetailedForecasts() {
-        for (int i = 0; i < weeklyForecast.length; i++) {
-            System.out.println(weeklyForecast[i].getDetailedForecast());
-        }
+     public String getDetailedForecasts(int i) {
+           return weeklyForecast[i].getDetailedForecast();
     }
 
 }
