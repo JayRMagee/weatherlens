@@ -42,12 +42,14 @@ public class Home {
    
 
     public void initialize() throws IOException{
-        Location location = new Location("Farmingdale, NY");
+        Location location = new Location("New York");
+        DailyForecast dailyForecast = new DailyForecast();
+        dailyForecast.generateDailyForecast(location, 1);
         WeeklyForecast weeklyForecast = new WeeklyForecast(location);
         weeklyForecast.getWeeklyForecast();
         
         displayChartData(weeklyForecast);
-        //todayImage(weeklyForecast);
+        todayImage(weeklyForecast);
     }
 
     /**
@@ -80,10 +82,10 @@ public class Home {
             weatherSeries.getData().add(data);
 
             // create an image view for the icon and add it to the data point
-            //Image icon = new Image(iconLink);
-            //ImageView imageView = new ImageView(icon);
+            Image icon = new Image(iconLink);
+            ImageView imageView = new ImageView(icon);
 
-            /*imageView.setFitWidth(40);
+            imageView.setFitWidth(40);
             imageView.setFitHeight(40);
             imageView.setClip(new Circle(15, 15, 15));
             Circle circle = new Circle(15, 15, 16);
@@ -91,7 +93,7 @@ public class Home {
             circle.setStrokeWidth(2);
 
             Group group = new Group(circle, imageView);
-            data.setNode(group);*/
+            data.setNode(group);
 
             if (temperature > highestTemperature) {
                 highestTemperature = temperature;

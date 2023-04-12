@@ -61,8 +61,8 @@ public class Login {
         Scene appScene = new Scene(FXMLLoader.load(getClass().getResource("home.fxml")));
 
         appStage.setScene(appScene);
-        appStage.setMaxWidth(1200);
-        appStage.setMaxHeight(800);
+        appStage.setWidth(1200);
+        appStage.setHeight(800);
         appStage.sizeToScene();
         appStage.show();
 

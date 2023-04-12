@@ -43,5 +43,8 @@ public class App extends Application {
         WeeklyForecast w = new WeeklyForecast(l);
         w.getWeeklyForecast();
         w.readArray();
+        
+        DetailedWeather d1 = new DetailedWeather();
+        System.out.println(d1.getIcon(1));
     }
 }
