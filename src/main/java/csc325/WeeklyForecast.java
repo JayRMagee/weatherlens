@@ -39,7 +39,45 @@ public class WeeklyForecast extends DailyForecast {
             System.out.println(weeklyForecast[i].toString());
         }
     }
-    
-    
+    public void getDays() {
+        for (int i = 0; i < weeklyForecast.length; i++) {
+            System.out.println(weeklyForecast[i].getName());
+        }
+    }
+     public void getPeriods() {
+        for (int i = 0; i < weeklyForecast.length; i++) {
+            System.out.println(weeklyForecast[i].getNumber());
+        }
+    }
+     public void getTempertures() {
+        for (int i = 0; i < weeklyForecast.length; i++) {
+            System.out.println(weeklyForecast[i].getTemperature());
+        }
+    }
+     public void getWindSpeeds() {
+        for (int i = 0; i < weeklyForecast.length; i++) {
+            System.out.println(weeklyForecast[i].getWindSpeed());
+        }
+    }
+      public void getWindDirections() {
+        for (int i = 0; i < weeklyForecast.length; i++) {
+            System.out.println(weeklyForecast[i].getWindDirection());
+        }
+    }
+       public void getIcons() {
+        for (int i = 0; i < weeklyForecast.length; i++) {
+            System.out.println(weeklyForecast[i].getIconUrl());
+        }
+    }
+        public void getShortForecasts() {
+        for (int i = 0; i < weeklyForecast.length; i++) {
+            System.out.println(weeklyForecast[i].getShortForecast());
+        }
+    }
+     public void getDetailedForecasts() {
+        for (int i = 0; i < weeklyForecast.length; i++) {
+            System.out.println(weeklyForecast[i].getDetailedForecast());
+        }
+    }
 
 }
