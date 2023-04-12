@@ -38,8 +38,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        //DetailedWeather d = new DetailedWeather();
-        //launch();
+        launch();
         Location l = new Location("Los Angeles");
         WeeklyForecast w = new WeeklyForecast(l);
         w.getWeeklyForecast();
