@@ -72,8 +72,11 @@ public class Home {
         int highestTemperature = 0;
         int lowestTemperature = wf.getTemperatures(1);
 
-        // add some data points to the series
-        for (int i = 1; i <= 13; i = i + 2) {
+        /* Add some data points to the series
+        (For loop loops through the 7 days of the array, 
+        NOT the data points inside the API (which required i + 2, i <= 13), 
+        was causing out of bounds error.)*/
+        for (int i = 0; i < 7; i++) { 
             String day = wf.getDays(i);
             int temperature = wf.getTemperatures(i);
             String iconLink = wf.getIcons(i);
