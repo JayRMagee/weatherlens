@@ -110,4 +110,11 @@ public class Location {
     private void fetchDailyForecast(){
         //dailyForecast = dailyForecast object returned by object mapping API resonse
     }
+
+    @Override
+    public String toString() {
+        return locationSearchString;
+    }
+    
+    
 }
