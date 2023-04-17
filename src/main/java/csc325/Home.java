@@ -42,11 +42,12 @@ public class Home {
    
 
     public void initialize() throws IOException{
-        Location location = new Location("New York");
+        Location location = new Location("Chicago");
         DailyForecast dailyForecast = new DailyForecast();
         dailyForecast.generateDailyForecast(location, 1);
         WeeklyForecast weeklyForecast = new WeeklyForecast(location);
         weeklyForecast.getWeeklyForecast();
+        stateLabel.setText(location.toString());
         
         displayChartData(weeklyForecast);
         todayImage(weeklyForecast);
@@ -63,14 +64,14 @@ public class Home {
     public void displayChartData(WeeklyForecast wf) throws IOException {
         // create a number axis for the y-axis
         XYChart.Series<String, Number> weatherSeries = new XYChart.Series<>();
-        tempLabel.setText(Integer.toString(wf.getTemperatures(1)) + "°F");
+        tempLabel.setText(Integer.toString(wf.getTemperatures(0)) + "°F");
 
         homeForecastScatterChart.getXAxis().setTickLabelRotation(360);
         homeForecastScatterChart.getXAxis().setTickLabelFill(Color.BLACK);
         homeForecastScatterChart.getYAxis().setTickLabelFill(Color.BLACK);
         
-        int highestTemperature = 0;
-        int lowestTemperature = wf.getTemperatures(1);
+        int highestTemperature = wf.getTemperatures(0);
+        int lowestTemperature = wf.getTemperatures(0);
 
         /* Add some data points to the series
         (For loop loops through the 7 days of the array, 
@@ -106,8 +107,8 @@ public class Home {
             }
         }
 
-        homeNumberAxis.setUpperBound(highestTemperature + 10);
-        homeNumberAxis.setLowerBound(lowestTemperature - 10);
+        homeNumberAxis.setUpperBound(Math.round((highestTemperature + 10) / 10) * 10);
+        homeNumberAxis.setLowerBound(Math.round((lowestTemperature - 10) / 10) * 10);
 
         // add the data series to the chart
         homeForecastScatterChart.getData().add(weatherSeries);
@@ -117,7 +118,8 @@ public class Home {
      * @author Jonathan Vasquez
      */
     public void todayImage(WeeklyForecast wf) {
-        String iconLink = wf.getIcons(1);
+        
+        String iconLink = wf.getIcons(0);
 
         Image icon = new Image(iconLink);
         todayImage.setImage(icon);
