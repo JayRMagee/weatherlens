@@ -42,7 +42,7 @@ public class Home {
    
 
     public void initialize() throws IOException{
-        Location location = new Location("Chicago");
+        Location location = new Location("New York");
         DailyForecast dailyForecast = new DailyForecast();
         dailyForecast.generateDailyForecast(location, 1);
         WeeklyForecast weeklyForecast = new WeeklyForecast(location);
