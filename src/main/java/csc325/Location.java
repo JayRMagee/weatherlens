@@ -25,11 +25,6 @@ public class Location {
     int gridX;
     int gridY;
     String locationSearchString;
-   
-    String dailyForecastURL;
-    String hourlyForecastURL;
-    DetailedWeather dailyForecast;
-    DetailedWeather hourlyForecast;
 
     public Location(String locationSearchString) {
         this.locationSearchString = locationSearchString;
@@ -105,10 +100,6 @@ public class Location {
         } catch (IOException | NumberFormatException ex) {
             System.out.println(ex);
         }
-    }
-    
-    private void fetchDailyForecast(){
-        //dailyForecast = dailyForecast object returned by object mapping API resonse
     }
 
     @Override
