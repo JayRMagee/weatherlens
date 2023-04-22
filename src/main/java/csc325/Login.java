@@ -62,8 +62,9 @@ public class Login {
 
         appStage.setScene(appScene);
         appStage.setWidth(1200);
-        appStage.setHeight(800);
+        appStage.setHeight(830);
         appStage.sizeToScene();
+        appStage.setResizable(false);
         appStage.show();
 
     }

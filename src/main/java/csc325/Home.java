@@ -1,6 +1,7 @@
 package csc325;
 
 import com.jfoenix.controls.JFXTextField;
+import static csc325.App.stage;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
@@ -34,18 +35,17 @@ public class Home {
     private Label stateLabel;
 
     @FXML
-    private JFXTextField search;
+    private JFXTextField locationSearch;
 
     @FXML
     private NumberAxis homeNumberAxis;
 
-   
+    Location location = new Location("New York");
+    WeeklyForecast weeklyForecast = new WeeklyForecast(location);
+    DailyForecast dailyForecast = new DailyForecast();
 
     public void initialize() throws IOException{
-        Location location = new Location("New York");
-        DailyForecast dailyForecast = new DailyForecast();
         dailyForecast.generateDailyForecast(location, 1);
-        WeeklyForecast weeklyForecast = new WeeklyForecast(location);
         weeklyForecast.getWeeklyForecast();
         stateLabel.setText(location.toString());
         
@@ -126,6 +126,22 @@ public class Home {
 
         todayImage.setClip(new Circle(85, 85, 85));
 
+    }
+    
+    @FXML
+    public void update() throws IOException {
+        String newLocation = locationSearch.getText();
+        if (!newLocation.isBlank()) {
+            location = new Location(newLocation);
+            weeklyForecast = new WeeklyForecast(location);
+            weeklyForecast.getWeeklyForecast();
+            stateLabel.setText(location.toString());
+            locationSearch.clear();
+
+            homeForecastScatterChart.getData().clear();
+            displayChartData(weeklyForecast);
+            todayImage(weeklyForecast);
+        }
     }
 
 }
