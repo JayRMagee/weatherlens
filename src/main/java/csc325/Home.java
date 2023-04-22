@@ -130,6 +130,7 @@ public class Home {
     
     @FXML
     public void update() throws IOException {
+       
         String newLocation = locationSearch.getText();
         if (!newLocation.isBlank()) {
             location = new Location(newLocation);
