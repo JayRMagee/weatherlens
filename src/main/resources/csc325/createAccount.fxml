@@ -1,50 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.Login">
+<AnchorPane fx:id="accountPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" stylesheets="@WeatherLens.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="csc325.Login">
    <children>
-      <VBox spacing="10.0">
-         <children>
-            <Label text="Create Account">
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label text="Create an account for a personalized weather forecast and other exclusive features." textAlignment="JUSTIFY" wrapText="true">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label text="First Name">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="firstNameText" />
-            <Label text="Username" VBox.vgrow="NEVER">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </Label>
-            <TextField fx:id="userNameText" />
-            <Label text="Password" />
-            <TextField fx:id="passwordText" />
-            <Label text="Home Zip Code" />
-            <TextField fx:id="homeZipCodeText" />
-            <Button fx:id="createAccountButton" defaultButton="true" mnemonicParsing="false" onAction="#handleCreateAccountButton" prefHeight="26.0" prefWidth="371.0" text="Create Account" />
-         </children>
-      </VBox>
+      <Label alignment="CENTER" layoutX="71.0" layoutY="14.0" text="Create Account">
+         <font>
+            <Font name="Rockwell" size="36.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="57.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="350.0" text="Create an account for a personalized weather forecast and other exclusive features." textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+         <font>
+            <Font name="Rockwell" size="18.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="firstNameText" labelFloat="true" layoutX="75.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Enter your first name" unFocusColor="GREY">
+         <font>
+            <Font name="Rockwell" size="18.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="userNameText" labelFloat="true" layoutX="75.0" layoutY="225.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Enter a username" unFocusColor="GREY">
+         <font>
+            <Font name="Rockwell" size="18.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="passwordText" labelFloat="true" layoutX="75.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Enter a password" unFocusColor="GREY">
+         <font>
+            <Font name="Rockwell" size="18.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="homeZipCodeText" labelFloat="true" layoutX="75.0" layoutY="375.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Enter your zip code" unFocusColor="GREY">
+         <font>
+            <Font name="Rockwell" size="18.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton fx:id="createAccountButton" buttonType="RAISED" layoutX="50.0" layoutY="450.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#sendAccountDB" prefHeight="50.0" prefWidth="300.0" ripplerFill="#0777ff" styleClass="loginBtn" text="Create Account">
+         <font>
+            <Font name="Rockwell" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="50.0" layoutY="525.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#showLoginPane" prefHeight="50.0" prefWidth="300.0" ripplerFill="#0777ff" styleClass="loginBtn" text="Back">
+         <font>
+            <Font name="Rockwell" size="18.0" />
+         </font>
+      </JFXButton>
    </children>
-   <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-   </padding>
-</VBox>
+</AnchorPane>

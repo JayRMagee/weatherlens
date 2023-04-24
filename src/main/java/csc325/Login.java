@@ -1,83 +1,102 @@
 package csc325;
 
-import java.io.BufferedReader;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import java.sql.*;
 import javafx.scene.control.Alert;
-import java.net.*;
-import java.io.*;
+import javafx.scene.Parent;
+import javafx.scene.layout.Pane;
 
+/**
+ * This class is designed to hold the methods needed to login in to the weather app 
+ * as well as controls the page for creating an account for first time users.
+ * @author nicholasshah
+ */
 public class Login {
+    
 
     @FXML
-    private TextField passwordLoginText;
+    private Pane accountPane;
     @FXML
-    private TextField userLoginText;
+    private Pane contentPane;
     @FXML
-    private TextField firstNameText;
+    private JFXTextField passwordLoginText;
     @FXML
-    private TextField userNameText;
+    private JFXTextField userLoginText;
     @FXML
-    private TextField passwordText;
+    private JFXTextField firstNameText;
     @FXML
-    private TextField homeZipCodeText;
+    private JFXTextField userNameText;
     @FXML
-    private Button loginButton;
+    private JFXTextField passwordText;
     @FXML
-    private Button createAccountButton;
+    private JFXTextField homeZipCodeText;
+    @FXML
+    private JFXButton loginButton;
+    @FXML
+    private JFXButton createAccountButton;
 
     @FXML
-    private void handleLoginButton() throws IOException {
-        // code to verify login credentials and switch to main page
+    private void showLoginPane() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        App.stage.getScene().setRoot(root);
+    }
+    
+    /**
+     * code to verify login credentials and switch to main page
+     *
+     * @throws IOException
+     */
+    public void handleLoginButton() throws IOException {
 
         Stage stage = (Stage) loginButton.getScene().getWindow();
         stage.close();
 
         Stage appStage = new Stage();
-        Scene appScene = new Scene(FXMLLoader.load(getClass().getResource("primary.fxml")));
+        Scene appScene = new Scene(FXMLLoader.load(getClass().getResource("home.fxml")));
 
         appStage.setScene(appScene);
-        appStage.setWidth(1280); // set the initial width of the main page's window
-        appStage.setHeight(720); // set the initial height of the main page's window
+        appStage.setWidth(1220);
+        appStage.setHeight(825);
+        appStage.setResizable(false);
         appStage.show();
 
     }
 
-    @FXML
-    private void handleCreateAccountPageOpenLabel() throws IOException {
-        Stage createStage = new Stage();
-        Scene createScene = new Scene(FXMLLoader.load(getClass().getResource("createAccount.fxml")));
-
-        createStage.setScene(createScene);
-        createStage.setWidth(350); // set the initial width of the main page's window
-        createStage.setHeight(450); // set the initial height of the main page's window
-        createStage.show();
+    /**
+     * Method to replace login pane with create account pane.
+     *
+     * @throws IOException
+     */
+    public void handleCreateAccountPageOpenLabel() throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("createAccount.fxml"));
+        contentPane.getChildren().removeAll();
+        contentPane.getChildren().setAll(fxml);
     }
 
-    @FXML
-    private void handleCreateAccountButton() {
+    /**
+     * Method to send data to DB and return to login page.
+     *
+     * @throws IOException
+     */
+    public void handleCreateAccountButton() throws IOException {
         Stage stage = (Stage) createAccountButton.getScene().getWindow();
         sendAccountDB();
-        stage.close();
 
+        // stage.close();
     }
 
-    public void sendAccountDB() {
+    /**
+     * Method to insert user information into database, thus crating an account.
+     *
+     * @throws IOException
+     */
+    public void sendAccountDB() throws IOException {
         String databaseURL = "";
         Connection conn = null;
         PreparedStatement userExist = null;
@@ -92,13 +111,14 @@ public class Login {
                 System.out.println("User already exists");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("You cannot use this username.");
+                alert.getDialogPane().getStylesheets().add("csc325/WeatherLens.css");
                 alert.show();
             } else {
                 try {
-                    if (!firstNameText.getText().isEmpty() ||
-                            !userNameText.getText().isEmpty() ||
-                            !passwordText.getText().isEmpty() ||
-                            !homeZipCodeText.getText().isEmpty()) {
+                    if (!firstNameText.getText().isEmpty()
+                            || !userNameText.getText().isEmpty()
+                            || !passwordText.getText().isEmpty()
+                            || !homeZipCodeText.getText().isEmpty()) {
                         User u1 = new User();
                         u1.setFirstName(firstNameText.getText());
                         u1.setUsername(userNameText.getText());
@@ -118,6 +138,7 @@ public class Login {
                         System.out.println("Blank Fields");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setContentText("All fields must be filled.");
+                        alert.getDialogPane().getStylesheets().add("csc325/WeatherLens.css");
                         alert.show();
                     }
                 } catch (SQLException e) {
@@ -151,37 +172,49 @@ public class Login {
             }
 
         }
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        App.stage.getScene().setRoot(root);
 
     }
 
-    public void getWeather() throws IOException {
-        // Construct the API URL using the latitude and longitude
-        URL url = new URL("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
+    /**
+     * method to display hourly weather
+     *
+     * @throws IOException
+     */
+//    public void getWeather() throws IOException {
+//        // Construct the API URL using the latitude and longitude
+//        URL url = new URL("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
+//
+//        // Make a request to the NWS API
+//        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+//        con.setRequestMethod("GET");
+//
+//        // Check if the request was successful
+//        if (con.getResponseCode() == 200) {
+//            StringBuilder response = new StringBuilder();
+//            try ( BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+//                String inputLine;
+//                while ((inputLine = in.readLine()) != null) {
+//                    response.append(inputLine);
+//                }
+//            }
+//
+//            String[] temperatures = response.toString().split("\"temperature\":");
+//            for (int i = 1; i < temperatures.length; i++) {
+//                int temperature = Integer.parseInt(temperatures[i].split(",")[0].trim());
+//                System.out.println("Temperature " + i + ": " + temperature);
+//            }
+//        } else {
+//            System.out.println("Error: " + con.getResponseCode());
+//        }
+//    }
 
-        // Make a request to the NWS API
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-
-        // Check if the request was successful
-        if (con.getResponseCode() == 200) {
-            StringBuilder response = new StringBuilder();
-            try ( BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
-                String inputLine;
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-            }
-
-            String[] temperatures = response.toString().split("\"temperature\":");
-            for (int i = 1; i < temperatures.length; i++) {
-                int temperature = Integer.parseInt(temperatures[i].split(",")[0].trim());
-                System.out.println("Temperature " + i + ": " + temperature);
-            }
-        } else {
-            System.out.println("Error: " + con.getResponseCode());
-        }
-    }
-
+    /**
+     * method that confirms login credentials
+     *
+     * @throws IOException
+     */
     public void checkLogin() throws IOException {
         String databaseURL = "";
 
@@ -199,6 +232,7 @@ public class Login {
                 System.out.println("User not found");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Credentials are wrong");
+                alert.getDialogPane().getStylesheets().add("csc325/WeatherLens.css");
                 alert.show();
             } else {
                 while (result.next()) {
@@ -210,6 +244,7 @@ public class Login {
                         System.out.println("Password wrong");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setContentText("Wrong");
+                        alert.getDialogPane().getStylesheets().add("csc325/WeatherLens.css");
                         alert.show();
 
                     }

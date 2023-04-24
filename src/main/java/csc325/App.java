@@ -15,13 +15,16 @@ import static javafx.application.Application.launch;
 public class App extends Application {
 
     private static Scene scene;
+    public static Stage stage = null;                                           // placeholder stage to hold the original version of the login page.
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("login"), 300, 320);
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("WeatherLens");
         stage.setResizable(false);
+        this.stage = stage;
         stage.show();
     }
 
@@ -36,6 +39,9 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+        Location l = new Location("Los Angeles");
+        WeeklyForecast w = new WeeklyForecast(l);
+        w.getWeeklyForecast();
+        w.readArray();
     }
-
 }
