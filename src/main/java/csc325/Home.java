@@ -54,7 +54,8 @@ public class Home {
     DailyForecast dailyForecast = new DailyForecast();
 
     public void initialize() throws IOException {
-        dailyForecast.generateDailyForecast(location, 1);
+       Thread t = new Thread(()-> {dailyForecast.generateDailyForecast(location, 1);});
+       t.start();
         weeklyForecast.getWeeklyForecast();
         stateLabel.setText(location.toString());
 
