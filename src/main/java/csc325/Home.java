@@ -27,7 +27,16 @@ public class Home {
 
     @FXML
     private ScatterChart<String, Number> homeForecastScatterChart;
-
+    @FXML
+    private Label forecastLabel;
+    @FXML
+    private Label windDirectionLabel;
+    @FXML
+    private Label windSpeedLabel;
+    @FXML
+    private Label dateLabel;
+    @FXML
+    private Label tempertureLabel;
     @FXML
     private Label tempLabel;
 
@@ -44,13 +53,22 @@ public class Home {
     WeeklyForecast weeklyForecast = new WeeklyForecast(location);
     DailyForecast dailyForecast = new DailyForecast();
 
-    public void initialize() throws IOException{
+    public void initialize() throws IOException {
         dailyForecast.generateDailyForecast(location, 1);
         weeklyForecast.getWeeklyForecast();
         stateLabel.setText(location.toString());
-        
+
         displayChartData(weeklyForecast);
         todayImage(weeklyForecast);
+        displayForecastDetails(weeklyForecast);
+    }
+
+    public void displayForecastDetails(WeeklyForecast wf) {
+        dateLabel.setText(wf.getDays(0));
+        tempertureLabel.setText(String.valueOf(wf.getTemperatures(0)));
+        windSpeedLabel.setText(wf.getWindSpeeds(0));
+        windDirectionLabel.setText(wf.getWindDirections(0));
+        forecastLabel.setText(wf.getDetailedForecasts(0));
     }
 
     /**
@@ -69,7 +87,7 @@ public class Home {
         homeForecastScatterChart.getXAxis().setTickLabelRotation(360);
         homeForecastScatterChart.getXAxis().setTickLabelFill(Color.BLACK);
         homeForecastScatterChart.getYAxis().setTickLabelFill(Color.BLACK);
-        
+
         int highestTemperature = wf.getTemperatures(0);
         int lowestTemperature = wf.getTemperatures(0);
 
@@ -77,7 +95,7 @@ public class Home {
         (For loop loops through the 7 days of the array, 
         NOT the data points inside the API (which required i + 2, i <= 13), 
         was causing out of bounds error.)*/
-        for (int i = 0; i < 7; i++) { 
+        for (int i = 0; i < 7; i++) {
             String day = wf.getDays(i);
             int temperature = wf.getTemperatures(i);
             String iconLink = wf.getIcons(i);
@@ -118,7 +136,7 @@ public class Home {
      * @author Jonathan Vasquez
      */
     public void todayImage(WeeklyForecast wf) {
-        
+
         String iconLink = wf.getIcons(0);
 
         Image icon = new Image(iconLink);
@@ -127,10 +145,10 @@ public class Home {
         todayImage.setClip(new Circle(85, 85, 85));
 
     }
-    
+
     @FXML
     public void update() throws IOException {
-       
+
         String newLocation = locationSearch.getText();
         if (!newLocation.isBlank()) {
             location = new Location(newLocation);
