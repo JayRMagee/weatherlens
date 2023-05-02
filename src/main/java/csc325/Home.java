@@ -82,16 +82,19 @@ public class Home {
      */
     public void displayChartData(WeeklyForecast wf) throws IOException {
         // create a number axis for the y-axis
+        
         XYChart.Series<String, Number> weatherSeries = new XYChart.Series<>();
         tempLabel.setText(Integer.toString(wf.getTemperatures(0)) + "°F");
+        
 
         homeForecastScatterChart.getXAxis().setTickLabelRotation(360);
         homeForecastScatterChart.getXAxis().setTickLabelFill(Color.BLACK);
         homeForecastScatterChart.getYAxis().setTickLabelFill(Color.BLACK);
 
-        int highestTemperature = wf.getTemperatures(0);
-        int lowestTemperature = wf.getTemperatures(0);
-
+        homeForecastScatterChart.getData().clear();
+        weatherSeries.getData().clear();
+        homeNumberAxis.setUpperBound((Math.ceil((wf.getWeeklyHighTemperature() + 10) / 10.0) * 10.0));
+        homeNumberAxis.setLowerBound(Math.floor((wf.getWeeklyLowTemperature() - 10) / 10) * 10);
         /* Add some data points to the series
         (For loop loops through the 7 days of the array, 
         NOT the data points inside the API (which required i + 2, i <= 13), 
@@ -117,17 +120,9 @@ public class Home {
 
             Group group = new Group(circle, imageView);
             data.setNode(group);
-
-            if (temperature > highestTemperature) {
-                highestTemperature = temperature;
-            }
-            if (temperature < lowestTemperature) {
-                lowestTemperature = temperature;
-            }
         }
 
-        homeNumberAxis.setUpperBound(Math.round((highestTemperature + 10) / 10) * 10);
-        homeNumberAxis.setLowerBound(Math.round((lowestTemperature - 10) / 10) * 10);
+        
 
         // add the data series to the chart
         homeForecastScatterChart.getData().add(weatherSeries);
@@ -150,17 +145,18 @@ public class Home {
     @FXML
     public void update() throws IOException {
 
+        
         String newLocation = locationSearch.getText();
         if (!newLocation.isBlank()) {
             location = new Location(newLocation);
-            weeklyForecast = new WeeklyForecast(location);
-            weeklyForecast.getWeeklyForecast();
+            WeeklyForecast wF = new WeeklyForecast(location);
+            wF.getWeeklyForecast();
             stateLabel.setText(location.toString());
             locationSearch.clear();
 
-            homeForecastScatterChart.getData().clear();
-            displayChartData(weeklyForecast);
-            todayImage(weeklyForecast);
+            
+            displayChartData(wF);
+            todayImage(wF);
         }
     }
 

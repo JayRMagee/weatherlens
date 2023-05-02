@@ -39,29 +39,60 @@ public class WeeklyForecast extends DailyForecast {
             System.out.println(weeklyForecast[i].toString());
         }
     }
+
     public String getDays(int i) {
-            return weeklyForecast[i].getName();
-    }
-     public int getPeriods(int i) {
-            return weeklyForecast[i].getNumber();
-    }
-     public int getTemperatures(int i) {
-            return weeklyForecast[i].getTemperature();
-    }
-     public String getWindSpeeds(int i) {
-            return weeklyForecast[i].getWindSpeed();
-    }
-      public String getWindDirections(int i) {
-            return weeklyForecast[i].getWindDirection();
-    }
-       public String getIcons(int i) {
-            return weeklyForecast[i].getIconUrl();
-    }
-        public String getShortForecasts(int i) {
-            return weeklyForecast[i].getShortForecast();
-    }
-     public String getDetailedForecasts(int i) {
-           return weeklyForecast[i].getDetailedForecast();
+        return weeklyForecast[i].getName();
     }
 
+    public int getPeriods(int i) {
+        return weeklyForecast[i].getNumber();
+    }
+
+    public int getTemperatures(int i) {
+        return weeklyForecast[i].getTemperature();
+    }
+
+    public String getWindSpeeds(int i) {
+        return weeklyForecast[i].getWindSpeed();
+    }
+
+    public String getWindDirections(int i) {
+        return weeklyForecast[i].getWindDirection();
+    }
+
+    public String getIcons(int i) {
+        return weeklyForecast[i].getIconUrl();
+    }
+
+    public String getShortForecasts(int i) {
+        return weeklyForecast[i].getShortForecast();
+    }
+
+    public String getDetailedForecasts(int i) {
+        return weeklyForecast[i].getDetailedForecast();
+    }
+
+    public int getWeeklyHighTemperature() {
+        if (weeklyHighTemperature == 0) {
+            for (DailyForecast dailyForecast : weeklyForecast) {
+                int dailyHighTemperature = dailyForecast.getTemperature();
+                if (dailyHighTemperature > weeklyHighTemperature) {
+                    weeklyHighTemperature = dailyHighTemperature;
+                }
+            }
+        }
+        return weeklyHighTemperature;
+    }
+
+    public int getWeeklyLowTemperature() {
+        if (weeklyLowTemperature == 0) {
+            for (DailyForecast dailyForecast : weeklyForecast) {
+                int dailyLowTemperature = dailyForecast.getTemperature();
+                if (weeklyLowTemperature == 0 || dailyLowTemperature < weeklyLowTemperature) {
+                    weeklyLowTemperature = dailyLowTemperature;
+                }
+            }
+        }
+        return weeklyLowTemperature;
+    }
 }
