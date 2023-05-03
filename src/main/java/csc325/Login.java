@@ -17,7 +17,7 @@ import javafx.scene.layout.Pane;
  * app as well as controls the page for creating an account for first time
  * users.
  *
- * @author nicholasshah
+ * @author Nicholas Shah
  */
 public class Login {
 
@@ -88,8 +88,6 @@ public class Login {
     public void handleCreateAccountButton() throws IOException {
         Stage stage = (Stage) createAccountButton.getScene().getWindow();
         sendAccountDB();
-
-        // stage.close();
     }
 
     /**
@@ -222,4 +220,4 @@ public class Login {
             e.printStackTrace();
         }
     }
-        }
+}
