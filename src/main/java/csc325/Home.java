@@ -1,7 +1,6 @@
 package csc325;
 
 import com.jfoenix.controls.JFXTextField;
-import static csc325.App.stage;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
