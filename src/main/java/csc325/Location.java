@@ -71,7 +71,7 @@ public class Location {
             // Make a request to the NWS API
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
-            
+
             // Check if the request was successful
             if (con.getResponseCode() == 200) {
                 StringBuilder response = new StringBuilder();
@@ -81,16 +81,16 @@ public class Location {
                         response.append(inputLine);
                     }
                 }
-                
+
                 String[] splitResponse = response.toString().split("\"gridId\":");
                 for (int i = 1; i < splitResponse.length; i++) {
                     gridID = splitResponse[i].replaceAll("\"", "")
-                        .split("[,\"]")[0]
-                        .trim();
-                    
+                            .split("[,\"]")[0]
+                            .trim();
+
                     String[] gridx = response.toString().split("\"gridX\":");
                     gridX = Integer.parseInt(gridx[i].split(",")[0].trim());
-                    
+
                     String[] gridy = response.toString().split("\"gridY\":");
                     gridY = Integer.parseInt(gridy[i].split(",")[0].trim());
                 }
@@ -102,10 +102,43 @@ public class Location {
         }
     }
 
+    String city;
+    String state;
+    private String fetchLocation() {
+        try {
+            // Construct the API URL using the latitude and longitude
+            URL url = new URL("https://api.weather.gov/points/" + latitude + "," + longitude);
+            // Make a request to the NWS API
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+
+            // Check if the request was successful
+            if (con.getResponseCode() == 200) {
+                StringBuilder response = new StringBuilder();
+                try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+                    String inputLine;
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                }
+
+                JSONObject jsonObject = new JSONObject(response.toString());
+                JSONObject relativeLocation = jsonObject.getJSONObject("properties").getJSONObject("relativeLocation").getJSONObject("properties");
+                city = relativeLocation.getString("city");
+                state = relativeLocation.getString("state");
+            } else {
+                System.out.println("Error: " + con.getResponseCode());
+            }
+        } catch (IOException | JSONException ex) {
+            System.out.println(ex);
+        }
+        
+    return city + ", " + state;
+    }
+
     @Override
     public String toString() {
-        return locationSearchString;
+        return fetchLocation();
     }
-    
-    
+
 }

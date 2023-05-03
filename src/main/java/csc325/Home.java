@@ -49,7 +49,7 @@ public class Home {
     @FXML
     private NumberAxis homeNumberAxis;
 
-    Location location = new Location("New York");
+    Location location = new Location("Farmingdale, New York");
     WeeklyForecast weeklyForecast = new WeeklyForecast(location);
     DailyForecast dailyForecast = new DailyForecast();
 

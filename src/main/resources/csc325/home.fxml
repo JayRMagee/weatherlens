@@ -51,7 +51,7 @@
                         </Label>
                      </children>
                   </VBox>
-                  <JFXTextField fx:id="locationSearch" labelFloat="true" layoutX="972.0" layoutY="28.0" onAction="#update" />
+                  <JFXTextField fx:id="locationSearch" labelFloat="true" layoutX="972.0" layoutY="28.0" onAction="#update" promptText="City, State" />
                   <JFXButton layoutX="1124.0" layoutY="28.0" onAction="#update" text="Search" />
                   <Label fx:id="dateLabel" layoutX="465.0" layoutY="74.0" text="Date" />
                   <Label fx:id="tempertureLabel" layoutX="446.0" layoutY="126.0" text="Temperture" />
