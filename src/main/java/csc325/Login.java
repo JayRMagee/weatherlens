@@ -13,12 +13,13 @@ import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 
 /**
- * This class is designed to hold the methods needed to login in to the weather app 
- * as well as controls the page for creating an account for first time users.
+ * This class is designed to hold the methods needed to login in to the weather
+ * app as well as controls the page for creating an account for first time
+ * users.
+ *
  * @author nicholasshah
  */
 public class Login {
-    
 
     @FXML
     private Pane accountPane;
@@ -46,7 +47,7 @@ public class Login {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         App.stage.getScene().setRoot(root);
     }
-    
+
     /**
      * code to verify login credentials and switch to main page
      *
@@ -221,6 +222,4 @@ public class Login {
             e.printStackTrace();
         }
     }
-    
-    
-}
+        }
