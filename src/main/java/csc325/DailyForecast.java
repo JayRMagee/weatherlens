@@ -43,7 +43,7 @@ public class DailyForecast {
         this.shortForecast = getShortForecast();
         this.detailedForecast = getDetailedForecast();
     }
-    
+
     public void generateDailyForecast(Location l, int i) {
         DailyForecast[] dailyForecast = new DailyForecast[14];
         String id = l.gridID;
@@ -52,17 +52,14 @@ public class DailyForecast {
 
         URLConnection connection;
         String finalUrl = "https://api.weather.gov/gridpoints/" + id + "/" + x + "," + y + "/forecast";
-        //System.out.println("hbhde");
         URL url;
+
         try {
-            // Construct the API URL using the latitude and longitude
             url = new URL(finalUrl);
 
-            // Make a request to the NWS API
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
 
-            // Check if the request was successful
             if (con.getResponseCode() == 200) {
                 StringBuilder response = new StringBuilder();
                 try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
@@ -70,72 +67,57 @@ public class DailyForecast {
                     while ((inputLine = in.readLine()) != null) {
                         response.append(inputLine);
                     }
-                
 
-                String[] names = response.toString().split("\"name\":");
-                name = (names[i].split(",")[0].trim());
-                this.setName(name);
+                    String[] names = response.toString().split("\"name\":");
+                    name = (names[i].split(",")[0].trim());
+                    this.setName(name);
 
-                String[] temperatures = response.toString().split("\"temperature\":");
-                temperature = Integer.parseInt(temperatures[i].split(",")[0].trim());
-                this.setTemperature(temperature);
+                    String[] temperatures = response.toString().split("\"temperature\":");
+                    temperature = Integer.parseInt(temperatures[i].split(",")[0].trim());
+                    this.setTemperature(temperature);
 
-                String[] temperatureUnits = response.toString().split("\"temperatureUnit\":");
-                temperatureUnit = (temperatureUnits[i].split(",")[0].trim());
-                this.setTemperatureUnit(temperatureUnit);
+                    String[] temperatureUnits = response.toString().split("\"temperatureUnit\":");
+                    temperatureUnit = (temperatureUnits[i].split(",")[0].trim());
+                    this.setTemperatureUnit(temperatureUnit);
 
-                String[] trends = response.toString().split("\"temperatureTrend\":");
-                trend = (trends[i].split(",")[0].trim());
-                this.setTrend(trend);
+                    String[] trends = response.toString().split("\"temperatureTrend\":");
+                    trend = (trends[i].split(",")[0].trim());
+                    this.setTrend(trend);
 
-                String[] numbers = response.toString().split("\"number\":");
-                number = Integer.parseInt(numbers[i].split(",")[0].trim());
-                this.setNumber(number);
+                    String[] numbers = response.toString().split("\"number\":");
+                    number = Integer.parseInt(numbers[i].split(",")[0].trim());
+                    this.setNumber(number);
 
-                String[] windSpeeds = response.toString().split("\"windSpeed\":");
-                windSpeed = (windSpeeds[i].split(",")[0].trim());
-                this.setWindSpeed(windSpeed);
+                    String[] windSpeeds = response.toString().split("\"windSpeed\":");
+                    windSpeed = (windSpeeds[i].split(",")[0].trim());
+                    this.setWindSpeed(windSpeed);
 
-                String[] windDirections = response.toString().split("\"windDirection\":");
-                windDirection = (windDirections[i].split(",")[0].trim());
-                this.setWindDirection(windDirection);
+                    String[] windDirections = response.toString().split("\"windDirection\":");
+                    windDirection = (windDirections[i].split(",")[0].trim());
+                    this.setWindDirection(windDirection);
 
-                /*String[] icons = response.toString().split("\"icon\":");
+                    String[] iconUrls = response.toString().split("\"icon\":");
+                    iconUrl = iconUrls[i].split(",")[0].replaceAll("\"", "").trim();
+                    this.setIconUrl(iconUrl);
 
-                String icon = icons[i].split(",")[0].replaceAll("\"", "").trim();
+                    String[] shortForecasts = response.toString().split("\"shortForecast\":");
+                    shortForecast = (shortForecasts[i].split(",")[0].trim());
+                    this.setShortForecast(shortForecast);
 
-                return icon;*/
-                
-                String[] iconUrls = response.toString().split("\"icon\":");
-                iconUrl = iconUrls[i].split(",")[0].replaceAll("\"", "").trim();
-                this.setIconUrl(iconUrl);
-
-                String[] shortForecasts = response.toString().split("\"shortForecast\":");
-                shortForecast = (shortForecasts[i].split(",")[0].trim());
-                this.setShortForecast(shortForecast);
-
-                String[] detailedForecasts = response.toString().split("\"detailedForecast\":");
-                detailedForecast = (detailedForecasts[i].split(",")[0].trim());
-                this.setDetailedForecast(detailedForecast);
-            }
-        }else {
+                    String[] detailedForecasts = response.toString().split("\"detailedForecast\":");
+                    detailedForecast = (detailedForecasts[i].split(",")[0].trim());
+                    this.setDetailedForecast(detailedForecast);
+                }
+            } else {
                 System.out.println("Error: " + con.getResponseCode());
             }
-    }
-    catch (MalformedURLException ex
-
-    
-        ) {
+        } catch (MalformedURLException ex) {
             ex.printStackTrace();
-    }
-    catch (IOException ex
-
-    
-        ) {
+        } catch (IOException ex) {
             ex.printStackTrace();
-    }
+        }
 
-}
+    }
 
     public void setNumber(int number) {
         this.number = number;
@@ -176,9 +158,8 @@ public class DailyForecast {
     public void setDetailedForecast(String detailedForecast) {
         this.detailedForecast = detailedForecast;
     }
-    
 
-public int getNumber() {
+    public int getNumber() {
         return number;
     }
 
@@ -219,7 +200,7 @@ public int getNumber() {
     }
 
     @Override
-public String toString() {
+    public String toString() {
         return "DailyForecast{" + "number=" + number + ", name=" + name + ", temperature=" + temperature + ", tempUnit=" + temperatureUnit + ", trend=" + trend + ", windSpeed=" + windSpeed + ", windDirection=" + windDirection + ", iconURL=" + iconUrl + ", shortForecast=" + shortForecast + ", detailedForecast=" + detailedForecast + '}';
     }
 
