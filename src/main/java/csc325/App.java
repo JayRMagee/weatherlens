@@ -47,8 +47,8 @@ public class App extends Application {
         stage.setTitle("WeatherLens");
         stage.setResizable(false);
         this.stage = stage;
-        fStore = fContext.firebase();
-        fAuth = FirebaseAuth.getInstance();
+        //fStore = fContext.firebase();
+        //fAuth = FirebaseAuth.getInstance();
         stage.show();
     }
 

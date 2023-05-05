@@ -1,5 +1,6 @@
 package csc325;
 
+//import com.google.firebase.auth.UserRecord;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
@@ -133,6 +134,13 @@ public class Login {
                         if (row > 0) {
                             System.out.println("Row inserted");
                         }
+                        /*
+                        UserRecord.CreateRequest request = new UserRecord.CreateRequest()
+                                .setEmail(userNameText.getText())
+                                .setEmailVerified(false)
+                                .setPassword(passwordText.getText())
+                                .setDisabled(false);
+                        */
                     } else {
                         System.out.println("Blank Fields");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
