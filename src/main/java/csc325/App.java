@@ -4,6 +4,7 @@ import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.Firestore;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +26,7 @@ public class App extends Application {
                     .setCredentials(GoogleCredentials.fromStream(getClass().getResourceAsStream("csc325weatherlens-firebase-adminsdk-d1394-0025d4fab8.json")))
                     .build();
                 FirebaseApp.initializeApp(options);
-            } catch (Exception ex) {
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
             return FirestoreClient.getFirestore();
@@ -34,7 +35,10 @@ public class App extends Application {
 
     private static Scene scene;
     public static Stage stage = null;                                           // placeholder stage to hold the original version of the login page.
-
+    public static Firestore fStore;
+    public static FirebaseAuth fAuth;
+    private final FirestoreContext fContext = new FirestoreContext();
+    
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
@@ -43,6 +47,8 @@ public class App extends Application {
         stage.setTitle("WeatherLens");
         stage.setResizable(false);
         this.stage = stage;
+        fStore = fContext.firebase();
+        fAuth = FirebaseAuth.getInstance();
         stage.show();
     }
 
