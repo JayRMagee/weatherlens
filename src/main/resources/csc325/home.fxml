@@ -56,31 +56,31 @@
                   <JFXButton layoutX="1124.0" layoutY="28.0" onAction="#update" text="Search" />
                   <VBox layoutX="446.0" layoutY="1.0" prefHeight="397.0" prefWidth="507.0" spacing="28.0">
                      <children>
-                        <Label fx:id="dateLabel" text="Date">
+                        <Label fx:id="dateLabel" prefHeight="26.0" prefWidth="480.0" text="Date">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
                         <Line endX="375.0" startX="-100.0" />
-                        <Label fx:id="tempertureLabel" text="Temperture">
+                        <Label fx:id="tempertureLabel" prefHeight="26.0" prefWidth="477.0" text="Temperature">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
                         <Line endX="375.0" startX="-100.0" />
-                        <Label fx:id="windSpeedLabel" text="WindSpeed">
+                        <Label fx:id="windSpeedLabel" prefHeight="26.0" prefWidth="475.0" text="WindSpeed">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
                         <Line endX="375.0" startX="-100.0" />
-                        <Label fx:id="windDirectionLabel" text="Wind Direction">
+                        <Label fx:id="windDirectionLabel" prefHeight="26.0" prefWidth="479.0" text="Wind Direction">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
                         <Line endX="375.0" startX="-100.0" />
-                        <Label fx:id="forecastLabel" prefHeight="17.0" prefWidth="199.0" text="Forecast">
+                        <Label fx:id="forecastLabel" prefHeight="26.0" prefWidth="475.0" text="Forecast">
                            <font>
                               <Font size="20.0" />
                            </font>
