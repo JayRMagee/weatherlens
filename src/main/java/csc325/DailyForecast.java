@@ -68,13 +68,13 @@ public class DailyForecast {
                         response.append(inputLine);
                     }
 
-                    String[] names = response.toString().split("\"name\":");
-                    name = (names[i].split(",")[0].trim());
-                    this.setName(name);
-
                     String[] temperatures = response.toString().split("\"temperature\":");
                     temperature = Integer.parseInt(temperatures[i].split(",")[0].trim());
                     this.setTemperature(temperature);
+                    
+                    String[] names = response.toString().split("\"name\":");
+                    name = (names[i].split(",")[0].trim());
+                    this.setName(name);
 
                     String[] temperatureUnits = response.toString().split("\"temperatureUnit\":");
                     temperatureUnit = (temperatureUnits[i].split(",")[0].trim());
@@ -105,7 +105,7 @@ public class DailyForecast {
                     this.setShortForecast(shortForecast);
 
                     String[] detailedForecasts = response.toString().split("\"detailedForecast\":");
-                    detailedForecast = (detailedForecasts[i].split(",")[0].trim());
+                    detailedForecast = (detailedForecasts[i].split(",")[0].replaceAll("\"", "").trim());
                     this.setDetailedForecast(detailedForecast);
                 }
             } else {
