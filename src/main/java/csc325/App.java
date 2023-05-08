@@ -38,8 +38,6 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        Location location = new Location("Farmingdale, NY");
-        System.out.println(location.toString());
         launch();
        
     }
