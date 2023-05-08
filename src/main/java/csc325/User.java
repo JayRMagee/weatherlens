@@ -9,7 +9,7 @@ package csc325;
  * information such as the user's first name, username, password, and home
  * zip code. This class provides getter and setter methods for accessing and
  * updating this information.
- * @author Nicholas Shah
+ * @author nicholasshah
  */
 public class User {
 
