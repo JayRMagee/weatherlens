@@ -14,7 +14,7 @@ import java.net.URLConnection;
 
 /**
  *
- * @author jayso
+ * @author Jayson Magee
  */
 public class DailyForecast {
 
