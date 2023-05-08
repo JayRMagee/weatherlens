@@ -5,6 +5,10 @@ module csc325 {
     requires com.google.gson;
     requires com.jfoenix;
     requires unirest.java;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     opens csc325 to javafx.fxml;
     exports csc325;
 }
