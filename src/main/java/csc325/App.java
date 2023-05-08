@@ -16,7 +16,11 @@ public class App extends Application {
 
     private static Scene scene;
     public static Stage stage = null;                                           // placeholder stage to hold the original version of the login page.
+<<<<<<< Updated upstream
 
+=======
+    
+>>>>>>> Stashed changes
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
