@@ -80,9 +80,9 @@
                            </font>
                         </Label>
                         <Line endX="375.0" startX="-100.0" />
-                        <Label fx:id="forecastLabel" prefHeight="26.0" prefWidth="475.0" text="Forecast">
+                        <Label fx:id="forecastLabel" prefHeight="75.0" prefWidth="475.0" text="Forecast" wrapText="true">
                            <font>
-                              <Font size="20.0" />
+                              <Font size="18.0" />
                            </font>
                         </Label>
                      </children>
