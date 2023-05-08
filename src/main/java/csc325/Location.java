@@ -30,7 +30,6 @@ public class Location {
         this.locationSearchString = locationSearchString;
         geocode();
         fetchGridPoints();
-        //fetchDailyForecast();
     }
 
     /**
@@ -54,25 +53,21 @@ public class Location {
             }
             JSONObject jsonObject = new JSONObject(sb.toString());
             JSONArray results = jsonObject.getJSONArray("results");
-            //Could loop through but right now we don't know what result to pick - so just take the first one (index 0).
             JSONObject result = results.getJSONObject(0);
             JSONObject geometry = result.getJSONObject("geometry");
             latitude = geometry.getDouble("lat");
             longitude = geometry.getDouble("lng");
         } catch (IOException | JSONException ex) {
-            System.out.println("error");
+            ex.printStackTrace();
         }
     }
 
     private void fetchGridPoints() {
         try {
-            // Construct the API URL using the latitude and longitude
             URL url = new URL("https://api.weather.gov/points/" + latitude + "," + longitude);
-            // Make a request to the NWS API
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
-            
-            // Check if the request was successful
+
             if (con.getResponseCode() == 200) {
                 StringBuilder response = new StringBuilder();
                 try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
@@ -81,16 +76,16 @@ public class Location {
                         response.append(inputLine);
                     }
                 }
-                
+
                 String[] splitResponse = response.toString().split("\"gridId\":");
                 for (int i = 1; i < splitResponse.length; i++) {
                     gridID = splitResponse[i].replaceAll("\"", "")
-                        .split("[,\"]")[0]
-                        .trim();
-                    
+                            .split("[,\"]")[0]
+                            .trim();
+
                     String[] gridx = response.toString().split("\"gridX\":");
                     gridX = Integer.parseInt(gridx[i].split(",")[0].trim());
-                    
+
                     String[] gridy = response.toString().split("\"gridY\":");
                     gridY = Integer.parseInt(gridy[i].split(",")[0].trim());
                 }
@@ -98,14 +93,44 @@ public class Location {
                 System.out.println("Error: " + con.getResponseCode());
             }
         } catch (IOException | NumberFormatException ex) {
-            System.out.println(ex);
+            ex.printStackTrace();
         }
+    }
+
+    String city;
+    String state;
+    private String fetchLocation() {
+        try {
+            URL url = new URL("https://api.weather.gov/points/" + latitude + "," + longitude);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+
+            if (con.getResponseCode() == 200) {
+                StringBuilder response = new StringBuilder();
+                try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+                    String inputLine;
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                }
+
+                JSONObject jsonObject = new JSONObject(response.toString());
+                JSONObject relativeLocation = jsonObject.getJSONObject("properties").getJSONObject("relativeLocation").getJSONObject("properties");
+                city = relativeLocation.getString("city");
+                state = relativeLocation.getString("state");
+            } else {
+                System.out.println("Error: " + con.getResponseCode());
+            }
+        } catch (IOException | JSONException ex) {
+            ex.printStackTrace();
+        }
+        
+    return city + ", " + state;
     }
 
     @Override
     public String toString() {
-        return locationSearchString;
+        return fetchLocation();
     }
-    
-    
+
 }

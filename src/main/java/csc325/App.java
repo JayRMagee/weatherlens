@@ -16,11 +16,7 @@ public class App extends Application {
 
     private static Scene scene;
     public static Stage stage = null;                                           // placeholder stage to hold the original version of the login page.
-<<<<<<< Updated upstream
-
-=======
     
->>>>>>> Stashed changes
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
@@ -42,10 +38,9 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        Location location = new Location("Farmingdale, NY");
+        System.out.println(location.toString());
         launch();
-        Location l = new Location("Los Angeles");
-        WeeklyForecast w = new WeeklyForecast(l);
-        w.getWeeklyForecast();
-        w.readArray();
+       
     }
 }

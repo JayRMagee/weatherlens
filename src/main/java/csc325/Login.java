@@ -1,5 +1,6 @@
 package csc325;
 
+//import com.google.firebase.auth.UserRecord;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
@@ -13,12 +14,13 @@ import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 
 /**
- * This class is designed to hold the methods needed to login in to the weather app 
- * as well as controls the page for creating an account for first time users.
- * @author nicholasshah
+ * This class is designed to hold the methods needed to login in to the weather
+ * app as well as controls the page for creating an account for first time
+ * users.
+ *
+ * @author Nicholas Shah
  */
 public class Login {
-    
 
     @FXML
     private Pane accountPane;
@@ -46,7 +48,7 @@ public class Login {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         App.stage.getScene().setRoot(root);
     }
-    
+
     /**
      * code to verify login credentials and switch to main page
      *
@@ -87,8 +89,6 @@ public class Login {
     public void handleCreateAccountButton() throws IOException {
         Stage stage = (Stage) createAccountButton.getScene().getWindow();
         sendAccountDB();
-
-        // stage.close();
     }
 
     /**
@@ -134,6 +134,13 @@ public class Login {
                         if (row > 0) {
                             System.out.println("Row inserted");
                         }
+                        /*
+                        UserRecord.CreateRequest request = new UserRecord.CreateRequest()
+                                .setEmail(userNameText.getText())
+                                .setEmailVerified(false)
+                                .setPassword(passwordText.getText())
+                                .setDisabled(false);
+                        */
                     } else {
                         System.out.println("Blank Fields");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -176,39 +183,6 @@ public class Login {
         App.stage.getScene().setRoot(root);
 
     }
-
-    /**
-     * method to display hourly weather
-     *
-     * @throws IOException
-     */
-//    public void getWeather() throws IOException {
-//        // Construct the API URL using the latitude and longitude
-//        URL url = new URL("https://api.weather.gov/gridpoints/OKX/33,37/forecast");
-//
-//        // Make a request to the NWS API
-//        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-//        con.setRequestMethod("GET");
-//
-//        // Check if the request was successful
-//        if (con.getResponseCode() == 200) {
-//            StringBuilder response = new StringBuilder();
-//            try ( BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
-//                String inputLine;
-//                while ((inputLine = in.readLine()) != null) {
-//                    response.append(inputLine);
-//                }
-//            }
-//
-//            String[] temperatures = response.toString().split("\"temperature\":");
-//            for (int i = 1; i < temperatures.length; i++) {
-//                int temperature = Integer.parseInt(temperatures[i].split(",")[0].trim());
-//                System.out.println("Temperature " + i + ": " + temperature);
-//            }
-//        } else {
-//            System.out.println("Error: " + con.getResponseCode());
-//        }
-//    }
 
     /**
      * method that confirms login credentials
