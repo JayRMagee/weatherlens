@@ -105,7 +105,7 @@ public class DailyForecast {
                     this.setShortForecast(shortForecast);
 
                     String[] detailedForecasts = response.toString().split("\"detailedForecast\":");
-                    detailedForecast = (detailedForecasts[i].split(",")[0].trim());
+                    detailedForecast = (detailedForecasts[i].split(",")[0].replaceAll("\"", "").trim());
                     this.setDetailedForecast(detailedForecast);
                 }
             } else {
