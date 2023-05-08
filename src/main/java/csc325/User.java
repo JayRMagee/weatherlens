@@ -79,4 +79,10 @@ public class User {
         homeZipCode = "";
     }
 
+    @Override
+    public String toString() {
+        return "User{" + "firstName=" + firstName + ", username=" + username + ", userPassword=" + userPassword + ", homeZipCode=" + homeZipCode + '}';
+    }
+    
+
 }
