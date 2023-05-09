@@ -25,7 +25,13 @@ public class Location {
     int gridX;
     int gridY;
     String locationSearchString;
+    String city;
+    String state;
 
+    /**
+     * Parameterized constructor for the Location class.
+     * @param locationSearchString 
+     */
     public Location(String locationSearchString) {
         this.locationSearchString = locationSearchString;
         geocode();
@@ -62,6 +68,9 @@ public class Location {
         }
     }
 
+    /**
+     * Creates grid points for a Location using the latitude and longitude coordinates.
+     */
     private void fetchGridPoints() {
         try {
             URL url = new URL("https://api.weather.gov/points/" + latitude + "," + longitude);
@@ -97,8 +106,10 @@ public class Location {
         }
     }
 
-    String city;
-    String state;
+    /**
+     * Returns a comma-separated value of city, state depending on the geographical location provided.
+     * @return 
+     */
     private String fetchLocation() {
         try {
             URL url = new URL("https://api.weather.gov/points/" + latitude + "," + longitude);
@@ -124,10 +135,14 @@ public class Location {
         } catch (IOException | JSONException ex) {
             ex.printStackTrace();
         }
-        
-    return city + ", " + state;
+
+        return city + ", " + state;
     }
 
+    /**
+     * Returns the city, state comma-separated value as String object.
+     * @return 
+     */
     @Override
     public String toString() {
         return fetchLocation();

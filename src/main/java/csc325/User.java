@@ -17,17 +17,6 @@ public class User {
     private String username;
     private String userPassword;
     private String homeZipCode;
-    /*
-    Suggestion: User should have a list or map of Location, representing their 
-    previously accessed locations. e.g.,:
-    ArrayList<Location> locations;
-    or
-    HashMap<String,Location> locations
-    If we use a map, we can look up a location by its name. We can add String 
-    name to Location, and then use the same as the key for the map. This would 
-    let us look up specific locations, while if we wanted to iterate over all a 
-    user's locations, we can use Map interface's .values().toArray() function
-    */
     
     /**
      * Returns the home zip code of the User.
@@ -37,34 +26,69 @@ public class User {
         return homeZipCode;
     }
 
+    /**
+     * Sets the home zip code of the User.
+     * @param homeZipCode 
+     */
     public void setHomeZipCode(String homeZipCode) {
         this.homeZipCode = homeZipCode;
     }
 
+    /**
+     * Returns the first name of the User.
+     * @return 
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * Sets the first name of the User.
+     * @param firstName 
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * Returns the username of the User.
+     * @return 
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Sets the username of the User.
+     * @param userName 
+     */
     public void setUsername(String userName) {
         this.username = userName;
     }
 
+    /**
+     * Returns the password of the User.
+     * @return 
+     */
     public String getUserPassword() {
         return userPassword;
     }
 
+    /**
+     * Sets the password of the user.
+     * @param userPassword 
+     */
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
 
+    /**
+     * Parameterized constructor method for the User class.
+     * @param userName
+     * @param firstName
+     * @param userPassword
+     * @param homeZipCode 
+     */
     public User(String userName, String firstName, String userPassword, String homeZipCode) {
         this.firstName = firstName;
         this.username = userName;
@@ -72,11 +96,24 @@ public class User {
         this.homeZipCode = homeZipCode;
     }
 
+    /**
+     * Non-parameterized constructor method for the User class.
+     */
     public User() {
         firstName = "";
         username = "";
         userPassword = "";
         homeZipCode = "";
     }
+
+    /**
+     * To string method which returns all values as comma-separated values.
+     * @return 
+     */
+    @Override
+    public String toString() {
+        return "User{" + "firstName=" + firstName + ", username=" + username + ", userPassword=" + userPassword + ", homeZipCode=" + homeZipCode + '}';
+    }
+    
 
 }

@@ -7,6 +7,7 @@ import javafx.scene.Group;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -52,9 +53,15 @@ public class Home {
     WeeklyForecast weeklyForecast = new WeeklyForecast(location);
     DailyForecast dailyForecast = new DailyForecast();
 
+    /**
+     * Ensures all necessary functions are called when the main pane is opened.
+     * @throws IOException 
+     */
     public void initialize() throws IOException {
-       Thread t = new Thread(()-> {dailyForecast.generateDailyForecast(location, 1);});
-       t.start();
+        Thread t = new Thread(() -> {
+            dailyForecast.generateDailyForecast(location, 1);
+        });
+        t.start();
         weeklyForecast.getWeeklyForecast();
         stateLabel.setText(location.toString());
 
@@ -63,12 +70,16 @@ public class Home {
         displayForecastDetails(weeklyForecast);
     }
 
+    /**
+     * Sets the text values of each GUI Label to the appropriate value from the forecast.
+     * @param wf 
+     */
     public void displayForecastDetails(WeeklyForecast wf) {
-        dateLabel.setText(wf.getDays(0));
-        tempertureLabel.setText(String.valueOf(wf.getTemperatures(0)));
-        windSpeedLabel.setText(wf.getWindSpeeds(0));
-        windDirectionLabel.setText(wf.getWindDirections(0));
-        forecastLabel.setText(wf.getDetailedForecasts(0));
+        dateLabel.setText("Date: " + wf.getDays(0));
+        tempertureLabel.setText("Temperature: \"" + String.valueOf(wf.getTemperatures(0)) + "°\"");
+        windSpeedLabel.setText("Wind Speeds: " + wf.getWindSpeeds(0));
+        windDirectionLabel.setText("Wind Directions: " + wf.getWindDirections(0));
+        forecastLabel.setText("Forecast: \"" + wf.getDetailedForecasts(0) + "\"");
     }
 
     /**
@@ -81,10 +92,9 @@ public class Home {
      */
     public void displayChartData(WeeklyForecast wf) throws IOException {
         // create a number axis for the y-axis
-        
+
         XYChart.Series<String, Number> weatherSeries = new XYChart.Series<>();
         tempLabel.setText(Integer.toString(wf.getTemperatures(0)) + "°F");
-        
 
         homeForecastScatterChart.getXAxis().setTickLabelRotation(360);
         homeForecastScatterChart.getXAxis().setTickLabelFill(Color.BLACK);
@@ -121,13 +131,12 @@ public class Home {
             data.setNode(group);
         }
 
-        
-
         // add the data series to the chart
         homeForecastScatterChart.getData().add(weatherSeries);
     }
 
     /**
+     * Handles icon generation.
      * @author Jonathan Vasquez
      */
     public void todayImage(WeeklyForecast wf) {
@@ -141,21 +150,33 @@ public class Home {
 
     }
 
+    /**
+     * Updates all values on the main pane.
+     * @throws IOException 
+     */
     @FXML
     public void update() throws IOException {
 
-        
         String newLocation = locationSearch.getText();
         if (!newLocation.isBlank()) {
             location = new Location(newLocation);
-            WeeklyForecast wF = new WeeklyForecast(location);
-            wF.getWeeklyForecast();
-            stateLabel.setText(location.toString());
-            locationSearch.clear();
 
-            
-            displayChartData(wF);
-            todayImage(wF);
+            WeeklyForecast wF = new WeeklyForecast(location);
+            if (location.toString().matches("null, null")) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("The Location You Searched Is Unavailable. Please Try A New Location.");
+                alert.getDialogPane().getStylesheets().add("csc325/WeatherLens.css");
+                alert.show();
+                locationSearch.clear();
+            } else {
+                wF.getWeeklyForecast();
+                stateLabel.setText(location.toString());
+                locationSearch.clear();
+
+                displayForecastDetails(wF);
+                displayChartData(wF);
+                todayImage(wF);
+            }
         }
     }
 
