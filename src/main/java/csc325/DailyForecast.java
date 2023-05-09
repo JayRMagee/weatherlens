@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package csc325;
 
 import java.io.BufferedReader;
@@ -31,6 +27,9 @@ public class DailyForecast {
     String shortForecast;
     String detailedForecast;
 
+    /**
+     * Non-parameterized constructor for the DailyForecast class.
+     */
     public DailyForecast() {
         this.number = getNumber();
         this.name = getName();
@@ -44,6 +43,11 @@ public class DailyForecast {
         this.detailedForecast = getDetailedForecast();
     }
 
+    /**
+     * Populates all the values of a DailyForecast using an API call.
+     * @param l
+     * @param i 
+     */
     public void generateDailyForecast(Location l, int i) {
         DailyForecast[] dailyForecast = new DailyForecast[14];
         String id = l.gridID;
@@ -119,86 +123,170 @@ public class DailyForecast {
 
     }
 
+    /**
+     * Sets the number period of the DailyForecast object.
+     * @param number 
+     */
     public void setNumber(int number) {
         this.number = number;
     }
 
+    /**
+     * Sets the day of the week of the DailyForecast object.
+     * @param name 
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Sets the temperature of the DailyForecast object.
+     * @param temperature 
+     */
     public void setTemperature(int temperature) {
         this.temperature = temperature;
     }
 
+    /**
+     * Sets the temperature unit of measure of the DailyForecast object.
+     * @param temperatureUnit 
+     */
     public void setTemperatureUnit(String temperatureUnit) {
         this.temperatureUnit = temperatureUnit;
     }
 
+    /**
+     * Sets the temperature trend of the DailyForecast object.
+     * @param trend 
+     */
     public void setTrend(String trend) {
         this.trend = trend;
     }
 
+    /**
+     * Sets the wind speed of the DailyForecast object.
+     * @param windSpeed 
+     */
     public void setWindSpeed(String windSpeed) {
         this.windSpeed = windSpeed;
     }
 
+    /**
+     * Sets the wind direction of the DailyForecast object.
+     * @param windDirection 
+     */
     public void setWindDirection(String windDirection) {
         this.windDirection = windDirection;
     }
 
+    /**
+     * Sets the icon URL of the DailyForecast object.
+     * @param iconUrl 
+     */
     public void setIconUrl(String iconUrl) {
         this.iconUrl = iconUrl;
     }
 
+    /**
+     * Sets the short forecast of the DailyForecast object.
+     * @param shortForecast 
+     */
     public void setShortForecast(String shortForecast) {
         this.shortForecast = shortForecast;
     }
 
+    /**
+     * Sets the detailed forecast of the DailyForecast object.
+     * @param detailedForecast 
+     */
     public void setDetailedForecast(String detailedForecast) {
         this.detailedForecast = detailedForecast;
     }
 
+    /**
+     * Returns the period number of the DailyForecast object.
+     * @return 
+     */
     public int getNumber() {
         return number;
     }
 
+    /**
+     * Returns the day of the week of the DailyForecast object.
+     * @return 
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Returns the temperature of the DailyForecast object.
+     * @return 
+     */
     public int getTemperature() {
         return temperature;
     }
 
+    /**
+     * Returns the temperature unit of measure of the DailyForecast object.
+     * @return 
+     */
     public String getTempUnit() {
         return temperatureUnit;
     }
 
+    /**
+     * Returns the temperature trend of the DailyForecast object.
+     * @return 
+     */
     public String getTrend() {
         return trend;
     }
 
+    /**
+     * Returns the wind speed of the DailyForecast object.
+     * @return 
+     */
     public String getWindSpeed() {
         return windSpeed;
     }
 
+    /**
+     * Returns the wind direction of the DailyForecast object.
+     * @return 
+     */
     public String getWindDirection() {
         return windDirection;
     }
 
+    /**
+     * Returns the icon URL of the DailyForecast object.
+     * @return 
+     */
     public String getIconUrl() {
         return iconUrl;
     }
 
+    /**
+     * Returns the short forecast of the DailyForecast object.
+     * @return 
+     */
     public String getShortForecast() {
         return shortForecast;
     }
 
+    /**
+     * Returns the detailed forecast of the DailyForecast object.
+     * @return 
+     */
     public String getDetailedForecast() {
         return detailedForecast;
     }
 
+    /**
+     * Returns the DailyForecast object as a String of comma-separated values.
+     * @return 
+     */
     @Override
     public String toString() {
         return "DailyForecast{" + "number=" + number + ", name=" + name + ", temperature=" + temperature + ", tempUnit=" + temperatureUnit + ", trend=" + trend + ", windSpeed=" + windSpeed + ", windDirection=" + windDirection + ", iconURL=" + iconUrl + ", shortForecast=" + shortForecast + ", detailedForecast=" + detailedForecast + '}';
