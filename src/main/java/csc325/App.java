@@ -15,7 +15,7 @@ import static javafx.application.Application.launch;
 public class App extends Application {
 
     private static Scene scene;
-    public static Stage stage = null;                                           // placeholder stage to hold the original version of the login page.
+    public static Stage stage = null;                                           
     
     @Override
     public void start(Stage stage) throws IOException {
