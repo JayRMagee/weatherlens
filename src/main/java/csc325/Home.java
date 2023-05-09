@@ -53,6 +53,10 @@ public class Home {
     WeeklyForecast weeklyForecast = new WeeklyForecast(location);
     DailyForecast dailyForecast = new DailyForecast();
 
+    /**
+     * Ensures all necessary functions are called when the main pane is opened.
+     * @throws IOException 
+     */
     public void initialize() throws IOException {
         Thread t = new Thread(() -> {
             dailyForecast.generateDailyForecast(location, 1);
@@ -66,6 +70,10 @@ public class Home {
         displayForecastDetails(weeklyForecast);
     }
 
+    /**
+     * Sets the text values of each GUI Label to the appropriate value from the forecast.
+     * @param wf 
+     */
     public void displayForecastDetails(WeeklyForecast wf) {
         dateLabel.setText("Date: " + wf.getDays(0));
         tempertureLabel.setText("Temperature: \"" + String.valueOf(wf.getTemperatures(0)) + "°\"");
@@ -128,6 +136,7 @@ public class Home {
     }
 
     /**
+     * Handles icon generation.
      * @author Jonathan Vasquez
      */
     public void todayImage(WeeklyForecast wf) {
@@ -141,6 +150,10 @@ public class Home {
 
     }
 
+    /**
+     * Updates all values on the main pane.
+     * @throws IOException 
+     */
     @FXML
     public void update() throws IOException {
 
