@@ -1,6 +1,5 @@
 package csc325;
 
-//import com.google.firebase.auth.UserRecord;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
@@ -8,17 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.sql.*;
 import javafx.scene.control.Alert;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
-import org.dizitart.no2.Document;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.exceptions.NitriteIOException;
-import org.dizitart.no2.objects.Cursor;
 import org.dizitart.no2.objects.ObjectRepository;
-import org.dizitart.no2.objects.filters.ObjectFilters;
-import static org.dizitart.no2.objects.filters.ObjectFilters.and;
 import static org.dizitart.no2.objects.filters.ObjectFilters.eq;
 
 /**
@@ -58,7 +52,7 @@ public class Login {
     }
 
     /**
-     * code to verify login credentials and switch to main page
+     * Verifies login credentials. If valid, switch to the main pane.
      *
      * @throws IOException
      */
@@ -155,41 +149,9 @@ public class Login {
     }
 
     /**
-     * method that confirms login credentials
-     *
-     * @throws IOException
+     * Validates the login credentials.
+     * @throws IOException 
      */
-    /*public void checkLogin() throws IOException {
-        Nitrite db = Nitrite.builder()
-                    .filePath("UserAccounts.db")
-                    .openOrCreate();
-        try {
-
-            // check if the user exists and the password is correct
-            String username = userLoginText.getText();
-            String password = passwordLoginText.getText();
-            ObjectRepository<User> userRepo = db.getRepository(User.class);
-        User existingUser = userRepo.find(and(eq("username", username), eq("userPassword", password))).firstOrDefault();
-            
-           
-        if (existingUser != null) {
-                System.out.println("Login successful. Opening the page...");
-                handleLoginButton();
-            } else {
-                System.out.println("User not found or wrong password");
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Credentials are wrong");
-                alert.getDialogPane().getStylesheets().add("csc325/WeatherLens.css");
-                alert.show();
-            }
-        } catch (NitriteIOException e) {
-            e.printStackTrace();
-        } finally {
-            if (db != null) {
-                db.close();
-            }
-        }
-    }*/
     public void checkLogin() throws IOException {
         String username = userLoginText.getText();
         String password = passwordLoginText.getText();
