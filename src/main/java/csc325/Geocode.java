@@ -16,14 +16,15 @@ import kong.unirest.json.JSONException;
 import kong.unirest.json.JSONObject;
 
 /**
- *
+ * The Geocode class facilitates API calls needed to generate geographical data used to populate weather forecasts.
  * @author Jayson Magee
  */
 public class Geocode {
     @FXML
     private TextField searchText;
+    
     /**
-     *
+     * Returns weather periods as a String object.
      * @author Jayson Magee
      */
     public String getWeatherPeriods(String id, int x, int y) {
@@ -53,6 +54,13 @@ public class Geocode {
         return finalUrl;
     }
 
+    /**
+     * Returns weather values using latitude and longitude coordinates.
+     * @param latitude
+     * @param longitude
+     * @return
+     * @throws Exception 
+     */
     public String getWeather(double latitude, double longitude) throws Exception {
         String string = "";
 
@@ -90,7 +98,7 @@ public class Geocode {
     }
 
     /**
-     *
+     * Handles API calls.
      * @param args
      */
     public String handleGeocoding() {
